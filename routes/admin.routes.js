@@ -13,6 +13,5 @@ router.get("/create-page", (_req, res) => {
 });
 
 router.post("/create-page", upload.single("cover"), (req, res) => {
-	console.log("post");
-	/* PagesController.create(req, res); */
+	PagesController.create(req, res);
 });

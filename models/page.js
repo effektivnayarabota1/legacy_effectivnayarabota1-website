@@ -5,8 +5,9 @@ const PageSchema = new mongoose.Schema({
 	desc: String,
 	img: {
 		data: Buffer,
-		contentType: String,
+		/* contentType: String, */
 	},
 });
 
-export const Page = new mongoose.model("Page", PageSchema);
+const Page = new mongoose.model("Page", PageSchema);
+export default Page;
