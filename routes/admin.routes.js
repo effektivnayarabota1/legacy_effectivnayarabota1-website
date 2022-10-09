@@ -8,6 +8,10 @@ router.get("/", (_req, res) => {
 	PagesController.index(res);
 });
 
+router.get("/clear", (_req, res) => {
+	PagesController.clear(res);
+});
+
 router.get("/create-page", (_req, res) => {
 	PagesController.createPage(res);
 });

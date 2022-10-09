@@ -6,7 +6,13 @@
 </div>
 <div class="projects">
 	<h1>Progects</h1>
+	{{#each items}}
+		<p>{{this.title}}</p>
+		<p>{{this.desc}}</p>
+		<img src={{base64 this.img}} alt="" />
+	{{/each}}
 	<button><a href="/admin/create-page">+</a></button>
+	<button><a href="/admin/clear">Clear</a></button>
 </div>
 <div class="footer">
 	<button>Редактировать</button>
