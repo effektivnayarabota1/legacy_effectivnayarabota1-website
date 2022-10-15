@@ -13,9 +13,17 @@ router.get("/clear", (_req, res) => {
 });
 
 router.get("/create-page", (_req, res) => {
-	PagesController.createPage(res);
+	PagesController.showPageConstructor(res);
 });
 
 router.post("/create-page", upload.single("cover"), (req, res) => {
-	PagesController.create(req, res);
+	PagesController.createPage(req, res);
+});
+
+router.post("/update-page/:id", upload.single("cover"), (req, res) => {
+	PagesController.updatePage(req, res);
+});
+
+router.get("/:pageId", (req, res) => {
+	PagesController.showPage(req, res);
 });

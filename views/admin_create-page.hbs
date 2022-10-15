@@ -6,15 +6,34 @@
 >
 	<fieldset>
 		<legend>Мета</legend>
-		<input type="text" name="pageId" placeholder="id" required />
-		<input type="text" name="title" placeholder="title" required />
+		<p>New Title</p><br>
+		<input
+			type="text"
+			name="title"
+			placeholder="title"
+			{{#if item.title}}
+			value={{preview item.title}}
+			{{/if}}
+			required
+		/>
+		<p>New Desc</p><br>
 		<textarea
 			name="desc"
 			form="create"
 			placeholder="desc"
-			required
-		></textarea>
-		<input type="file" name="cover" required />
+			/* required */
+		>{{#if item.desc}}{{preview item.desc}}{{/if}}</textarea>
+		<p>New Cover</p><br>
+		<input 
+		type="file" 
+		name="cover" 
+		{{#unless item.img}}
+		required
+		{{/unless}} 
+		/>
+		{{#if item.img}}
+		<img src={{base64 item.img}} alt="" />
+		{{/if}}
 	</fieldset>
 	<input type="submit" value="Сохранить" />
 </form>

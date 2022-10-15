@@ -7,7 +7,9 @@
 <div class="projects">
 	<h1>Progects</h1>
 	{{#each items}}
-		<p>{{this.title}}</p>
+		<a href="admin/{{this.slug}}">
+			<p>{{this.title}}</p>
+		</a>
 		<p>{{this.desc}}</p>
 		<img src={{base64 this.img}} alt="" />
 	{{/each}}

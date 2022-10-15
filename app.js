@@ -33,12 +33,15 @@ app.use("/admin", adminRoutes);
 
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "partials"));
-
 hbs.registerHelper("base64", function (img) {
 	return `data:${img.contentType};base64,${img.data.toString("base64")}`;
-	/* return `data:image/${ */
-	/* 	img.contentType */
-	/* };base64, ${img.data.toString("base64")}`; */
+});
+hbs.registerHelper("preview", function (data) {
+	if (data) {
+		return data;
+	} else {
+		return " ";
+	}
 });
 
 var port = process.env.PORT || "3000";

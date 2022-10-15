@@ -9,18 +9,15 @@ const storage = multer.diskStorage({
 		/* TODO Конвертация изображенй в веб-формат */
 		/* TODO Подгонка изображений в подходящее разрешение */
 
-		const pageId = req.body.pageId;
-		const dir = __dirname + "/uploads/" + pageId;
+		let dir = __dirname + "/uploads/";
+		!fs.existsSync(dir) && fs.mkdirSync(dir);
+		dir = dir + "temp/";
 		!fs.existsSync(dir) && fs.mkdirSync(dir);
 		cb(null, dir);
 	},
 	filename: (req, file, cb) => {
 		/* TODO Сделать замену пробелов на подчеркивания в названии файлов */
-
-		const pageId = req.body.pageId;
-		const format = file.mimetype.split("/")[1];
-		/* cb(null, `${pageId}-${file.fieldname}.${format}`); */
-		cb(null, `${pageId}-${file.fieldname}`);
+		cb(null, `${file.fieldname}`);
 	},
 });
 
