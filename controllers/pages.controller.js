@@ -26,7 +26,6 @@ export class PagesController {
 				res.status(500).send("An error occurred", err);
 			} else {
 				for (let item of items) {
-					console.log("delete");
 					await Page.deleteOne({ pageId: item.pageId });
 				}
 				fs.rmSync(__dirname + "/uploads/", {
