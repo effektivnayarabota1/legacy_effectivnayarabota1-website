@@ -2,6 +2,8 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 
+import isEmpty from "../helpers/isEmpty.js";
+
 const __dirname = path.resolve();
 
 const storage = multer.diskStorage({
@@ -10,13 +12,25 @@ const storage = multer.diskStorage({
 		/* TODO Подгонка изображений в подходящее разрешение */
 
 		let dir = __dirname + "/uploads/";
-		!fs.existsSync(dir) && fs.mkdirSync(dir);
-		dir = dir + "temp/";
-		!fs.existsSync(dir) && fs.mkdirSync(dir);
+		if (isEmpty(req.params)) {
+			!fs.existsSync(dir) && fs.mkdirSync(dir);
+			dir = dir + "temp/";
+			!fs.existsSync(dir) && fs.mkdirSync(dir);
+		} else {
+			dir = dir + req.params.url + "/";
+		}
 		cb(null, dir);
 	},
 	filename: (req, file, cb) => {
-		/* TODO Сделать замену пробелов на подчеркивания в названии файлов */
+		/* if (!isEmpty(req.params)) { */
+		/* 	const oldFilePath = */
+		/* 		__dirname + "/uploads/" + req.params.url + "/" + file.fieldname; */
+		/* 	if (fs.existsSync(oldFilePath)) { */
+		/* 		fs.unlink(oldFilePath, () => { */
+		/* 			console.log(oldFilePath, "deleted!"); */
+		/* 		}); */
+		/* 	} */
+		/* } */
 		cb(null, `${file.fieldname}`);
 	},
 });

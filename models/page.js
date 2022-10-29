@@ -1,4 +1,4 @@
-import slug from "mongoose-slug-generator";
+import slug from "mongoose-slug-updater";
 import mongoose from "mongoose";
 
 mongoose.plugin(slug);
@@ -12,7 +12,8 @@ const PageSchema = new mongoose.Schema({
 	slug: {
 		type: String,
 		slug: "title",
-		slug_padding_size: 4,
+		slug_padding_size: 2,
+		index: true,
 		unique: true,
 	},
 });

@@ -13,17 +13,17 @@ router.get("/clear", (_req, res) => {
 });
 
 router.get("/create-page", (_req, res) => {
-	PagesController.showPageConstructor(res);
+	PagesController.showPageConstructor(_req, res);
 });
 
 router.post("/create-page", upload.single("cover"), (req, res) => {
 	PagesController.createPage(req, res);
 });
 
-router.post("/update-page/:id", upload.single("cover"), (req, res) => {
+router.post("/update-page/:url", upload.single("cover"), (req, res) => {
 	PagesController.updatePage(req, res);
 });
 
-router.get("/:pageId", (req, res) => {
-	PagesController.showPage(req, res);
+router.get("/:url", (req, res) => {
+	PagesController.showPageConstructor(req, res);
 });
