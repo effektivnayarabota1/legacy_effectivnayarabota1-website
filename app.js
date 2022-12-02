@@ -11,7 +11,7 @@ dotenv.config();
 import * as url from "url";
 
 const __filename = url.fileURLToPath(import.meta.url);
-/* const __dirname = url.fileURLToPath(new URL('.', import.meta.url)); */
+// const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const __dirname = path.resolve();
 
 main().catch((err) => console.log(err));
@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/", indexRoutes);
 app.use("/admin", adminRoutes);
+app.use('/script', express.static(__dirname + '/views/script'));
 
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "partials"));

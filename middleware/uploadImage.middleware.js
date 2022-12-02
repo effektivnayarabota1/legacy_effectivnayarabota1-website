@@ -9,6 +9,7 @@ const __dirname = path.resolve();
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		/* TODO Конвертация изображенй в веб-формат */
+		/* FIX Конвертация изображенй в веб-формат */
 		/* TODO Подгонка изображений в подходящее разрешение */
 
 		let dir = __dirname + "/uploads/";
