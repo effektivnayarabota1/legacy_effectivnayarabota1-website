@@ -1,7 +1,7 @@
 <button>Назад</button>
 <hr />
 <div class="ticker">
-  <h1>Ticker</h1>
+  <h1>Статус</h1>
   <button>Редактировать</button>
 </div>
 <div class="projects">
@@ -10,11 +10,11 @@
     <a href="admin/{{this.slug}}">
       <p>{{this.title}}</p>
     </a>
-    <p>{{this.desc}}</p>
-    <img src={{base64 this.img}} alt="" />
+    <!-- <p>{{this.desc}}</p> -->
+    <!-- <img src={{base64 this.img}} alt="" /> -->
   {{/each}}
-  <button><a href="/admin/create-page">+</a></button>
-  <button><a href="/admin/clear">Clear</a></button>
+  <a href="/admin/constructor">Создать страницу</a>
+  <a href="/admin/clear">Удалить все страницы</a>
 </div>
 <div class="footer">
   <h1>Footer</h1>

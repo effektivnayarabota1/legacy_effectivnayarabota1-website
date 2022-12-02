@@ -17,11 +17,11 @@ const __dirname = path.resolve();
 main().catch((err) => console.log(err));
 
 async function main() {
-	await mongoose.connect(process.env.MONGO_URL),
-		{ useNewUrlParser: true, useUnifiedTopology: true },
-		(err) => {
-			console.log("connected");
-		};
+  await mongoose.connect(process.env.MONGO_URL),
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    (err) => {
+      console.log("connected");
+    };
 }
 
 const app = express();
@@ -30,23 +30,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/", indexRoutes);
 app.use("/admin", adminRoutes);
-app.use('/script', express.static(__dirname + '/views/script'));
+app.use("/script", express.static(__dirname + "/script"));
 
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "partials"));
 hbs.registerHelper("base64", function (img) {
-	return `data:${img.contentType};base64,${img.data.toString("base64")}`;
+  return `data:${img.contentType};base64,${img.data.toString("base64")}`;
 });
 hbs.registerHelper("preview", function (data) {
-	if (data) {
-		return data;
-	} else {
-		return " ";
-	}
+  if (data) {
+    return data;
+  } else {
+    return " ";
+  }
 });
 
 var port = process.env.PORT || "3000";
 app.listen(port, (err) => {
-	if (err) throw err;
-	console.log("Server listening on port", port);
+  if (err) throw err;
+  console.log("Server listening on port", port);
 });

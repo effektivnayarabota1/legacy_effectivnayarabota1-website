@@ -13,62 +13,56 @@ export class PagesController {
         console.log(err);
         res.status(500).send("An error occurred", err);
       } else {
-        await res.render("admin", { items: items });
+        // await res.render("admin/index", { items: items });
+        await res.render("admin/index");
       }
     });
   }
 
-  /* TODO Сервисный запрос. Избавиться от него. */
-  static clear(res) {
-    Page.find({}, async (err, items) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send("An error occurred", err);
-      } else {
-        for (let item of items) {
-          await Page.deleteOne({ pageId: item.pageId });
-        }
-        fs.rmSync(__dirname + "/uploads/", {
-          force: true,
-          recursive: true,
-        });
-        await res.redirect("/admin");
-      }
+  static createPage(_req, res) {
+    Page.create({ title: "titile" }).then(async (page) => {
+      await res.redirect(`/admin/${page.slug}`);
     });
   }
 
-  static showPageConstructor(req, res) {
-    const url = req.params.url;
-    Page.find({ slug: url }, async (err, item) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send("An error occurred", err);
-      } else {
-        await res.render("admin_create-page", { item: item[0] });
-      }
+  static showPageConstructor(_req, res) {
+    Page.create({ title: "titile" }).then(async (page) => {
+      res.render("admin/constructor-blank", { slug: page.slug });
     });
   }
 
-  static createPage(req, res) {
-    const { title, desc } = req.body;
-
-    let obj = {
-      title: title,
-      desc: desc,
-    };
-
-    Page.create(obj).then(async (page) => {
-      const newDir = __dirname + `/uploads/${page.slug}`;
-      fs.renameSync(req.file.destination, newDir);
-
-      page.img = {
-        data: fs.readFileSync(path.join(newDir + "/" + req.file.filename)),
-        contentType: req.file.mimetype,
-      };
-      await page.save((err) => console.log(err));
-      await res.redirect("/admin");
-    });
+  static showImageConstructor(_req, res) {
+    res.render("admin/constructor_image");
   }
+
+  static showTextConstructor(_req, res) {
+    res.render("admin/constructor_text");
+  }
+
+  static showGalleryConstructor(_req, res) {
+    res.render("admin/constructor_gallery");
+  }
+
+  // static createPage(req, res) {
+  //   const { title, desc } = req.body;
+  //
+  //   let obj = {
+  //     title: title,
+  //     desc: desc,
+  //   };
+  //
+  //   Page.create(obj).then(async (page) => {
+  //     const newDir = __dirname + `/uploads/${page.slug}`;
+  //     fs.renameSync(req.file.destination, newDir);
+  //
+  //     page.img = {
+  //       data: fs.readFileSync(path.join(newDir + "/" + req.file.filename)),
+  //       contentType: req.file.mimetype,
+  //     };
+  //     await page.save((err) => console.log(err));
+  //     await res.redirect("/admin");
+  //   });
+  // }
 
   static async updatePage(req, res) {
     const { title, desc } = req.body;
@@ -98,6 +92,25 @@ export class PagesController {
             await res.redirect("/admin");
           }
         });
+      }
+    });
+  }
+
+  /* TODO Сервисный запрос. Избавиться от него. */
+  static clear(res) {
+    Page.find({}, async (err, items) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("An error occurred", err);
+      } else {
+        for (let item of items) {
+          await Page.deleteOne({ pageId: item.pageId });
+        }
+        fs.rmSync(__dirname + "/uploads/", {
+          force: true,
+          recursive: true,
+        });
+        await res.redirect("/admin");
       }
     });
   }

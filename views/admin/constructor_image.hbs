@@ -1,0 +1,23 @@
+<a href="/admin/constructor/{{slug}}">Назад</a>
+
+<fieldset id="fieldset">
+  <legend>Мета-информация</legend>
+  <form
+    action="admin/create-image/{{slug}}"
+    method="POST"
+    enctype="multipart/form-data"
+    id="form"
+  >
+    <hr />
+
+    <input type="file" name="cover" accept="image/*" />
+    <textarea name="desc" form="createForm" placeholder="desc"></textarea>
+    <hr />
+
+    <button>Добавить изобаржение</button>
+    <hr />
+
+    <input type="submit" value="Сохранить" />
+    <input type="submit" value="Удалить" />
+  </form>
+</fieldset>

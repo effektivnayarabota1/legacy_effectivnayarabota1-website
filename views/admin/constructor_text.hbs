@@ -1,0 +1,19 @@
+<form
+  action="admin/create-image/{{slug}}"
+  method="POST"
+  enctype="multipart/form-data"
+  id="form"
+>
+  <input type="submit" value="Назад" />
+  <hr />
+
+  <textarea name="desc" form="createForm" placeholder="desc"></textarea>
+  <input type="file" name="cover" accept="image/*" />
+  <hr />
+
+  <button>Добавить абзац</button>
+  <hr />
+
+  <input type="submit" value="Сохранить" />
+  <input type="submit" value="Удалить" />
+</form>

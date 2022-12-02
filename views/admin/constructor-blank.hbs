@@ -1,0 +1,34 @@
+<form
+  action="/admin/create-page"
+  method="POST"
+  enctype="multipart/form-data"
+  id="form"
+>
+  <fieldset id="fieldset">
+    <legend>Мета-информация</legend>
+
+    <label for="title">title</label>
+    <input type="text" name="title" placeholder="title" />
+    <br /><br />
+
+    <label for="desc">desc</label>
+    <textarea name="desc" form="createForm" placeholder="desc"></textarea>
+    <br /><br />
+
+    <label for="cover">cover</label>
+    <input type="file" name="cover" accept="image/*" required />
+  </fieldset>
+  <hr />
+
+  <span>
+    <a href="image/{{slug}}">Изображение</a>
+    <a href="text/{{slug}}">Текст</a>
+    <a href="gallery/{{slug}}">Галлерея</a>
+  </span>
+  <hr />
+
+  <input type="submit" value="Сохранить" />
+  <input type="submit" value="Удалить" />
+
+</form>
+<script src="/script/admin_constructor.js"></script>
