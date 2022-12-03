@@ -28,14 +28,14 @@ router.delete("/:slug", (req, res) => {
   PagesController.deletePage(req, res);
 });
 
-router.get("/image/:slug", (req, res) => {
-  PagesController.showImageConstructor(req, res);
+router.get("/:slug/:type/constructor", (req, res) => {
+  PagesController.createBlock(req, res);
 });
 
-router.get("/text/:slug", (req, res) => {
-  PagesController.showTextConstructor(req, res);
+router.get("/:pageSlug/:slug", (req, res) => {
+  PagesController.showBlockConstructor(req, res);
 });
 
-router.get("/gallery/:slug", (req, res) => {
-  PagesController.showGalleryConstructor(req, res);
+router.post("/:pageSlug/:slug", upload.single("image"), (req, res) => {
+  PagesController.updateBlock(req, res);
 });

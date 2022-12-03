@@ -23,10 +23,24 @@
   </fieldset>
   <hr />
 
+  <div>
+    {{#each blocks}}
+      <fieldset>
+        <legend><a
+            href="/admin/{{this.pageSlug}}/{{this.slug}}"
+          >{{this.title}}</a></legend>
+        {{#each this.elements}}
+          <p>{{this.desc}}</p>
+        {{/each}}
+      </fieldset>
+      <hr />
+    {{/each}}
+  </div>
+
   <span>
-    <a href="image/{{slug}}">Изображение</a>
-    <a href="text/{{slug}}">Текст</a>
-    <a href="gallery/{{slug}}">Галлерея</a>
+    <a href="{{slug}}/image/constructor">Изображение</a>
+    <a href="{{slug}}/text/constructor">Текст</a>
+    <a href="{{slug}}/gallery/constructor">Галлерея</a>
   </span>
   <hr />
 
