@@ -26,6 +26,7 @@ async function main() {
 
 const app = express();
 
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/", indexRoutes);
@@ -35,6 +36,7 @@ app.use("/script", express.static(__dirname + "/script"));
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "partials"));
 hbs.registerHelper("base64", function (img) {
+  if (!!img) return;
   return `data:${img.contentType};base64,${img.data.toString("base64")}`;
 });
 hbs.registerHelper("preview", function (data) {

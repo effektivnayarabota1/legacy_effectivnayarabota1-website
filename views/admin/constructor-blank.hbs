@@ -1,22 +1,25 @@
+<a href="/admin">Назад</a>
+<hr />
 <form
-  action="/admin/create-page"
+  action="/admin/{{slug}}"
   method="POST"
   enctype="multipart/form-data"
   id="form"
 >
+  <!-- <form> -->
   <fieldset id="fieldset">
     <legend>Мета-информация</legend>
 
     <label for="title">title</label>
-    <input type="text" name="title" placeholder="title" />
+    <input type="text" name="title" placeholder="Заголовок" value="{{title}}" />
     <br /><br />
 
     <label for="desc">desc</label>
-    <textarea name="desc" form="createForm" placeholder="desc"></textarea>
+    <textarea name="desc" form="form" placeholder="Описание">{{desc}}</textarea>
     <br /><br />
 
     <label for="cover">cover</label>
-    <input type="file" name="cover" accept="image/*" />
+    <input type="file" id="cover" name="cover" accept="image/*" />
   </fieldset>
   <hr />
 
@@ -27,9 +30,10 @@
   </span>
   <hr />
 
-  <button id="saveBttn">Сохранить</button>
-  <button id="delBttn">Удалить</button>
+  <button type="submit" form="form" value="Submit">Сохранить</button>
+  <!-- <button id="saveBttn">Сохранить</button> -->
+  <button id="deleteBttn">Удалить</button>
 
 </form>
 
-<script src="/script/admin_constructor.js"></script>
+<script src="/script/constructor.js"></script>

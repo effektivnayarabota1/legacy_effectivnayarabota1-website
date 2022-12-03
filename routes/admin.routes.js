@@ -20,6 +20,14 @@ router.get("/:slug", (_req, res) => {
   PagesController.showPageConstructor(_req, res);
 });
 
+router.post("/:slug", upload.single("cover"), (req, res) => {
+  PagesController.updatePage(req, res);
+});
+
+router.delete("/:slug", (req, res) => {
+  PagesController.deletePage(req, res);
+});
+
 router.get("/image/:slug", (req, res) => {
   PagesController.showImageConstructor(req, res);
 });
@@ -30,16 +38,4 @@ router.get("/text/:slug", (req, res) => {
 
 router.get("/gallery/:slug", (req, res) => {
   PagesController.showGalleryConstructor(req, res);
-});
-
-router.post("/create-page", upload.single("cover"), (req, res) => {
-  PagesController.createPage(req, res);
-});
-
-router.post("/update-page/:url", upload.single("cover"), (req, res) => {
-  PagesController.updatePage(req, res);
-});
-
-router.get("/:url", (req, res) => {
-  PagesController.showPageConstructor(req, res);
 });

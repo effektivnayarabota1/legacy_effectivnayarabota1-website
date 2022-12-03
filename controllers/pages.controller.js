@@ -13,8 +13,7 @@ export class PagesController {
         console.log(err);
         res.status(500).send("An error occurred", err);
       } else {
-        // await res.render("admin/index", { items: items });
-        await res.render("admin/index");
+        await res.render("admin/index", { items: items });
       }
     });
   }
@@ -25,9 +24,29 @@ export class PagesController {
     });
   }
 
-  static showPageConstructor(req, res) {
+  static async updatePage(req, res) {
+    let page = await Page.findOne({ slug: req.params.slug });
+    page.title = req.body.title || "title";
+    page.desc = req.body.desc;
+    await page.save();
+    await res.redirect("/admin");
+  }
+
+  static async deletePage(req, res) {
+    console.log("delete");
+    await Page.deleteOne({ slug: req.params.slug });
+    await res.redirect(303, "/admin");
+  }
+
+  static async showPageConstructor(req, res) {
     const slug = req.params.slug;
-    res.render("admin/constructor-blank", { slug: slug });
+    let page = await Page.findOne({ slug: slug });
+
+    await res.render("admin/constructor-blank", {
+      slug: slug,
+      title: page.title,
+      desc: page.desc,
+    });
   }
 
   static showImageConstructor(req, res) {
@@ -44,27 +63,6 @@ export class PagesController {
     const slug = req.params.slug;
     res.render("admin/constructor_gallery", { slug: slug });
   }
-
-  // static createPage(req, res) {
-  //   const { title, desc } = req.body;
-  //
-  //   let obj = {
-  //     title: title,
-  //     desc: desc,
-  //   };
-  //
-  //   Page.create(obj).then(async (page) => {
-  //     const newDir = __dirname + `/uploads/${page.slug}`;
-  //     fs.renameSync(req.file.destination, newDir);
-  //
-  //     page.img = {
-  //       data: fs.readFileSync(path.join(newDir + "/" + req.file.filename)),
-  //       contentType: req.file.mimetype,
-  //     };
-  //     await page.save((err) => console.log(err));
-  //     await res.redirect("/admin");
-  //   });
-  // }
 
   /* TODO Сервисный запрос. Избавиться от него. */
   static clear(res) {
