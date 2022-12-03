@@ -1,4 +1,4 @@
-addParagraph.onclick = function (e) {
+addParagraphBttn.onclick = function (e) {
   e.preventDefault();
 
   const field = document.createElement("fieldset");
