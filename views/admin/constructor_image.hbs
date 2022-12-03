@@ -1,23 +1,28 @@
-<a href="/admin/constructor/{{slug}}">Назад</a>
+<a href="/admin/{{slug}}">Назад</a>
 
-<fieldset id="fieldset">
-  <legend>Мета-информация</legend>
-  <form
-    action="admin/create-image/{{slug}}"
-    method="POST"
-    enctype="multipart/form-data"
-    id="form"
-  >
+<form
+  action="admin/create-image/{{slug}}"
+  method="POST"
+  enctype="multipart/form-data"
+  id="image_form"
+>
+  <fieldset id="fieldset">
+    <legend>Изображение</legend>
+
+    <input type="file" name="image" accept="image/*" />
+    <textarea name="desc" form="image_form" placeholder="desc"></textarea>
+  </fieldset>
+
+  <div id="button_container">
     <hr />
+    <button id="addImage">Добавить изобаржение</button>
+  </div>
 
-    <input type="file" name="cover" accept="image/*" />
-    <textarea name="desc" form="createForm" placeholder="desc"></textarea>
+  <div>
     <hr />
-
-    <button>Добавить изобаржение</button>
-    <hr />
-
     <input type="submit" value="Сохранить" />
     <input type="submit" value="Удалить" />
-  </form>
-</fieldset>
+  </div>
+</form>
+
+<script src="/script/constructor_image.js"></script>

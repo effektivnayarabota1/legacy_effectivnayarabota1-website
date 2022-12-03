@@ -1,19 +1,28 @@
+<a href="/admin/{{slug}}">Назад</a>
+
 <form
-  action="admin/create-image/{{slug}}"
+  action="admin/create-gallery/{{slug}}"
   method="POST"
   enctype="multipart/form-data"
-  id="form"
+  id="gallery_form"
 >
-  <input type="submit" value="Назад" />
-  <hr />
+  <fieldset id="fieldset">
+    <legend>Изображение</legend>
 
-  <input type="file" name="cover" accept="image/*" />
-  <textarea name="desc" form="createForm" placeholder="desc"></textarea>
-  <hr />
+    <input type="file" name="image" accept="image/*" />
+    <textarea name="desc" form="text_form" placeholder="desc"></textarea>
+  </fieldset>
 
-  <button>Добавить изобаржение</button>
-  <hr />
+  <div id="button_container">
+    <hr />
+    <button id="addImage">Добавить изображение</button>
+  </div>
 
-  <input type="submit" value="Сохранить" />
-  <input type="submit" value="Удалить" />
+  <div>
+    <hr />
+    <input type="submit" value="Сохранить" />
+    <input type="submit" value="Удалить" />
+  </div>
 </form>
+
+<script src="/script/constructor_gallery.js"></script>

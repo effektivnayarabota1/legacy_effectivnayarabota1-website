@@ -25,22 +25,24 @@ export class PagesController {
     });
   }
 
-  static showPageConstructor(_req, res) {
-    Page.create({ title: "titile" }).then(async (page) => {
-      res.render("admin/constructor-blank", { slug: page.slug });
-    });
+  static showPageConstructor(req, res) {
+    const slug = req.params.slug;
+    res.render("admin/constructor-blank", { slug: slug });
   }
 
-  static showImageConstructor(_req, res) {
-    res.render("admin/constructor_image");
+  static showImageConstructor(req, res) {
+    const slug = req.params.slug;
+    res.render("admin/constructor_image", { slug: slug });
   }
 
-  static showTextConstructor(_req, res) {
-    res.render("admin/constructor_text");
+  static showTextConstructor(req, res) {
+    const slug = req.params.slug;
+    res.render("admin/constructor_text", { slug: slug });
   }
 
-  static showGalleryConstructor(_req, res) {
-    res.render("admin/constructor_gallery");
+  static showGalleryConstructor(req, res) {
+    const slug = req.params.slug;
+    res.render("admin/constructor_gallery", { slug: slug });
   }
 
   // static createPage(req, res) {
@@ -63,38 +65,6 @@ export class PagesController {
   //     await res.redirect("/admin");
   //   });
   // }
-
-  static async updatePage(req, res) {
-    const { title, desc } = req.body;
-    const slug = req.params.url;
-
-    Page.findOne({ slug: slug }, async (err, page) => {
-      if (err) {
-        console.log(err);
-      } else {
-        page.title = title;
-        page.desc = desc;
-        await page.save(async (err, page) => {
-          if (err) {
-            console.log(err);
-          } else {
-            /* При создании страницы используется таже функция. ОБЪЕДИНИТЬ. */
-            const oldDir = __dirname + `/uploads/${slug}`;
-            const newDir = __dirname + `/uploads/${page.slug}`;
-            await fsPromises.rename(oldDir, newDir);
-            const files = await fsPromises.readdir(newDir);
-            for (let file of files) {
-              page.img.data = await fsPromises.readFile(
-                path.join(newDir + "/" + file)
-              );
-            }
-            await page.save((err) => console.log(err));
-            await res.redirect("/admin");
-          }
-        });
-      }
-    });
-  }
 
   /* TODO Сервисный запрос. Избавиться от него. */
   static clear(res) {
