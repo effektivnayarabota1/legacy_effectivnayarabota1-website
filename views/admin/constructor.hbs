@@ -26,21 +26,16 @@
   <div>
     {{#each blocks}}
       <fieldset>
-        <legend><a
-            href="/admin/{{this.pageSlug}}/{{this.slug}}"
-          >{{this.title}}</a></legend>
-        {{#each this.elements}}
-          <p>{{this.desc}}</p>
-        {{/each}}
+        <legend><a href="/admin/{{../slug}}/{{slug}}">{{slug}}</a></legend>
       </fieldset>
       <hr />
     {{/each}}
   </div>
 
   <span>
-    <a href="{{slug}}/image/constructor">Изображение</a>
-    <a href="{{slug}}/text/constructor">Текст</a>
-    <a href="{{slug}}/gallery/constructor">Галлерея</a>
+    <a href="{{slug}}/image/create">Изображение</a>
+    <a href="{{slug}}/text/create">Текст</a>
+    <a href="{{slug}}/gallery/create">Галлерея</a>
   </span>
   <hr />
 

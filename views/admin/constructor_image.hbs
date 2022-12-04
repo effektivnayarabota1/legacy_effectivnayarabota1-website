@@ -1,4 +1,4 @@
-<a href="/admin/{{slug}}">Назад</a>
+<a href="/admin/{{pageSlug}}">Назад</a>
 <hr />
 
 <form
@@ -7,12 +7,19 @@
   enctype="multipart/form-data"
   id="image_form"
 >
-  <fieldset id="fieldset">
-    <legend>Изображение</legend>
 
-    <input type="file" name="image" accept="image/*" />
-    <textarea name="desc" form="image_form" placeholder="desc"></textarea>
-  </fieldset>
+  {{#each elements}}
+    <fieldset id="fieldset">
+      <legend>{{this.slug}}</legend>
+
+      <input type="file" name="image" accept="image/*" />
+      <textarea
+        name="desc"
+        form="image_form"
+        placeholder="desc"
+      >{{this.desc}}</textarea>
+    </fieldset>
+  {{/each}}
 
   <div id="button_container">
     <hr />

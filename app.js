@@ -14,15 +14,20 @@ const __filename = url.fileURLToPath(import.meta.url);
 // const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const __dirname = path.resolve();
 
-main().catch((err) => console.log(err));
-
-async function main() {
-  await mongoose.connect(process.env.MONGO_URL),
-    { useNewUrlParser: true, useUnifiedTopology: true },
-    (err) => {
-      console.log("connected");
-    };
-}
+// MONGOOSE SETUP
+// main().catch((err) => console.log(err));
+// async function main() {
+//   await mongoose.connect(process.env.MONGO_URL),
+//     { useNewUrlParser: true, useUnifiedTopology: true },
+//     (err) => {
+//       console.log("connected");
+//     };
+// }
+mongoose.connect(process.env.MONGO_URL, () =>
+  console.log("Mongoose connected")
+);
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 const app = express();
 
@@ -33,6 +38,7 @@ app.use("/", indexRoutes);
 app.use("/admin", adminRoutes);
 app.use("/script", express.static(__dirname + "/script"));
 
+// HBS SETUP
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "partials"));
 hbs.registerHelper("base64", function (img) {
