@@ -32,18 +32,19 @@
   </div>
   <hr />
 
-  <!-- {{#each elements}} -->
-  <!--   <fieldset id="fieldset"> -->
-	<!--     <legend>{{blockType}}</legend> -->
-  <!--  -->
-  <!--     <input type="file" name="image" accept="image/*" /> -->
-  <!--     <textarea -->
-  <!--       name="desc" -->
-  <!--       form="image_form" -->
-  <!--       placeholder="desc" -->
-  <!--     >{{this.desc}}</textarea> -->
-  <!--   </fieldset> -->
-  <!-- {{/each}} -->
+  {{#each blockElems}}
+    <fieldset id="fieldset">
+	    <legend>{{this.slug}}</legend>
+      <input type="file" name="image" accept="image/*" />
+      <textarea
+        name="desc"
+        form="block_form"
+        placeholder="desc"
+      >{{this.desc}}</textarea>
+	  <hr/>
+	  <button id="deleteElemBttn {{this.slug}}" class="deleteelemBttn">Удалить элемент</button>
+    </fieldset>
+  {{/each}}
 
   <div id="button_container">
     <hr />
@@ -52,9 +53,8 @@
 
   <div>
     <hr />
-    <!-- <input type="submit" form="form" value="Сохранить" /> -->
     <button type="submit" form="block_form" value="submit">Сохранить</button>
-    <button id="deleteBlockBttn">Удалить</button>
+    <button id="deleteBlockBttn">Удалить блок</button>
   </div>
 </form>
 

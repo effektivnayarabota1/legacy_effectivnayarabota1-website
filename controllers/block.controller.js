@@ -19,11 +19,13 @@ export default class BlockController {
     const page = await Page.findOne({ slug: pageSlug });
     const block = page.blocks.find((block) => block.slug === blockSlug);
     const blockType = block.type;
+    const blockElems = block.elements;
 
     await res.render("admin/constructor_block", {
       pageSlug,
       blockSlug,
       blockType,
+      blockElems,
     });
   }
 
@@ -35,6 +37,18 @@ export default class BlockController {
     let page = await Page.findOne({ slug: pageSlug });
     let block = page.blocks.find((block) => block.slug === blockSlug);
     block.type = blockType;
+
+    block.elements = [];
+    let descs = req.body.desc;
+    console.log(descs);
+    if (descs) {
+      if (!Array.isArray(descs)) {
+        descs = [descs];
+      }
+      for (let desc of descs) {
+        block.elements.push({ desc: desc });
+      }
+    }
 
     await page.save();
     await res.redirect(303, `/admin/${pageSlug}`);

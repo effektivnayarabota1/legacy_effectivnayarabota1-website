@@ -3,17 +3,17 @@ addElemBttn.onclick = function (e) {
 
   const field = document.createElement("fieldset");
   const legend = document.createElement("legend");
-  legend.textContent = "Изображение";
+  legend.textContent = "Элемент";
   const input = document.createElement("input");
   input.setAttribute("type", "file");
   input.setAttribute("name", "image");
   input.setAttribute("accept", "image/*");
   const textarea = document.createElement("textarea");
   textarea.setAttribute("name", "desc");
-  textarea.setAttribute("form", "image_form");
+  textarea.setAttribute("form", "block_form");
   textarea.setAttribute("placeholder", "desc");
   const deleteBttn = document.createElement("button");
-  deleteBttn.textContent = "Удалить изображение";
+  deleteBttn.textContent = "Удалить элемент";
   deleteBttn.onclick = function (e) {
     e.preventDefault();
     this.parentElement.remove();
@@ -26,7 +26,7 @@ addElemBttn.onclick = function (e) {
   field.appendChild(hr);
   field.appendChild(deleteBttn);
 
-  image_form.insertBefore(field, button_container);
+  block_form.insertBefore(field, button_container);
 };
 
 deleteBlockBttn.onclick = async function (e) {
@@ -46,3 +46,16 @@ deleteBlockBttn.onclick = async function (e) {
     console.error(`Error: ${err}`);
   }
 };
+
+const deleteElemBttns = document.querySelectorAll(".deleteElemBttn");
+
+for (let button of deleteElemBttns) {
+  button.onclick = async function (e) {
+    e.preventDefault();
+    // const elemSlug = button.id.split(" ").at(-1);
+    // console.log(elemSlug);
+
+    console.log(button.parentNode);
+    button.parentNode.remove();
+  };
+}

@@ -27,6 +27,11 @@
     {{#each blocks}}
       <fieldset>
 		  <legend><a href="/admin/{{../slug}}/{{slug}}">{{slug}} • {{type}}</a></legend>
+		  {{#each this.elements}}
+		  	{{slug}}
+		  	{{desc}}
+			</br>
+		  {{/each}}
       </fieldset>
       <hr />
     {{/each}}

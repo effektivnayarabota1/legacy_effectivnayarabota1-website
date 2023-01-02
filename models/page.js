@@ -3,24 +3,21 @@ import mongoose from "mongoose";
 
 mongoose.plugin(slug);
 
-// const ElementSchema = new mongoose.Schema({
-//   desc: {
-//     type: String,
-//     default: "",
-//   },
-//   img: {
-//     data: Buffer,
-//     contentType: String,
-//   },
-//   slug: {
-//     slug: "title",
-//     type: String,
-//     slugPaddingSize: 2,
-//     index: true,
-//     unique: true,
-// forceIdSlug: true,
-//   },
-// });
+const ElementSchema = new mongoose.Schema({
+  desc: {
+    type: String,
+    default: "",
+  },
+  img: {
+    data: Buffer,
+    contentType: String,
+  },
+  slug: {
+    slug: "title",
+    type: String,
+    forceIdSlug: true,
+  },
+});
 
 const BlockSchema = new mongoose.Schema({
   title: String,
@@ -30,7 +27,7 @@ const BlockSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
-  // elements: [ElementSchema],
+  elements: [ElementSchema],
   slug: {
     slug: "title",
     type: String,
