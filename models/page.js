@@ -3,23 +3,23 @@ import mongoose from "mongoose";
 
 mongoose.plugin(slug);
 
-const ElementSchema = new mongoose.Schema({
-  desc: {
-    type: String,
-    default: "",
-  },
-  img: {
-    data: Buffer,
-    contentType: String,
-  },
-  slug: {
-    slug: "title",
-    type: String,
-    slugPaddingSize: 2,
-    index: true,
-    unique: true,
-  },
-});
+// const ElementSchema = new mongoose.Schema({
+//   desc: {
+//     type: String,
+//     default: "",
+//   },
+//   img: {
+//     data: Buffer,
+//     contentType: String,
+//   },
+//   slug: {
+//     slug: "title",
+//     type: String,
+//     slugPaddingSize: 2,
+//     index: true,
+//     unique: true,
+//   },
+// });
 
 const BlockSchema = new mongoose.Schema({
   type: String,
@@ -28,13 +28,14 @@ const BlockSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
-  elements: [ElementSchema],
+  // elements: [ElementSchema],
   slug: {
     slug: "type",
     type: String,
     slugPaddingSize: 2,
     index: true,
-    unique: true,
+    // unique: true,
+    uniqueGroupSlug: "/_id",
   },
 });
 
@@ -49,11 +50,11 @@ const PageSchema = new mongoose.Schema({
   slug: {
     slug: "title",
     type: String,
-    slugPaddingSize: 2,
+    slugPaddingSize: 1,
     index: true,
     unique: true,
   },
 });
 
-export const Page = new mongoose.model("Page", PageSchema);
-export const Block = new mongoose.model("Block", BlockSchema);
+const Page = new mongoose.model("Page", PageSchema);
+export default Page;

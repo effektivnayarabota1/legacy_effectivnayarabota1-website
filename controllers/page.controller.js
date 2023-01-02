@@ -1,7 +1,4 @@
-import { Page, Block } from "../models/page.js";
-
-// import BlockController from "./block.controller.js";
-// import ElementController from "./element.controller.js";
+import Page from "../models/page.js";
 
 import path from "path";
 import fs from "fs";
@@ -44,7 +41,7 @@ export default class PageController {
     const slug = req.params.slug;
     const page = await Page.findOne({ slug: slug });
 
-    await res.render("admin/constructor", {
+    await res.render("admin/constructor_page", {
       slug: slug,
       title: page.title || "title",
       desc: page.desc,

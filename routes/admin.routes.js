@@ -1,11 +1,11 @@
 import express from "express";
 import PageController from "../controllers/page.controller.js";
 import BlockController from "../controllers/block.controller.js";
-import ElementController from "../controllers/element.controller.js";
 import { upload } from "../middleware/uploadImage.middleware.js";
 
 export const router = express.Router();
 
+// PAGE ROUTES
 router.get("/", (_req, res) => {
   PageController.index(res);
 });
@@ -30,7 +30,8 @@ router.delete("/:slug", (req, res) => {
   PageController.delete(req, res);
 });
 
-router.get("/:slug/:type/create", (req, res) => {
+// BLOCK ROUTES
+router.get("/:pageSlug/:blockType/create", (req, res) => {
   BlockController.create(req, res);
 });
 
@@ -38,6 +39,6 @@ router.get("/:pageSlug/:blockSlug", (req, res) => {
   BlockController.editor(req, res);
 });
 
-router.post("/:pageSlug/:slug", upload.single("image"), (req, res) => {
-  BlockController.updateBlock(req, res);
+router.delete("/:pageSlug/:blockSlug", (req, res) => {
+  BlockController.delete(req, res);
 });
