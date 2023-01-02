@@ -1,8 +1,9 @@
 deleteBttn.onclick = async function (e) {
   e.preventDefault();
-  const slug = location.pathname.split("/").slice(1).at(-1);
+  const slug = location.pathname.split("/");
+  const pageSlug = slug.at(-1);
   try {
-    const response = await fetch(`/admin/${slug}`, {
+    const response = await fetch(`/admin/${pageSlug}`, {
       method: "DELETE",
       // redirect: "follow",
     });

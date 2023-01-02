@@ -1,4 +1,4 @@
-addImageBttn.onclick = function (e) {
+addElemBttn.onclick = function (e) {
   e.preventDefault();
 
   const field = document.createElement("fieldset");

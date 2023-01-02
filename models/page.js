@@ -18,10 +18,12 @@ mongoose.plugin(slug);
 //     slugPaddingSize: 2,
 //     index: true,
 //     unique: true,
+// forceIdSlug: true,
 //   },
 // });
 
 const BlockSchema = new mongoose.Schema({
+  title: String,
   type: String,
   desc: String,
   img: {
@@ -30,12 +32,12 @@ const BlockSchema = new mongoose.Schema({
   },
   // elements: [ElementSchema],
   slug: {
-    slug: "type",
+    slug: "title",
     type: String,
     slugPaddingSize: 2,
     index: true,
-    // unique: true,
     uniqueGroupSlug: "/_id",
+    // unique: true,
   },
 });
 

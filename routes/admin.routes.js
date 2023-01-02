@@ -31,12 +31,16 @@ router.delete("/:slug", (req, res) => {
 });
 
 // BLOCK ROUTES
-router.get("/:pageSlug/:blockType/create", (req, res) => {
+router.get("/:pageSlug/block/create", (req, res) => {
   BlockController.create(req, res);
 });
 
 router.get("/:pageSlug/:blockSlug", (req, res) => {
   BlockController.editor(req, res);
+});
+
+router.post("/:pageSlug/:blockSlug", upload.single("cover"), (req, res) => {
+  BlockController.update(req, res);
 });
 
 router.delete("/:pageSlug/:blockSlug", (req, res) => {

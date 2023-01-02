@@ -26,21 +26,18 @@
   <div>
     {{#each blocks}}
       <fieldset>
-        <legend><a href="/admin/{{../slug}}/{{slug}}">{{slug}}</a></legend>
+		  <legend><a href="/admin/{{../slug}}/{{slug}}">{{slug}} • {{type}}</a></legend>
       </fieldset>
       <hr />
     {{/each}}
   </div>
 
   <span>
-    <a href="{{slug}}/image/create">Изображение</a>
-    <a href="{{slug}}/text/create">Текст</a>
-    <a href="{{slug}}/gallery/create">Галлерея</a>
+    <a href="{{slug}}/block/create">Добавить блок</a>
   </span>
   <hr />
 
   <button type="submit" form="form" value="Submit">Сохранить</button>
-  <!-- <button id="saveBttn">Сохранить</button> -->
   <button id="deleteBttn">Удалить</button>
 
 </form>

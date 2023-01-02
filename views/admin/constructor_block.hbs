@@ -5,12 +5,36 @@
   action="/admin/{{pageSlug}}/{{blockSlug}}"
   method="POST"
   enctype="multipart/form-data"
-  id="image_form"
+  id="block_form"
 >
+
+  <div id="radio_container">
+    <input type="radio" id="blockType1" name="blockType" value="image"
+	  {{#if (isImage blockType)}}
+	  checked
+	  {{/if}}
+	/>
+    <label for="blockType1">Изображение</label>
+
+    <input type="radio" id="blockType2" name="blockType" value="text"
+	  {{#if (isText blockType)}}
+	  checked
+	  {{/if}}
+	/>
+    <label for="blockType2">Текст</label>
+
+    <input type="radio" id="blockType3" name="blockType" value="gallery"
+	  {{#if (isGallery blockType)}}
+	  checked
+	  {{/if}}
+	/>
+    <label for="blockType3">Галлерея</label>
+  </div>
+  <hr />
 
   <!-- {{#each elements}} -->
   <!--   <fieldset id="fieldset"> -->
-	  <!--     <legend>{{blockType}}</legend> -->
+	<!--     <legend>{{blockType}}</legend> -->
   <!--  -->
   <!--     <input type="file" name="image" accept="image/*" /> -->
   <!--     <textarea -->
@@ -23,18 +47,13 @@
 
   <div id="button_container">
     <hr />
-    <button id="addImageBttn">Добавить элемент</button>
+    <button id="addElemBttn">Добавить элемент</button>
   </div>
 
-  <!-- <div> -->
-  <!--   <hr /> -->
-  <!--   <input type="submit" value="Сохранить" /> -->
-  <!--   <input type="submit" value="Удалить" /> -->
-  <!-- </div> -->
   <div>
     <hr />
-    <!-- <button id="saveBlockBttn">Сохранить</button> -->
-    <input type="submit" value="Сохранить" />
+    <!-- <input type="submit" form="form" value="Сохранить" /> -->
+    <button type="submit" form="block_form" value="submit">Сохранить</button>
     <button id="deleteBlockBttn">Удалить</button>
   </div>
 </form>
