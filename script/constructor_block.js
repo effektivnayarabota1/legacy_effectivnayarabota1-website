@@ -38,7 +38,7 @@ function deleteClickFunction(e) {
   this.parentElement.remove();
 }
 
-addElemBttn.onclick = function (e) {
+addElemBttn.addEventListener("click", function (e) {
   e.preventDefault();
 
   const field = document.createElement("fieldset");
@@ -82,9 +82,9 @@ addElemBttn.onclick = function (e) {
   field.appendChild(deleteBttn);
 
   block_form.insertBefore(field, button_container);
-};
+});
 
-deleteBlockBttn.onclick = async function (e) {
+deleteBlockBttn.addEventListener("click", async function (e) {
   e.preventDefault();
   const slugs = location.pathname.split("/");
   const pageSlug = slugs.at(-2);
@@ -100,7 +100,7 @@ deleteBlockBttn.onclick = async function (e) {
   } catch (err) {
     console.error(`Error: ${err}`);
   }
-};
+});
 
 const deleteElemBttns = document.querySelectorAll(".deleteElemBttn");
 for (let button of deleteElemBttns) {
