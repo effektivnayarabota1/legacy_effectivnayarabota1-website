@@ -36,12 +36,12 @@
     <fieldset id="fieldset">
 	  <legend>{{this.slug}}</legend>
 	 <!--  <legend> -->
-	 <!--     	<input type="text" name="title" placeholder="Заголовок" value="{{this.slug}}" /> -->
+	 <!--     	<input type="text" name="element-slug" placeholder="Заголовок" value="{{this.slug}}" /> -->
 	 <!-- </legend> -->
 	  <button id="upElemBttn {{this.slug}}" class="upElemBttn">Вверх</button>
 	  <button id="downElemBttn {{this.slug}}" class="downElemBttn">Вниз</button>
 	  <hr/>
-      <input type="file" name="image" accept="image/*" />
+	  <input type="file" id="element-{{this.slug}}" name="element-image" accept="image/*" />
       <textarea
         name="desc"
         form="block_form"

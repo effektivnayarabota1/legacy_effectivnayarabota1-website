@@ -13,7 +13,7 @@ const ElementSchema = new mongoose.Schema({
     contentType: String,
   },
   slug: {
-    slug: "title",
+    slug: "slug",
     type: String,
     forceIdSlug: true,
   },

@@ -38,19 +38,34 @@ export default class BlockController {
     let block = page.blocks.find((block) => block.slug === blockSlug);
     block.type = blockType;
 
-    block.elements = [];
-    let descs = req.body.desc;
-    console.log(descs);
-    if (descs) {
-      if (!Array.isArray(descs)) {
-        descs = [descs];
-      }
-      for (let desc of descs) {
-        block.elements.push({ desc: desc });
-      }
-    }
+    // block.elements = [];
+    // let descs = req.body.desc;
+    // const slugs = req.body["element-slug"];
 
-    await page.save();
+    // console.log(req.body.desc.length);
+
+    // for (let element of elements) {
+    //
+    // }
+
+    // if (descs) {
+    //   if (!Array.isArray(descs)) descs = [descs];
+    //
+    //   for (let desc of descs) {
+    //     block.elements.push({ desc: desc });
+    //   }
+    // }
+
+    // if (slugs) {
+    //   if (!Array.isArray(slugs)) slugs = [slugs];
+    //   for (let element of block.elements) {
+    //     // console.log(slug);
+    //     console.log(element);
+    //     element.slug = slug;
+    //   }
+    // }
+
+    // await page.save();
     await res.redirect(303, `/admin/${pageSlug}`);
   }
 

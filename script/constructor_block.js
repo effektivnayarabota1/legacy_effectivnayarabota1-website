@@ -38,13 +38,13 @@ function deleteClickFunction(e) {
   this.parentElement.remove();
 }
 
-addElemBttn.addEventListener("click", function (e) {
+function addElemMarkup(e, elemSlug) {
   e.preventDefault();
 
   const field = document.createElement("fieldset");
 
   const legend = document.createElement("legend");
-  legend.textContent = "Новый элемент";
+  legend.textContent = elemSlug;
 
   const input = document.createElement("input");
   input.setAttribute("type", "file");
@@ -82,6 +82,26 @@ addElemBttn.addEventListener("click", function (e) {
   field.appendChild(deleteBttn);
 
   block_form.insertBefore(field, button_container);
+}
+
+addElemBttn.addEventListener("click", async function (e) {
+  e.preventDefault();
+
+  const slugs = location.pathname.split("/");
+  const pageSlug = slugs.at(-2);
+  const blockSlug = slugs.at(-1);
+
+  const response = await fetch(`/admin/${pageSlug}/${blockSlug}/blank`, {
+    // mode: 'no-cors',
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  });
+
+  const elemSlug = await response.text();
+
+  addElemMarkup(e, elemSlug);
 });
 
 deleteBlockBttn.addEventListener("click", async function (e) {

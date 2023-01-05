@@ -1,7 +1,8 @@
 import express from "express";
 import PageController from "../controllers/page.controller.js";
 import BlockController from "../controllers/block.controller.js";
-import { upload } from "../middleware/uploadImage.middleware.js";
+import ElementController from "../controllers/element.controller.js";
+import { upload, uploadElems } from "../middleware/uploadImage.middleware.js";
 
 export const router = express.Router();
 
@@ -39,10 +40,19 @@ router.get("/:pageSlug/:blockSlug", (req, res) => {
   BlockController.editor(req, res);
 });
 
-router.post("/:pageSlug/:blockSlug", upload.single("cover"), (req, res) => {
-  BlockController.update(req, res);
-});
+router.post(
+  "/:pageSlug/:blockSlug",
+  uploadElems.array("element-image"),
+  (req, res) => {
+    BlockController.update(req, res);
+  }
+);
 
 router.delete("/:pageSlug/:blockSlug", (req, res) => {
   BlockController.delete(req, res);
+});
+
+// ELEMENT ROUTES
+router.get("/:pageSlug/:blockSlug/blank", (req, res) => {
+  ElementController.blank(req, res);
 });
