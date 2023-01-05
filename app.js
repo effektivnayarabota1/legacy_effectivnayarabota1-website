@@ -41,9 +41,13 @@ app.use("/script", express.static(__dirname + "/script"));
 // HBS SETUP
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "partials"));
+hbs.registerHelper("is-image", function (img) {
+  if (!img.data) return false;
+  else return true;
+});
 hbs.registerHelper("base64", function (img) {
-  if (!!img) return;
-  return `data:${img.contentType};base64,${img.data.toString("base64")}`;
+  if (!img.data) return;
+  else return `data:${img.contentType};base64,${img.data.toString("base64")}`;
 });
 hbs.registerHelper("preview", function (data) {
   if (data) {

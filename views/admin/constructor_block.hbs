@@ -34,7 +34,13 @@
 
   {{#each blockElems}}
     <fieldset id="fieldset">
-	    <legend>{{this.slug}}</legend>
+	  <legend>{{this.slug}}</legend>
+	 <!--  <legend> -->
+	 <!--     	<input type="text" name="title" placeholder="Заголовок" value="{{this.slug}}" /> -->
+	 <!-- </legend> -->
+	  <button id="upElemBttn {{this.slug}}" class="upElemBttn">Вверх</button>
+	  <button id="downElemBttn {{this.slug}}" class="downElemBttn">Вниз</button>
+	  <hr/>
       <input type="file" name="image" accept="image/*" />
       <textarea
         name="desc"

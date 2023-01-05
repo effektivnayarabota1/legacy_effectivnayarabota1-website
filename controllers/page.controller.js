@@ -25,15 +25,52 @@ export default class PageController {
   }
 
   static async update(req, res) {
-    let page = await Page.findOne({ slug: req.params.slug });
+    let pageSlug = req.params.slug;
+    let page = await Page.findOne({ slug: pageSlug });
     page.title = req.body.title || "title";
     page.desc = req.body.desc;
+
+    if (!!req.file) {
+      page.img = {
+        data: fs.readFileSync(
+          path.join(`${__dirname}/uploads/${pageSlug}/${req.file.filename}`)
+        ),
+        contentType: req.file.mimetype,
+      };
+    }
+
     await page.save();
+
+    if (pageSlug !== page.slug) {
+      const oldPath = `${__dirname}/uploads/${pageSlug}/`;
+      const newPath = `${__dirname}/uploads/${page.slug}/`;
+      await fsPromises.rename(oldPath, newPath);
+
+      if (!!req.file) {
+        page.img = {
+          data: fs.readFileSync(
+            path.join(`${__dirname}/uploads/${page.slug}/${req.file.filename}`)
+          ),
+          contentType: req.file.mimetype,
+        };
+      }
+    }
+
+    page.save();
+
     await res.redirect("/admin");
   }
 
   static async delete(req, res) {
-    await Page.deleteOne({ slug: req.params.slug });
+    const pageSlug = req.params.slug;
+    const page = await Page.findOne({ slug: pageSlug });
+    const pageDir = `${__dirname}/uploads/${pageSlug}/`;
+    await page.remove();
+    await fsPromises.rm(pageDir, {
+      force: true,
+      recursive: true,
+    });
+
     await res.redirect(303, "/admin");
   }
 
@@ -50,7 +87,7 @@ export default class PageController {
   }
 
   /* TODO Сервисный запрос. Избавиться от него. */
-  static async clear() {
+  static async clear(res) {
     Page.find({}, async (err, items) => {
       if (err) {
         console.log(err);
@@ -59,7 +96,7 @@ export default class PageController {
         for (let item of items) {
           await Page.deleteOne({ pageId: item.pageId });
         }
-        fs.rmSync(__dirname + "/uploads/", {
+        await fsPromises.rm(__dirname + "/uploads/", {
           force: true,
           recursive: true,
         });

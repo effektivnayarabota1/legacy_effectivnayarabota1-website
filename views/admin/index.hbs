@@ -9,9 +9,13 @@
   {{#each items}}
     <a href="/admin/{{this.slug}}">{{this.title}}</a>
     <p><i>{{this.desc}}</i></p>
-    <!-- <img src={{base64 this.img}} alt="" /> -->
+    {{#if (is-image this.img)}}
+      <img src={{base64 this.img}} alt="" />
+    {{else}}
+      <h2>Нет изображения</h2>
+    {{/if}}
+    <hr />
   {{/each}}
-  <hr />
   <a href="/admin/create">Создать страницу</a>
   <br />
   <a href="/admin/clear">Удалить все страницы</a>

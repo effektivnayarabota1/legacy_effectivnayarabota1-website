@@ -1,7 +1,8 @@
-deleteBttn.onclick = async function (e) {
+deleteBttn.addEventListener("click", async function (e) {
   e.preventDefault();
   const slug = location.pathname.split("/");
   const pageSlug = slug.at(-1);
+
   try {
     const response = await fetch(`/admin/${pageSlug}`, {
       method: "DELETE",
@@ -12,4 +13,4 @@ deleteBttn.onclick = async function (e) {
   } catch (err) {
     console.error(`Error: ${err}`);
   }
-};
+});
