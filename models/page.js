@@ -15,7 +15,9 @@ const ElementSchema = new mongoose.Schema({
   slug: {
     slug: "slug",
     type: String,
+    // unique: true,
     forceIdSlug: true,
+    permanent: true,
   },
 });
 

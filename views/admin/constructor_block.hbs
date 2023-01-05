@@ -34,10 +34,10 @@
 
   {{#each blockElems}}
     <fieldset id="fieldset">
-	  <legend>{{this.slug}}</legend>
-	 <!--  <legend> -->
-	 <!--     	<input type="text" name="element-slug" placeholder="Заголовок" value="{{this.slug}}" /> -->
-	 <!-- </legend> -->
+	  <!-- <legend>{{this.slug}}</legend> -->
+	  <legend>
+	     	<input type="text" name="element-slug" readonly value="{{this.slug}}" />
+	 </legend>
 	  <button id="upElemBttn {{this.slug}}" class="upElemBttn">Вверх</button>
 	  <button id="downElemBttn {{this.slug}}" class="downElemBttn">Вниз</button>
 	  <hr/>

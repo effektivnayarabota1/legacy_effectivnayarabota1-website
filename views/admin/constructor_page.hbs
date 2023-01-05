@@ -9,6 +9,8 @@
   <!-- <form> -->
   <fieldset id="fieldset">
     <legend>Мета-информация</legend>
+      <img src={{base64 img}} alt="обложка страницы" />
+    <br /><br />
 
     <label for="title">title</label>
     <input type="text" name="title" placeholder="Заголовок" value="{{title}}" />
@@ -29,6 +31,9 @@
 		  <legend><a href="/admin/{{../slug}}/{{slug}}">{{slug}} • {{type}}</a></legend>
 		  {{#each this.elements}}
 		  	{{slug}}
+    			{{#if (is-image this.img)}}
+      				<img src={{base64 this.img}} alt="изображение элемента" />
+				{{/if}}
 		  	{{desc}}
 			</br>
 		  {{/each}}

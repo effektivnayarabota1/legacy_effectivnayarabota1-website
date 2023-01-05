@@ -78,9 +78,11 @@ export default class PageController {
     const slug = req.params.slug;
     const page = await Page.findOne({ slug: slug });
 
+    console.log(slug);
     await res.render("admin/constructor_page", {
       slug: slug,
       title: page.title || "title",
+      img: page.img,
       desc: page.desc,
       blocks: page.blocks,
     });

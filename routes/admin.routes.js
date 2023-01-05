@@ -19,8 +19,8 @@ router.get("/create", (_req, res) => {
   PageController.create(_req, res);
 });
 
-router.get("/:slug", (_req, res) => {
-  PageController.editor(_req, res);
+router.get("/:slug", (req, res) => {
+  PageController.editor(req, res);
 });
 
 router.post("/:slug", upload.single("cover"), (req, res) => {

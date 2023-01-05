@@ -10,7 +10,7 @@
     <a href="/admin/{{this.slug}}">{{this.title}}</a>
     <p><i>{{this.desc}}</i></p>
     {{#if (is-image this.img)}}
-      <img src={{base64 this.img}} alt="" />
+      <img src={{base64 this.img}} alt="обложка страницы" />
     {{else}}
       <h2>Нет изображения</h2>
     {{/if}}

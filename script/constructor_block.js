@@ -44,7 +44,12 @@ function addElemMarkup(e, elemSlug) {
   const field = document.createElement("fieldset");
 
   const legend = document.createElement("legend");
-  legend.textContent = elemSlug;
+  const legendInput = document.createElement("input");
+  legendInput.setAttribute("type", "text");
+  legendInput.setAttribute("name", "element-slug");
+  legendInput.setAttribute("value", elemSlug);
+  legendInput.setAttribute("readonly", true);
+  legend.appendChild(legendInput);
 
   const input = document.createElement("input");
   input.setAttribute("type", "file");
@@ -92,11 +97,7 @@ addElemBttn.addEventListener("click", async function (e) {
   const blockSlug = slugs.at(-1);
 
   const response = await fetch(`/admin/${pageSlug}/${blockSlug}/blank`, {
-    // mode: 'no-cors',
     method: "GET",
-    headers: {
-      Accept: "application/json",
-    },
   });
 
   const elemSlug = await response.text();

@@ -1,5 +1,11 @@
 import Page from "../models/page.js";
 
+import path from "path";
+import fs from "fs";
+// import fsPromises from "fs/promises";
+
+const __dirname = path.resolve();
+
 export default class BlockController {
   static async create(req, res) {
     const pageSlug = req.params.pageSlug;
@@ -30,6 +36,7 @@ export default class BlockController {
   }
 
   static async update(req, res) {
+    // TODO При обновлении блока, все старые ссылки слетают.
     const pageSlug = req.params.pageSlug;
     const blockSlug = req.params.blockSlug;
     const blockType = req.body.blockType;
@@ -38,34 +45,38 @@ export default class BlockController {
     let block = page.blocks.find((block) => block.slug === blockSlug);
     block.type = blockType;
 
-    // block.elements = [];
-    // let descs = req.body.desc;
-    // const slugs = req.body["element-slug"];
+    block.elements = [];
+    let descs = req.body.desc;
+    let elemSlugs = req.body["element-slug"];
 
-    // console.log(req.body.desc.length);
+    if (!Array.isArray(elemSlugs)) {
+      elemSlugs = [elemSlugs];
+      descs = [descs];
+    }
 
-    // for (let element of elements) {
-    //
-    // }
+    elemSlugs.forEach((elemSlug, index) => {
+      block.elements.push({ slug: elemSlug, desc: descs[index] });
+    });
 
-    // if (descs) {
-    //   if (!Array.isArray(descs)) descs = [descs];
-    //
-    //   for (let desc of descs) {
-    //     block.elements.push({ desc: desc });
-    //   }
-    // }
+    if (req.files.length) {
+      for (let file of req.files) {
+        const filename = file.filename;
+        const elements = block.elements;
+        const element = await elements.find(
+          (element) => element.slug === filename
+        );
+        element.img = {
+          data: fs.readFileSync(
+            path.join(
+              `${__dirname}/uploads/${pageSlug}/${blockSlug}/${filename}`
+            )
+          ),
+          contentType: file.mimetype,
+        };
+      }
+    }
 
-    // if (slugs) {
-    //   if (!Array.isArray(slugs)) slugs = [slugs];
-    //   for (let element of block.elements) {
-    //     // console.log(slug);
-    //     console.log(element);
-    //     element.slug = slug;
-    //   }
-    // }
-
-    // await page.save();
+    await page.save();
     await res.redirect(303, `/admin/${pageSlug}`);
   }
 

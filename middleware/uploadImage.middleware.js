@@ -34,7 +34,10 @@ const storageElems = multer.diskStorage({
     cb(null, dir);
   },
   filename: function (req, _file, cb) {
-    cb(null, req.body["element-slug"]);
+    // console.log(req.body["element-slug"]);
+    let elemSlug = req.body["element-slug"];
+    if (!Array.isArray(elemSlug)) elemSlug = [elemSlug];
+    cb(null, elemSlug.at(-1));
   },
 });
 
