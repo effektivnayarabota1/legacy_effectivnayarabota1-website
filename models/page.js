@@ -36,6 +36,7 @@ const BlockSchema = new mongoose.Schema({
     slugPaddingSize: 2,
     index: true,
     uniqueGroupSlug: "/_id",
+    permanent: true,
     // unique: true,
   },
 });

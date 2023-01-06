@@ -2,7 +2,7 @@ import Page from "../models/page.js";
 
 import path from "path";
 import fs from "fs";
-// import fsPromises from "fs/promises";
+import fsPromises from "fs/promises";
 
 const __dirname = path.resolve();
 
@@ -36,45 +36,52 @@ export default class BlockController {
   }
 
   static async update(req, res) {
-    // TODO При обновлении блока, все старые ссылки слетают.
     const pageSlug = req.params.pageSlug;
     const blockSlug = req.params.blockSlug;
     const blockType = req.body.blockType;
 
     let page = await Page.findOne({ slug: pageSlug });
     let block = page.blocks.find((block) => block.slug === blockSlug);
+    let elements = block.elements;
     block.type = blockType;
 
-    block.elements = [];
-    let descs = req.body.desc;
-    let elemSlugs = req.body["element-slug"];
-
-    if (!Array.isArray(elemSlugs)) {
-      elemSlugs = [elemSlugs];
-      descs = [descs];
+    let reqBody = [];
+    if (!Array.isArray(req.body.desc)) {
+      req.body.desc = [req.body.desc];
     }
-
-    elemSlugs.forEach((elemSlug, index) => {
-      block.elements.push({ slug: elemSlug, desc: descs[index] });
+    if (!Array.isArray(req.body["element-slug"])) {
+      req.body["element-slug"] = [req.body["element-slug"]];
+    }
+    req.body["element-slug"].forEach(async (elemSlug, index) => {
+      reqBody.push({ slug: elemSlug, desc: req.body.desc[index] });
     });
 
-    if (req.files.length) {
-      for (let file of req.files) {
-        const filename = file.filename;
-        const elements = block.elements;
-        const element = await elements.find(
-          (element) => element.slug === filename
-        );
-        element.img = {
-          data: fs.readFileSync(
-            path.join(
-              `${__dirname}/uploads/${pageSlug}/${blockSlug}/${filename}`
-            )
-          ),
-          contentType: file.mimetype,
-        };
-      }
+    for (let file of req.files) {
+      const element = reqBody.find((element) => element.slug === file.filename);
+      element.img = {
+        data: fs.readFileSync(
+          path.join(
+            `${__dirname}/uploads/${pageSlug}/${blockSlug}/${file.filename}`
+          )
+        ),
+        contentType: file.mimetype,
+      };
     }
+
+    let outputElems = [];
+    for (let reqElem of reqBody) {
+      const reqElemSlug = reqElem.slug;
+
+      const dbElem = await elements.find(
+        (element) => element.slug === reqElemSlug
+      );
+      if (!!dbElem) {
+        if (!!dbElem.img && !reqElem.img) reqElem.img = dbElem.img;
+      }
+      outputElems.push(reqElem);
+    }
+
+    block.elements = outputElems;
 
     await page.save();
     await res.redirect(303, `/admin/${pageSlug}`);
@@ -88,6 +95,15 @@ export default class BlockController {
     const block = await page.blocks.find((block) => block.slug === blockSlug);
     // page.blocks = await page.blocks.filter((block) => block.slug !== blockSlug);
     await block.remove();
+
+    const dir = `${__dirname}/uploads/${pageSlug}/${blockSlug}/`;
+    if (fs.existsSync(dir)) {
+      await fsPromises.rm(dir, {
+        force: true,
+        recursive: true,
+      });
+    }
+
     await page.save();
     await res.redirect(303, `/admin/${pageSlug}`);
   }

@@ -29,13 +29,34 @@ function downClickFunction(e) {
   }
 }
 
-function deleteClickFunction(e) {
+async function deleteClickFunction(e) {
   e.preventDefault();
 
-  // const elemSlug = button.id.split(" ").at(-1);
-  // console.log(elemSlug);
+  const slugs = location.pathname.split("/");
+  const pageSlug = slugs.at(-2);
+  const blockSlug = slugs.at(-1);
+  const elemSlug = this.id.split(" ").at(-1);
 
-  this.parentElement.remove();
+  await fetch(`/admin/${pageSlug}/${blockSlug}/${elemSlug}`, {
+    method: "DELETE",
+  });
+
+  await this.parentElement.remove();
+}
+
+async function deleteImgClick(e) {
+  e.preventDefault();
+
+  const slugs = location.pathname.split("/");
+  const pageSlug = slugs.at(-2);
+  const blockSlug = slugs.at(-1);
+  const elemSlug = this.id.split(" ").at(-1);
+
+  await fetch(`/admin/${pageSlug}/${blockSlug}/${elemSlug}/image`, {
+    method: "DELETE",
+  });
+
+  console.log("deleteImg");
 }
 
 function addElemMarkup(e, elemSlug) {
@@ -53,7 +74,7 @@ function addElemMarkup(e, elemSlug) {
 
   const input = document.createElement("input");
   input.setAttribute("type", "file");
-  input.setAttribute("name", "image");
+  input.setAttribute("name", "element-image");
   input.setAttribute("accept", "image/*");
 
   const textarea = document.createElement("textarea");
@@ -122,6 +143,11 @@ deleteBlockBttn.addEventListener("click", async function (e) {
     console.error(`Error: ${err}`);
   }
 });
+
+const deleteImgBttns = document.querySelectorAll(".deleteImgBttn");
+for (let button of deleteImgBttns) {
+  button.addEventListener("click", deleteImgClick);
+}
 
 const deleteElemBttns = document.querySelectorAll(".deleteElemBttn");
 for (let button of deleteElemBttns) {

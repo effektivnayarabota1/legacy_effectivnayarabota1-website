@@ -41,14 +41,23 @@
 	  <button id="upElemBttn {{this.slug}}" class="upElemBttn">Вверх</button>
 	  <button id="downElemBttn {{this.slug}}" class="downElemBttn">Вниз</button>
 	  <hr/>
+    	{{#if (is-image img)}}
+    		<img src={{base64 this.img}} alt="изображение элемента" />
+	  		<br/>
+		{{/if}}
+	  <hr/>
+	  <button id="deleteImgBttn {{this.slug}}" class="deleteImgBttn">Удалить изобажение</button>
+	  <hr/>
 	  <input type="file" id="element-{{this.slug}}" name="element-image" accept="image/*" />
+	  <br/>
       <textarea
         name="desc"
         form="block_form"
         placeholder="desc"
       >{{this.desc}}</textarea>
+	  <br/>
 	  <hr/>
-	  <button id="deleteElemBttn {{this.slug}}" class="deleteelemBttn">Удалить элемент</button>
+	  <button id="deleteElemBttn {{this.slug}}" class="deleteElemBttn">Удалить элемент</button>
     </fieldset>
   {{/each}}
 

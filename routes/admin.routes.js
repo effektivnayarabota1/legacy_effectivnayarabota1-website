@@ -56,3 +56,11 @@ router.delete("/:pageSlug/:blockSlug", (req, res) => {
 router.get("/:pageSlug/:blockSlug/blank", (req, res) => {
   ElementController.blank(req, res);
 });
+
+router.delete("/:pageSlug/:blockSlug/:elemSlug", (req, res) => {
+  ElementController.delete(req, res);
+});
+
+router.delete("/:pageSlug/:blockSlug/:elemSlug/image", (req, res) => {
+  ElementController.deleteImage(req, res);
+});
