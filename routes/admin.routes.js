@@ -1,14 +1,33 @@
 import express from "express";
+
 import PageController from "../controllers/page.controller.js";
 import BlockController from "../controllers/block.controller.js";
 import ElementController from "../controllers/element.controller.js";
-import { upload, uploadElems } from "../middleware/uploadImage.middleware.js";
+
+import HeaderController from "../controllers/header.controller.js";
+import FooterController from "../controllers/footer.controller.js";
+
+import uploadCover from "../middleware/uploadCover.middleware.js";
+import uploadElems from "../middleware/uploadElems.middleware.js";
+import uploadFooter from "../middleware/uploadFooter.middleware.js";
 
 export const router = express.Router();
 
 // PAGE ROUTES
 router.get("/", (_req, res) => {
   PageController.index(res);
+});
+
+router.get("/header", (_req, res) => {
+  HeaderController.edit(res);
+});
+
+router.get("/footer", (_req, res) => {
+  FooterController.index(_req, res);
+});
+
+router.post("/footer", uploadFooter.single("footer-bcg"), (req, res) => {
+  FooterController.update(req, res);
 });
 
 router.get("/clear", (_req, res) => {
@@ -23,7 +42,7 @@ router.get("/:slug", (req, res) => {
   PageController.editor(req, res);
 });
 
-router.post("/:slug", upload.single("cover"), (req, res) => {
+router.post("/:slug", uploadCover.single("cover"), (req, res) => {
   PageController.update(req, res);
 });
 

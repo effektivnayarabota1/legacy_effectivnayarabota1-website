@@ -1,4 +1,5 @@
 import Page from "../models/page.js";
+import Footer from "../models/footer.js";
 
 import path from "path";
 import fs from "fs";
@@ -8,15 +9,10 @@ import isEmpty from "../helpers/isEmpty.js";
 const __dirname = path.resolve();
 
 export default class PageController {
-  static index(res) {
-    Page.find({}, async (err, items) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send("An error occurred", err);
-      } else {
-        await res.render("admin/index", { items: items });
-      }
-    });
+  static async index(res) {
+    const pages = await Page.find({});
+    const footer = await Footer.findOne({});
+    await res.render("admin/index", { pages: pages, footer: footer });
   }
 
   static async create(_req, res) {

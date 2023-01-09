@@ -15,8 +15,6 @@ function readImage(file, elemSlug) {
   // const imgContainer = document.querySelector("#img-container", `#${elemSlug}`);
   const imgContainer = document.querySelector(containerId);
   let img = imgContainer.querySelector("img");
-  console.log(imgContainer);
-  console.log(img);
   if (!img) {
     img = document.createElement("img");
     img.setAttribute("id", "cover-preview");
