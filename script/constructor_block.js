@@ -72,16 +72,6 @@ function addElemMarkup(e, elemSlug) {
   legendInput.setAttribute("readonly", true);
   legend.appendChild(legendInput);
 
-  const input = document.createElement("input");
-  input.setAttribute("type", "file");
-  input.setAttribute("name", "element-image");
-  input.setAttribute("accept", "image/*");
-
-  const textarea = document.createElement("textarea");
-  textarea.setAttribute("name", "desc");
-  textarea.setAttribute("form", "block_form");
-  textarea.setAttribute("placeholder", "desc");
-
   const newUpElemBttn = document.createElement("button");
   newUpElemBttn.textContent = "Вверх";
   newUpElemBttn.addEventListener("click", upClickFunction);
@@ -89,6 +79,23 @@ function addElemMarkup(e, elemSlug) {
   const newDownElemBttn = document.createElement("button");
   newDownElemBttn.textContent = "Вниз";
   newDownElemBttn.addEventListener("click", downClickFunction);
+
+  const imgContainer = document.createElement("div");
+  imgContainer.setAttribute("id", `img-container ${elemSlug}`);
+
+  const input = document.createElement("input");
+  input.setAttribute("type", "file");
+  input.setAttribute("name", "element-image");
+  input.setAttribute("accept", "image/*");
+  input.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    readImage(file, elemSlug);
+  });
+
+  const textarea = document.createElement("textarea");
+  textarea.setAttribute("name", "desc");
+  textarea.setAttribute("form", "block_form");
+  textarea.setAttribute("placeholder", "desc");
 
   const deleteBttn = document.createElement("button");
   deleteBttn.textContent = "Удалить элемент";
@@ -99,6 +106,9 @@ function addElemMarkup(e, elemSlug) {
 
   field.appendChild(newUpElemBttn);
   field.appendChild(newDownElemBttn);
+  field.appendChild(document.createElement("hr"));
+
+  field.appendChild(imgContainer);
   field.appendChild(document.createElement("hr"));
 
   field.appendChild(input);

@@ -42,7 +42,7 @@ router.get("/:pageSlug/:blockSlug", (req, res) => {
 
 router.post(
   "/:pageSlug/:blockSlug",
-  uploadElems.array("element-image"),
+  uploadElems.array("input_elem-img"),
   (req, res) => {
     BlockController.update(req, res);
   }

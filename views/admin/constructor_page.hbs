@@ -10,7 +10,7 @@
   <fieldset id="fieldset">
     <legend>Мета-информация</legend>
     	{{#if (is-image img)}}
-    		<img src={{base64 img}} alt="обложка страницы" />
+    		<img src={{base64 img}} id="cover-preview" alt="обложка страницы" />
 		{{/if}}
     <br /><br />
 
@@ -23,7 +23,7 @@
     <br /><br />
 
     <label for="cover">cover</label>
-	<input type="file" id="cover-{{slug}}" name="cover" accept="image/*" />
+	<input type="file" id="cover-input" name="cover" accept="image/*" />
   </fieldset>
   <hr />
 
