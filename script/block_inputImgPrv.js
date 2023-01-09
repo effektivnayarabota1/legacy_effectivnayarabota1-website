@@ -14,7 +14,7 @@ function readImage(file, elemSlug) {
   const containerId = `#img-container_${elemSlug}`;
   // const imgContainer = document.querySelector("#img-container", `#${elemSlug}`);
   const imgContainer = document.querySelector(containerId);
-  const img = imgContainer.querySelector("img");
+  let img = imgContainer.querySelector("img");
   console.log(imgContainer);
   console.log(img);
   if (!img) {

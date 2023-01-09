@@ -49,6 +49,7 @@ router.post(
 );
 
 router.delete("/:pageSlug/:blockSlug", (req, res) => {
+  console.log("delete");
   BlockController.delete(req, res);
 });
 

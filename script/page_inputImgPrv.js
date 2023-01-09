@@ -1,20 +1,3 @@
-deleteBttn.addEventListener("click", async function (e) {
-  e.preventDefault();
-  const slug = location.pathname.split("/");
-  const pageSlug = slug.at(-1);
-
-  try {
-    const response = await fetch(`/admin/${pageSlug}`, {
-      method: "DELETE",
-      // redirect: "follow",
-    });
-
-    window.location.href = "/admin";
-  } catch (err) {
-    console.error(`Error: ${err}`);
-  }
-});
-
 const fieldset = document.querySelector("#fieldset");
 const coverInput = document.querySelector("#cover-input");
 const labelTitle = document.querySelector("label[for=title]");
@@ -39,5 +22,3 @@ function readImage(file) {
   });
   reader.readAsDataURL(file);
 }
-// console.log(coverInput);
-// field.appendChild(coverInput);

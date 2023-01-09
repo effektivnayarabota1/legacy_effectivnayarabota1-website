@@ -1,0 +1,35 @@
+<fieldset id="fieldset">
+  <legend>
+    <input type="text" name="element-slug" readonly value="{{this.slug}}" />
+  </legend>
+  <button id="upElemBttn {{this.slug}}" class="upElemBttn">Вверх</button>
+  <button id="downElemBttn {{this.slug}}" class="downElemBttn">Вниз</button>
+  <hr />
+  <div id="img-container_{{this.slug}}" class="img-container">
+    {{#if (is-image img)}}
+      <img src={{base64 this.img}} alt="изображение элемента" />
+      <br />
+      <hr />
+    {{/if}}
+  </div>
+  <button id="deleteImgBttn {{this.slug}}" class="deleteImgBttn">Удалить
+    изобажение</button>
+  <hr />
+  <input
+    type="file"
+    id="img-input_{{this.slug}}"
+    class="input_elem-img"
+    name="input_elem-img"
+    accept="image/*"
+  />
+  <br />
+  <textarea
+    name="desc"
+    form="block_form"
+    placeholder="desc"
+  >{{this.desc}}</textarea>
+  <br />
+  <hr />
+  <button id="deleteElemBttn {{this.slug}}" class="deleteElemBttn">Удалить
+    элемент</button>
+</fieldset>

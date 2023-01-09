@@ -4,8 +4,10 @@ import mongoose from "mongoose";
 import hbs from "hbs";
 import path from "path";
 import * as dotenv from "dotenv";
+
 import { router as adminRoutes } from "./routes/admin.routes.js";
 import { router as indexRoutes } from "./routes/index.routes.js";
+
 dotenv.config();
 
 import * as url from "url";
@@ -40,7 +42,7 @@ app.use("/script", express.static(__dirname + "/script"));
 
 // HBS SETUP
 app.set("view engine", "hbs");
-hbs.registerPartials(path.join(__dirname, "partials"));
+hbs.registerPartials(path.join(__dirname, "views/.partials/"));
 hbs.registerHelper("is-image", function (img) {
   if (!img.data) return false;
   else return true;

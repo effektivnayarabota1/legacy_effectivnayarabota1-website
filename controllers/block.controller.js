@@ -27,7 +27,7 @@ export default class BlockController {
     const blockType = block.type;
     const blockElems = block.elements;
 
-    await res.render("admin/constructor_block", {
+    await res.render("admin/block", {
       pageSlug,
       blockSlug,
       blockType,

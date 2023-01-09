@@ -29,18 +29,7 @@
 
   <div>
     {{#each blocks}}
-      <fieldset>
-		  <legend><a href="/admin/{{../slug}}/{{slug}}">{{slug}} • {{type}}</a></legend>
-		  {{#each this.elements}}
-		  	{{slug}}
-    			{{#if (is-image this.img)}}
-      				<img src={{base64 this.img}} alt="изображение элемента" />
-				{{/if}}
-		  	{{desc}}
-			</br>
-		  {{/each}}
-      </fieldset>
-      <hr />
+		{{> admin_page_block pageSlug=../slug slug=slug type=type elements=this.elements}}
     {{/each}}
   </div>
 
@@ -54,4 +43,5 @@
 
 </form>
 
-<script src="/script/constructor_page.js"></script>
+<script src="/script/page_inputImgPrv.js"></script>
+<script src="/script/page_deletePage.js"></script>
