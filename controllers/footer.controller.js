@@ -17,6 +17,23 @@ export default class FooterController {
 
     console.log(req.body);
 
+    for (let id = 1; id <= 4; id++) {
+      const text = req.body[`text-${id}`];
+      const url = req.body[`url-${id}`];
+      const groupLength = text.length;
+      footer[`link-group-${id}`] = [];
+      if (groupLength) {
+        for (let i = 0; i < groupLength; i++) {
+          let obj = {};
+
+          obj.text = text[i];
+          obj.url = url[i];
+
+          footer[`link-group-${id}`].push(obj);
+        }
+      }
+    }
+
     if (!!req.file) {
       footer.img = {
         data: fs.readFileSync(
