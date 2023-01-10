@@ -18,8 +18,16 @@ router.get("/", (_req, res) => {
   PageController.index(res);
 });
 
-router.get("/header", (_req, res) => {
-  HeaderController.edit(res);
+router.get("/header", (req, res) => {
+  HeaderController.edit(req, res);
+});
+
+router.get("/header/blank", (req, res) => {
+  HeaderController.blank(req, res);
+});
+
+router.delete("/header/:slug", (req, res) => {
+  HeaderController.delete(req, res);
 });
 
 router.get("/footer", (_req, res) => {
