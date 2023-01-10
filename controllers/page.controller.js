@@ -1,4 +1,5 @@
 import Page from "../models/page.js";
+import Header from "../models/header.js";
 import Footer from "../models/footer.js";
 
 import path from "path";
@@ -11,8 +12,13 @@ const __dirname = path.resolve();
 export default class PageController {
   static async index(res) {
     const pages = await Page.find({});
+    const header = await Header.findOne({});
     const footer = await Footer.findOne({});
-    await res.render("admin/index", { pages: pages, footer: footer });
+    await res.render("admin/index", {
+      pages: pages,
+      header: header,
+      footer: footer,
+    });
   }
 
   static async create(_req, res) {

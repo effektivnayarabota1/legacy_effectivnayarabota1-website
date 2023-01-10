@@ -7,7 +7,11 @@
   <button id="downElemBttn {{this.slug}}" class="downElemBttn">Вниз</button>
   <hr />
 
-  <div id="header-bcg_container"></div>
+  <div id="header-bcg_container">
+    {{#if (is-image this.img)}}
+      <img src={{base64 this.img}} alt="изображение элемента" />
+    {{/if}}
+  </div>
   <hr />
 
   <label for="header-bcg">header-bcg</label>

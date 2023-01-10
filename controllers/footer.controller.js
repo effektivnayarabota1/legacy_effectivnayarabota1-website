@@ -8,15 +8,12 @@ const __dirname = path.resolve();
 export default class FooterController {
   static async index(_req, res) {
     let footer = await Footer.findOne({});
-    if (!footer) footer = await Footer.create({});
+    if (!footer) {
+      footer = await Footer.create({});
+      footer.groups = [[], [], [], []];
+    }
     await res.render("admin/footer", {
       footer: footer,
-      groups: [
-        footer["link-group-0"],
-        footer["link-group-1"],
-        footer["link-group-2"],
-        footer["link-group-3"],
-      ],
     });
   }
 
@@ -33,15 +30,14 @@ export default class FooterController {
         text = [text];
       }
       const groupLength = text.length;
-      footer[`link-group-${id}`] = [];
+      footer.groups[id] = [];
       if (groupLength) {
         for (let i = 0; i < groupLength; i++) {
           let obj = {};
 
           obj.text = text[i];
           obj.url = url[i];
-          if (!!text[i].length && !!url[i].length)
-            footer[`link-group-${id}`].push(obj);
+          if (!!text[i].length && !!url[i].length) footer.groups[id].push(obj);
         }
       }
     }

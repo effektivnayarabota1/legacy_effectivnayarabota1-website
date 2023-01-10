@@ -15,6 +15,7 @@ export default function readImage(file, parent) {
   const containerId = "#header-bcg_container";
   const imgContainer = parent.querySelector(containerId);
   let img = imgContainer.querySelector("img");
+  console.log(imgContainer);
   if (!img) {
     img = document.createElement("img");
     img.setAttribute("id", "footer-bcg");

@@ -40,7 +40,7 @@ function addElemMarkup(e, elemSlug) {
 
   const input = document.createElement("input");
   input.setAttribute("type", "file");
-  input.setAttribute("name", "input_elem-img");
+  input.setAttribute("name", "header-bcg");
   input.setAttribute("accept", "image/*");
   input.addEventListener("change", (e) => {
     const file = e.target.files[0];

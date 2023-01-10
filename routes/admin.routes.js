@@ -9,6 +9,7 @@ import FooterController from "../controllers/footer.controller.js";
 
 import uploadCover from "../middleware/uploadCover.middleware.js";
 import uploadElems from "../middleware/uploadElems.middleware.js";
+import uploadHeader from "../middleware/uploadHeader.middleware.js";
 import uploadFooter from "../middleware/uploadFooter.middleware.js";
 
 export const router = express.Router();
@@ -22,7 +23,7 @@ router.get("/header", (req, res) => {
   HeaderController.edit(req, res);
 });
 
-router.post("/header", (req, res) => {
+router.post("/header", uploadHeader.array("header-bcg"), (req, res) => {
   HeaderController.update(req, res);
 });
 
