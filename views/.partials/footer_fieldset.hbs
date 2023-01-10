@@ -1,14 +1,9 @@
 <fieldset id="fieldset_link-{{id}}">
   <legend>link-group-{{id}}</legend>
 
-  <div class="link-container-{{id}}">
-    <input type="text" name="text-{{id}}" placeholder="text of link" />
-    <br />
-    <input type="text" name="url-{{id}}" placeholder="url of link" />
-    <button class="removeInputsBttn">rm</button>
-  </div>
-
-  <hr />
+  {{#each this}}
+  {{> footer_linkContainer id=../id text=this.text url=this.url }}
+  {{/each}}
 
   <button id="addLinkBttn_{{id}}" class="addInputsBttn">add link</button>
 </fieldset>

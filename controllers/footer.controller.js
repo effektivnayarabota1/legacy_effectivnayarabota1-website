@@ -9,15 +9,21 @@ export default class FooterController {
   static async index(_req, res) {
     let footer = await Footer.findOne({});
     if (!footer) footer = await Footer.create({});
-    await res.render("admin/footer");
+    await res.render("admin/footer", {
+      footer: footer,
+      groups: [
+        footer["link-group-0"],
+        footer["link-group-1"],
+        footer["link-group-2"],
+        footer["link-group-3"],
+      ],
+    });
   }
 
   static async update(req, res) {
     let footer = await Footer.findOne({});
 
-    console.log(req.body);
-
-    for (let id = 1; id <= 4; id++) {
+    for (let id = 0; id < 4; id++) {
       const text = req.body[`text-${id}`];
       const url = req.body[`url-${id}`];
       const groupLength = text.length;
@@ -28,8 +34,8 @@ export default class FooterController {
 
           obj.text = text[i];
           obj.url = url[i];
-
-          footer[`link-group-${id}`].push(obj);
+          if (!!text[i].length && !!url[i].length)
+            footer[`link-group-${id}`].push(obj);
         }
       }
     }
