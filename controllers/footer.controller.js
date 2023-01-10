@@ -24,8 +24,14 @@ export default class FooterController {
     let footer = await Footer.findOne({});
 
     for (let id = 0; id < 4; id++) {
-      const text = req.body[`text-${id}`];
-      const url = req.body[`url-${id}`];
+      let text = req.body[`text-${id}`];
+      let url = req.body[`url-${id}`];
+      if (!Array.isArray(url)) {
+        url = [url];
+      }
+      if (!Array.isArray(text)) {
+        text = [text];
+      }
       const groupLength = text.length;
       footer[`link-group-${id}`] = [];
       if (groupLength) {
