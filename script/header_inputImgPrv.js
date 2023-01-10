@@ -10,7 +10,7 @@ for (let input of imgInputs) {
   });
 }
 
-function readImage(file, parent) {
+export default function readImage(file, parent) {
   const reader = new FileReader();
   const containerId = "#header-bcg_container";
   const imgContainer = parent.querySelector(containerId);

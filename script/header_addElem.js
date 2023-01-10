@@ -1,5 +1,6 @@
 import { moveUp, moveDown } from "./header_moveElem.js";
 import HeaderRemoveElem from "./header_removeElem.js";
+import readImage from "./header_inputImgPrv.js";
 
 addElemBttn.addEventListener("click", async function (e) {
   e.preventDefault();
@@ -43,7 +44,7 @@ function addElemMarkup(e, elemSlug) {
   input.setAttribute("accept", "image/*");
   input.addEventListener("change", (e) => {
     const file = e.target.files[0];
-    readImage(file, elemSlug);
+    readImage(file, field);
   });
 
   const deleteBttn = document.createElement("button");

@@ -22,6 +22,10 @@ router.get("/header", (req, res) => {
   HeaderController.edit(req, res);
 });
 
+router.post("/header", (req, res) => {
+  HeaderController.update(req, res);
+});
+
 router.get("/header/blank", (req, res) => {
   HeaderController.blank(req, res);
 });

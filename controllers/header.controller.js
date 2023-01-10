@@ -15,6 +15,10 @@ export default class HeaderController {
     await res.render("admin/header", { elements: header.elements });
   }
 
+  static async update(req, res) {
+    console.log(update);
+  }
+
   static async blank(_req, res) {
     let header = await Header.findOne({});
     await header.elements.push({});
