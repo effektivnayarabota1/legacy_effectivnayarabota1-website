@@ -10,7 +10,7 @@ import isEmpty from "../helpers/isEmpty.js";
 const __dirname = path.resolve();
 
 export default class PageController {
-  static async index(res) {
+  static async index(req, res) {
     const pages = await Page.find({});
     const header = await Header.findOne({});
     const footer = await Footer.findOne({});

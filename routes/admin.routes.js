@@ -1,5 +1,7 @@
 import express from "express";
 
+import AdminController from "../controllers/admin.controller.js";
+
 import PageController from "../controllers/page.controller.js";
 import BlockController from "../controllers/block.controller.js";
 import ElementController from "../controllers/element.controller.js";
@@ -15,8 +17,24 @@ import uploadFooter from "../middleware/uploadFooter.middleware.js";
 export const router = express.Router();
 
 // PAGE ROUTES
-router.get("/", (_req, res) => {
-  PageController.index(res);
+router.get("/", (req, res) => {
+  PageController.index(req, res);
+});
+
+router.get("/login", (req, res) => {
+  AdminController.showLoginFrom(req, res);
+});
+
+router.post("/create", (req, res) => {
+  AdminController.create(req, res);
+});
+
+router.post("/login", (req, res) => {
+  AdminController.newSession(req, res);
+});
+
+router.get("/logout", (req, res) => {
+  AdminController.outSession(req, res);
 });
 
 router.get("/header", (req, res) => {

@@ -1,4 +1,5 @@
 import express from "express";
+import cookieSession from "cookie-session";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import hbs from "hbs";
@@ -7,6 +8,7 @@ import * as dotenv from "dotenv";
 
 import { router as adminRoutes } from "./routes/admin.routes.js";
 import { router as indexRoutes } from "./routes/index.routes.js";
+import checkAuth from "./middleware/checkAuth.moddleware.js";
 
 dotenv.config();
 
@@ -33,11 +35,21 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 const app = express();
 
+// COOKIE SETUP
+app.set("trust proxy", 1);
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["admin2002"],
+    // maxAge: 24 * 60 * 60 * 1000, // 24 hours
+  })
+);
+
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/", indexRoutes);
-app.use("/admin", adminRoutes);
+app.use("/admin", checkAuth, adminRoutes);
 app.use("/script", express.static(__dirname + "/script"));
 
 // HBS SETUP
