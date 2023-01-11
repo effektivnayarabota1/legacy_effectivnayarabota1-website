@@ -1,0 +1,9 @@
+<fieldset id="fieldset_link-{{id}}">
+  <legend>link-group-{{id}}</legend>
+
+  {{#each this}}
+  {{> footer_linkContainer id=../id text=this.text url=this.url }}
+  {{/each}}
+
+  <button id="addLinkBttn_{{id}}" class="addInputsBttn">add link</button>
+</fieldset>

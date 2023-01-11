@@ -1,0 +1,47 @@
+<a href="/admin">Назад</a>
+<hr />
+<form
+  action="/admin/{{slug}}"
+  method="POST"
+  enctype="multipart/form-data"
+  id="form"
+>
+  <!-- <form> -->
+  <fieldset id="fieldset">
+    <legend>Мета-информация</legend>
+    	{{#if (is-image img)}}
+    		<img src={{base64 img}} id="cover-preview" alt="обложка страницы" />
+		{{/if}}
+    <br /><br />
+
+    <label for="title">title</label>
+    <input type="text" name="title" placeholder="Заголовок" value="{{title}}" />
+    <br /><br />
+
+    <label for="desc">desc</label>
+    <textarea name="desc" form="form" placeholder="Описание">{{desc}}</textarea>
+    <br /><br />
+
+    <label for="cover">cover</label>
+	<input type="file" id="cover-input" name="cover" accept="image/*" />
+  </fieldset>
+  <hr />
+
+  <div>
+    {{#each blocks}}
+		{{> admin_page_block pageSlug=../slug slug=slug type=type elements=this.elements}}
+    {{/each}}
+  </div>
+
+  <span>
+    <a href="{{slug}}/block/create">Добавить блок</a>
+  </span>
+  <hr />
+
+  <button type="submit" form="form" value="Submit">Сохранить</button>
+  <button id="deleteBttn">Удалить</button>
+
+</form>
+
+<script src="/script/page_inputImgPrv.js"></script>
+<script src="/script/page_deletePage.js"></script>

@@ -1,0 +1,27 @@
+<div class="link-container-{{id}}">
+	{{../id}}
+  <input
+    type="text"
+    name="text-{{id}}"
+    placeholder="text of link"
+	{{#if text}}
+    value={{text}}
+	{{/if}}
+  />
+  <br />
+  <input
+    type="text"
+    name="url-{{id}}"
+    placeholder="url of link"
+	{{#if url}}
+    value={{url}}
+	{{/if}}
+  />
+  <br />
+  <button class="moveUpInputsBttn">up</button>
+  <button class="moveDownInputsBttn">down</button>
+  <br />
+  <button class="removeInputsBttn">rm</button>
+  <hr />
+</div>
+

@@ -1,0 +1,40 @@
+<a href="/admin">Назад</a>
+
+<form
+  action="/admin/footer"
+  method="POST"
+  enctype="multipart/form-data"
+  id="footer-form"
+>
+  <!-- <form> -->
+  <fieldset id="fieldset">
+    <legend>footer bcg</legend>
+	{{#if (is-image footer.img)}}
+  		<img src={{base64 footer.img}} alt="footer background" />
+	{{else}}
+  		<h2>Нет изображения</h2>
+	{{/if}}
+    <br /><br />
+
+    <div id="footer-bcg_container"></div>
+
+    <label for="footer-bcg">footer-bcg</label>
+    <input
+      type="file"
+      id="footer-bcg_input"
+      name="footer-bcg"
+      accept="image/*"
+    />
+  </fieldset>
+
+  {{#each footer.groups}}
+  	{{> footer_fieldset id=@index }}
+  {{/each}}
+
+  <button type="submit" form="footer-form" value="Submit">Сохранить</button>
+</form>
+
+<script src="/script/footer_inputImgPrv.js"></script>
+<script type="module" src="/script/footer_addInputs.js"></script>
+<script type="module" src="/script/footer_moveInputs.js"></script>
+<script type="module" src="/script/footer_removeInputs.js"></script>

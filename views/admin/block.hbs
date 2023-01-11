@@ -1,0 +1,57 @@
+<a href="/admin/{{pageSlug}}">Назад</a>
+<hr />
+
+<form
+  action="/admin/{{pageSlug}}/{{blockSlug}}"
+  method="POST"
+  enctype="multipart/form-data"
+  id="block_form"
+>
+
+  <div id="radio_container">
+    <input type="radio" id="blockType1" name="blockType" value="image"
+	  {{#if (isImage blockType)}}
+	  checked
+	  {{/if}}
+	/>
+    <label for="blockType1">Изображение</label>
+
+    <input type="radio" id="blockType2" name="blockType" value="text"
+	  {{#if (isText blockType)}}
+	  checked
+	  {{/if}}
+	/>
+    <label for="blockType2">Текст</label>
+
+    <input type="radio" id="blockType3" name="blockType" value="gallery"
+	  {{#if (isGallery blockType)}}
+	  checked
+	  {{/if}}
+	/>
+    <label for="blockType3">Галлерея</label>
+  </div>
+  <hr />
+
+  {{#each blockElems}}
+  	{{> admin_block_elem}}
+  {{/each}}
+
+  <div id="button_container">
+    <hr />
+    <button id="addElemBttn">Добавить элемент</button>
+  </div>
+
+  <div>
+    <hr />
+    <button type="submit" form="block_form" value="submit">Сохранить</button>
+    <button id="deleteBlockBttn">Удалить блок</button>
+  </div>
+</form>
+
+<script type="module" src="/script/block_addElem.js"></script>
+<script src="/script/block_changePosition.js"></script>
+<script src="/script/block_inputImgPrv.js"></script>
+
+<script type="module" src="/script/block_deleteBlock.js"></script>
+<script type="module" src="/script/block_deleteElem.js"></script>
+<script src="/script/block_deleteImage.js"></script>
