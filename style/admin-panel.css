@@ -1,0 +1,14 @@
+.admin-panel {
+  position: fixed;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  background-color: var(--black);
+  gap: 64px;
+
+  z-index: 1;
+}
+.admin-panel a {
+  color: white;
+}

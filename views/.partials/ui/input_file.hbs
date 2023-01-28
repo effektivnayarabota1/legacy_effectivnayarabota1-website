@@ -1,0 +1,17 @@
+<div class="input-file_container">
+  <input
+    type="file"
+    id="{{elemSlug}}"
+    class="{{class}}"
+    name={{name}}
+    accept="image/*"
+    hidden
+  />
+  <label for="{{elemSlug}}" class="file-input">
+    {{#if (is-image image)}}
+      <img src={{base64 image}} alt="изображение элемента" />
+    {{else}}
+      <img src="/assets/icon_add-image.svg" />
+    {{/if}}
+  </label>
+</div>

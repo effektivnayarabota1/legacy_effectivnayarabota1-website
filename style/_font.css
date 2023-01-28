@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+.mono,
+.mono h1,
+.mono p {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  /* identical to box height, or 114% */
+
+  color: var(--black);
+}
+.mono a {
+  text-decoration-line: underline;
+  color: var(--black);
+}
+.mono p {
+  text-decoration: none;
+  color: var(--grey-32);
+}
+
+h1 {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 300;
+  font-size: 80px;
+  line-height: 64px;
+  /* identical to box height, or 80% */
+
+  text-transform: uppercase;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: var(--black);
+}
+
+h2 {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 32px;
+  /* identical to box height, or 100% */
+
+  text-transform: uppercase;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: var(--black);
+}
+
+h3 {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 24px;
+  /* identical to box height, or 100% */
+
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: var(--black);
+}
+
+h4 {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height, or 120% */
+
+  letter-spacing: 0.003em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: var(--black);
+}
+
+p {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height, or 120% */
+
+  letter-spacing: 0.003em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: var(--black);
+}
+
+button {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  /* identical to box height, or 100% */
+
+  text-transform: uppercase;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: var(--black);
+}
