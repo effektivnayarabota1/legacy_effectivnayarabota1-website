@@ -65,7 +65,7 @@ export default class HeaderController {
     await res.redirect("/admin");
   }
 
-  static async blank(_req, res) {
+  static async create(_req, res) {
     let header = await Header.findOne({});
     await header.elements.push({});
     await header.save();
@@ -73,7 +73,7 @@ export default class HeaderController {
     res.send(slug);
   }
 
-  static async delete(req, res) {
+  static async remove(req, res) {
     const slug = req.params.slug;
     let header = await Header.findOne({});
 

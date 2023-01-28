@@ -1,12 +1,12 @@
-<fieldset id="fieldset" class="header_fieldset">
+<fieldset id="{{this.slug}}" class="element-container header_fieldset">
   <div class="header_abs-container" >
 	<div class="id-container" >
   		<input type="text" name="element-slug" readonly value="{{this.slug}}" />
 		{{> ui/button_small text="✕" class="remove-element"}}
 	</div>
 	<div class="move-container" >
-  		<button id="upElemBttn {{this.slug}}" class="upElemBttn">Вверх</button>
-  		<button id="downElemBttn {{this.slug}}" class="downElemBttn">Вниз</button>
+  		<button id="{{this.slug}}" class="up-element">Вверх</button>
+  		<button id="{{this.slug}}" class="down-element">Вниз</button>
 	</div>
   </div>
 
