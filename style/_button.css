@@ -1,0 +1,16 @@
+.button-text {
+  width: 18px;
+  height: 18px;
+
+  cursor: pointer;
+  text-align: center;
+  flex-shrink: 0;
+
+  color: var(--grey-32);
+  background-color: var(--grey-64);
+}
+
+.button-text:hover {
+  color: var(--grey-64);
+  background-color: var(--grey-32);
+}

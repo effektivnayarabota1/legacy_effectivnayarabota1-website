@@ -45,12 +45,12 @@ router.post("/header", uploadHeader.array("header-bcg"), (req, res) => {
   HeaderController.update(req, res);
 });
 
-router.get("/header/blank", (req, res) => {
-  HeaderController.blank(req, res);
+router.get("/header/create", (req, res) => {
+  HeaderController.create(req, res);
 });
 
 router.delete("/header/:slug", (req, res) => {
-  HeaderController.delete(req, res);
+  HeaderController.remove(req, res);
 });
 
 router.get("/footer", (_req, res) => {

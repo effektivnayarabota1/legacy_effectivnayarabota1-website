@@ -1,41 +1,35 @@
-<a href="/admin">Назад</a>
+<link rel="stylesheet" href="/style/header.css" />
 
 <form
+	class="header-form wrapper"
   action="/admin/header"
   method="POST"
   enctype="multipart/form-data"
   id="header-form"
 >
 
-  <fieldset id="fieldset">
-    <legend>header status</legend>
-    <div id="footer-bcg_container"></div>
-    <label for="header-title">header-title</label>
-    <input
-      type="text"
-      name="header-title"
-      placeholder="header-title"
-      value="{{title}}"
-    />
-  </fieldset>
+	<div class="header_grid-container grid-4" >
+  		<fieldset id="fieldset" class="header_fieldset">
+  			<textarea
+				class="header_textarea"
+    			name="header-title"
+    			form="header_form"
+    			placeholder="header-title"
+				>{{title}}</textarea>
+  		</fieldset>
 
-  <hr />
-
-	<div id="elements-container">
   		{{#each elements}}
   			{{> header_element  }}
   		{{/each}}
-  	</div>
+	</div>
 
-  <div id="button_container">
-    <hr />
-    <button id="addElemBttn">Добавить элемент</button>
+  <div class="header_button-container">
+    <button class="create-element">create element</button>
+  	<button type="submit" form="header-form" value="Submit">save</button>
   </div>
-    <hr />
-  <button type="submit" form="header-form" value="Submit">Сохранить</button>
 </form>
 
-<script type="module" src="/script/header_addElem.js"></script>
-<script type="module" src="/script/header_moveElem.js"></script>
-<script type="module" src="/script/header_removeElem.js"></script>
-<script type="module" src="/script/header_inputImgPrv.js"></script>
+<script type="module" src="/script/element-create.js"></script>
+<script type="module" src="/script/element-remove.js"></script>
+<script type="module" src="/script/element-move.js"></script>
+<script type="module" src="/script/element-preview.js"></script>
