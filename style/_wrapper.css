@@ -1,9 +1,12 @@
-.menu-wrapper {
-  padding-left: 224px;
-}
 .wrapper {
-  padding: 24px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
+  /* padding: 24px 32px; */
+
+  padding-top: 24px;
+  padding-right: 32px;
+  padding-bottom: 24px;
+  padding-left: 32px;
+}
+
+.menu-wrapper {
+  padding-left: 256px;
 }

@@ -58,8 +58,6 @@ export default class HeaderController {
       }
     }
 
-    console.log(header.elements);
-
     header.elements = newElems;
     await header.save();
     await res.redirect("/admin");

@@ -14,3 +14,21 @@
   color: var(--grey-64);
   background-color: var(--grey-32);
 }
+
+.button-plus {
+  display: flex;
+  background-color: var(--grey-64);
+  border: 16px solid var(--grey-32);
+  transition: border 0.1s ease-in, background-color 0.1s ease-in;
+}
+.button-plus:hover {
+  background-color: var(--grey-32);
+  border: 32px solid var(--grey-64);
+}
+.button-plus img {
+  margin: auto;
+  transition: transform 0.1s ease-in;
+}
+.button-plus:hover img {
+  transform: scale(0.8);
+}

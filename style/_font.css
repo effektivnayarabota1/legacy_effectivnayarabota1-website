@@ -17,6 +17,9 @@
   text-decoration-line: underline;
   color: var(--black);
 }
+.mono a:hover {
+  text-decoration-line: none;
+}
 .mono p {
   text-decoration: none;
   color: var(--grey-32);

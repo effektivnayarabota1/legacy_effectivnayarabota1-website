@@ -4,7 +4,11 @@ import mongoose from "mongoose";
 mongoose.plugin(slug);
 
 const ElementSchema = new mongoose.Schema({
-  desc: {
+  title: {
+    type: String,
+    default: "***",
+  },
+  text: {
     type: String,
     default: "",
   },
@@ -15,14 +19,16 @@ const ElementSchema = new mongoose.Schema({
   slug: {
     slug: "slug",
     type: String,
-    // unique: true,
     forceIdSlug: true,
     permanent: true,
   },
 });
 
 const BlockSchema = new mongoose.Schema({
-  title: String,
+  title: {
+    type: String,
+    default: "**",
+  },
   type: String,
   desc: String,
   img: {
@@ -31,18 +37,18 @@ const BlockSchema = new mongoose.Schema({
   },
   elements: [ElementSchema],
   slug: {
-    slug: "title",
+    slug: "slug",
     type: String,
-    slugPaddingSize: 2,
-    index: true,
-    uniqueGroupSlug: "/_id",
+    forceIdSlug: true,
     permanent: true,
-    // unique: true,
   },
 });
 
 const PageSchema = new mongoose.Schema({
-  title: String,
+  title: {
+    type: String,
+    default: "*",
+  },
   desc: String,
   img: {
     data: Buffer,
@@ -50,11 +56,10 @@ const PageSchema = new mongoose.Schema({
   },
   blocks: [BlockSchema],
   slug: {
-    slug: "title",
+    slug: "slug",
     type: String,
-    slugPaddingSize: 1,
-    index: true,
-    unique: true,
+    forceIdSlug: true,
+    permanent: true,
   },
 });
 
