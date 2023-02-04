@@ -15,20 +15,44 @@
   background-color: var(--grey-32);
 }
 
-.button-plus {
-  display: flex;
-  background-color: var(--grey-64);
-  border: 16px solid var(--grey-32);
+/* BIG */
+.button-big {
+  padding: 8px 32px;
+
+  background-color: var(--white);
+  border: 1px solid var(--grey-64);
   transition: border 0.1s ease-in, background-color 0.1s ease-in;
 }
-.button-plus:hover {
+.button-big h1 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+
+  color: var(--grey-32);
+  transition: color 0.1s ease-in;
+}
+.button-big:hover {
   background-color: var(--grey-32);
-  border: 32px solid var(--grey-64);
+  border: 1px solid var(--grey-32);
 }
-.button-plus img {
-  margin: auto;
-  transition: transform 0.1s ease-in;
+.button-big:hover h1 {
+  color: var(--white);
 }
-.button-plus:hover img {
-  transform: scale(0.8);
+
+/* CREATE */
+.element-create {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--white);
+  border: 1px solid var(--grey-64);
+  transition: border 0.1s ease-in, background-color 0.1s ease-in;
+}
+.element-create:hover {
+  background-color: var(--grey-32);
+  border: 1px solid var(--grey-32);
 }

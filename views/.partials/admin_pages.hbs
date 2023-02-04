@@ -1,6 +1,9 @@
-<form class="menu-wrapper wrapper grid-4">
+<form id="pages" class="menu-wrapper wrapper grid-4">
   {{#each this}}
   	{{> element this}}
   {{/each}}
-  {{> ui/button_plus}}
+  <div class="element-container pages_button-container">
+  	{{> ui/button_plus}}
+	{{> ui/button_big class="save" text="Сохранить"}}
+  </div>
 </form>

@@ -6,8 +6,9 @@
 }
 
 .element-container {
-  position: relative;
   width: 100%;
+  position: relative;
+  overflow: hidden;
   aspect-ratio: 2/3;
 }
 

@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll(".remove-element");
+const buttons = document.querySelectorAll(".element-remove");
 
 for (let button of buttons) {
   button.addEventListener("click", removeElement);

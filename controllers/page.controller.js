@@ -22,8 +22,13 @@ export default class PageController {
   }
 
   static async create(_req, res) {
-    const page = await Page.create({ title: "title" });
-    await res.redirect(`/admin/${page.slug}`);
+    try {
+      await Page.create({});
+      await res.send("OK");
+    } catch (err) {
+      console.log(err);
+      await res.send(err);
+    }
   }
 
   static async update(req, res) {

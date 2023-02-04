@@ -1,13 +1,25 @@
-const button = document.querySelector(".create-element");
+const buttons = document.querySelectorAll(".element-create");
 
-button.addEventListener("click", createElement);
+for (let button of buttons) {
+  button.addEventListener("click", createElement);
+}
 
 export default async function createElement(e) {
   e.preventDefault();
+  let url = "/admin";
 
-  await fetch(`/admin/header/create`, {
-    method: "GET",
-  });
+  const type = this.parentNode.parentNode.id;
+  if (type == "pages") {
+    url += "/page/create";
+  }
+  console.log(url);
 
-  window.location.reload();
+  try {
+    await fetch(url, {
+      method: "POST",
+    });
+    window.location.reload();
+  } catch (err) {
+    console.log(err);
+  }
 }

@@ -40,6 +40,9 @@ router.get("/logout", (req, res) => {
 router.get("/", (req, res) => {
   PageController.index(req, res);
 });
+router.post("/page/create", (_req, res) => {
+  PageController.create(_req, res);
+});
 
 //
 // router.get("/header", (req, res) => {
