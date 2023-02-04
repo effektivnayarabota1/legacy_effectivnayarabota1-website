@@ -4,59 +4,77 @@ import mongoose from "mongoose";
 mongoose.plugin(slug);
 
 const ElementSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    default: "***",
+  },
   desc: {
     type: String,
-    default: "",
+    default: "***",
   },
   img: {
     data: Buffer,
     contentType: String,
   },
-  slug: {
-    slug: "slug",
-    type: String,
-    // unique: true,
-    forceIdSlug: true,
-    permanent: true,
-  },
+  // slug: {
+  //   slug: "slug",
+  //   type: String,
+  //   forceIdSlug: true,
+  //   permanent: true,
+  // },
 });
 
 const BlockSchema = new mongoose.Schema({
-  title: String,
   type: String,
-  desc: String,
+  title: {
+    type: String,
+    default: "**",
+  },
+  desc: {
+    type: String,
+    default: "**",
+  },
   img: {
     data: Buffer,
     contentType: String,
   },
+  // slug: {
+  //   slug: "slug",
+  //   type: String,
+  //   forceIdSlug: true,
+  //   permanent: true,
+  // },
   elements: [ElementSchema],
-  slug: {
-    slug: "title",
-    type: String,
-    slugPaddingSize: 2,
-    index: true,
-    uniqueGroupSlug: "/_id",
-    permanent: true,
-    // unique: true,
-  },
 });
 
-const PageSchema = new mongoose.Schema({
-  title: String,
-  desc: String,
-  img: {
-    data: Buffer,
-    contentType: String,
+const PageSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      default: "*",
+    },
+    desc: {
+      type: String,
+      default: "*",
+    },
+    img: {
+      data: Buffer,
+      contentType: String,
+    },
+    position: {
+      type: Number,
+      default: Infinity,
+    },
+    // slug: {
+    //   slug: "slug",
+    //   type: String,
+    //   forceIdSlug: true,
+    //   permanent: true,
+    // },
+    blocks: [BlockSchema],
   },
-  blocks: [BlockSchema],
-  slug: {
-    slug: "title",
-    type: String,
-    slugPaddingSize: 1,
-    index: true,
-    unique: true,
-  },
-});
+  { timestamps: true }
+);
 
 const Page = new mongoose.model("Page", PageSchema);
 export default Page;

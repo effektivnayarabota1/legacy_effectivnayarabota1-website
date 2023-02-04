@@ -50,6 +50,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/", indexRoutes);
 app.use("/admin", checkAuth, adminRoutes);
+app.use("/assets", express.static(__dirname + "/assets"));
+app.use("/style", express.static(__dirname + "/style"));
 app.use("/script", express.static(__dirname + "/script"));
 
 // HBS SETUP

@@ -1,0 +1,9 @@
+<form id="pages" class="menu-wrapper wrapper grid-4">
+  {{#each this}}
+  	{{> element this}}
+  {{/each}}
+  <div class="element-container pages_button-container">
+  	{{> ui/button_plus}}
+	{{> ui/button_big class="element-reorder" text="Reorder"}}
+  </div>
+</form>

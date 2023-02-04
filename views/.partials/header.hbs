@@ -1,0 +1,15 @@
+<header class="header">
+  <div class="header_title">
+    <h1><a href="/admin/header">{{this.title}}</a></h1>
+  </div>
+
+  <div class="header_bcg-container">
+    {{#each elements}}
+      {{#if (is-image this.img)}}
+        <div class="header_bcg-image">
+          <img src={{base64 this.img}} alt="header background" />
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+</header>
