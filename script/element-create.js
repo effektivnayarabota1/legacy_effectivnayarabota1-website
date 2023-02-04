@@ -8,11 +8,12 @@ export default async function createElement(e) {
   e.preventDefault();
   let url = "/admin";
 
-  const type = this.parentNode.parentNode.id;
+  const form = this.closest("form");
+  const type = form.id;
+
   if (type == "pages") {
     url += "/page/create";
   }
-  console.log(url);
 
   try {
     await fetch(url, {

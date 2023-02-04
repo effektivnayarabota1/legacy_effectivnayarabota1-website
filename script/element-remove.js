@@ -8,14 +8,15 @@ export default async function removeElement(e) {
   e.preventDefault();
   let url = "/admin";
 
-  const elementContainer = this.parentNode.parentNode.parentNode;
+  const elementContainer = this.closest(".element-container");
   const id = elementContainer.id;
 
-  const type = elementContainer.parentNode.id;
+  const form = this.closest("form");
+  const type = form.id;
+
   if (type == "pages") {
     url += `/page/${id}`;
   }
-  console.log(url);
 
   try {
     await fetch(url, {

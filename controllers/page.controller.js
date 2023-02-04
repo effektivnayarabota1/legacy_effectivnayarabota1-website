@@ -50,6 +50,10 @@ export default class PageController {
     // await res.redirect(303, "/admin");
   }
 
+  static async reorder(req, res) {
+    console.log("reorder");
+  }
+
   // static async update(req, res) {
   //   let pageSlug = req.params.slug;
   //   let page = await Page.findOne({ slug: pageSlug });

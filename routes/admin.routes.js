@@ -40,11 +40,14 @@ router.get("/logout", (req, res) => {
 router.get("/", (req, res) => {
   PageController.index(req, res);
 });
-router.post("/page/create", (_req, res) => {
-  PageController.create(_req, res);
+router.post("/page/create", (req, res) => {
+  PageController.create(req, res);
 });
-router.delete("/page/:id", (_req, res) => {
-  PageController.remove(_req, res);
+router.delete("/page/:id", (req, res) => {
+  PageController.remove(req, res);
+});
+router.put("/page/reorder", (req, res) => {
+  PageController.reorder(req, res);
 });
 
 //

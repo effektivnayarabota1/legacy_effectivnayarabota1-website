@@ -1,5 +1,5 @@
-const upButtons = document.querySelectorAll(".up-element");
-const downButtons = document.querySelectorAll(".down-element");
+const upButtons = document.querySelectorAll(".element-move-up");
+const downButtons = document.querySelectorAll(".element-move-down");
 
 for (let button of upButtons) {
   button.addEventListener("click", moveElementUp);
@@ -10,27 +10,25 @@ for (let button of downButtons) {
 }
 
 function moveElementUp(e) {
-  const regex = /element-container/gm;
   e.preventDefault();
+  console.log("up");
 
-  const elementContaiener = this.parentNode.parentNode.parentNode;
-  const prevElementContainer = elementContaiener.previousElementSibling;
-  const blockContainer = elementContaiener.parentNode;
+  const form = this.closest("form");
 
-  if (regex.exec(prevElementContainer.className)) {
-    blockContainer.insertBefore(elementContaiener, prevElementContainer);
-  }
+  const elementContainer = this.closest(".element-container");
+  const prevElementContainer = elementContainer.previousElementSibling;
+
+  if (prevElementContainer && prevElementContainer.nodeName == "FIELDSET")
+    form.insertBefore(elementContainer, prevElementContainer);
 }
 
 async function moveElementDown(e) {
-  const regex = /element-container/gm;
   e.preventDefault();
+  const form = this.closest("form");
 
-  const elementContaiener = this.parentNode.parentNode.parentNode;
-  const nextElementContainer = elementContaiener.nextElementSibling;
-  const blockContainer = elementContaiener.parentNode;
+  const elementContainer = this.closest(".element-container");
+  const nextElementContainer = elementContainer.nextElementSibling;
 
-  if (!!nextElementContainer && regex.exec(nextElementContainer.className)) {
-    blockContainer.insertBefore(nextElementContainer, elementContaiener);
-  }
+  if (nextElementContainer && nextElementContainer.nodeName == "FIELDSET")
+    form.insertBefore(nextElementContainer, elementContainer);
 }
