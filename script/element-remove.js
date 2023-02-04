@@ -6,12 +6,23 @@ for (let button of buttons) {
 
 export default async function removeElement(e) {
   e.preventDefault();
-  const elementContaiener = this.parentNode.parentNode.parentNode;
-  const elementSlug = elementContaiener.id;
+  let url = "/admin";
 
-  await fetch(`/admin/header/${elementSlug}`, {
-    method: "DELETE",
-  });
+  const elementContainer = this.parentNode.parentNode.parentNode;
+  const id = elementContainer.id;
 
-  window.location.reload();
+  const type = elementContainer.parentNode.id;
+  if (type == "pages") {
+    url += `/page/${id}`;
+  }
+  console.log(url);
+
+  try {
+    await fetch(url, {
+      method: "DELETE",
+    });
+    window.location.reload();
+  } catch (err) {
+    console.log(err);
+  }
 }

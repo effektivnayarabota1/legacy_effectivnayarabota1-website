@@ -43,6 +43,9 @@ router.get("/", (req, res) => {
 router.post("/page/create", (_req, res) => {
   PageController.create(_req, res);
 });
+router.delete("/page/:id", (_req, res) => {
+  PageController.remove(_req, res);
+});
 
 //
 // router.get("/header", (req, res) => {
