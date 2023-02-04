@@ -47,27 +47,34 @@ const BlockSchema = new mongoose.Schema({
   elements: [ElementSchema],
 });
 
-const PageSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    default: "*",
+const PageSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      default: "*",
+    },
+    desc: {
+      type: String,
+      default: "*",
+    },
+    img: {
+      data: Buffer,
+      contentType: String,
+    },
+    position: {
+      type: Number,
+      default: Infinity,
+    },
+    // slug: {
+    //   slug: "slug",
+    //   type: String,
+    //   forceIdSlug: true,
+    //   permanent: true,
+    // },
+    blocks: [BlockSchema],
   },
-  desc: {
-    type: String,
-    default: "*",
-  },
-  img: {
-    data: Buffer,
-    contentType: String,
-  },
-  // slug: {
-  //   slug: "slug",
-  //   type: String,
-  //   forceIdSlug: true,
-  //   permanent: true,
-  // },
-  blocks: [BlockSchema],
-});
+  { timestamps: true }
+);
 
 const Page = new mongoose.model("Page", PageSchema);
 export default Page;

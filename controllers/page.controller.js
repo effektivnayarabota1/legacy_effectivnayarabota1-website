@@ -11,7 +11,7 @@ const __dirname = path.resolve();
 
 export default class PageController {
   static async index(req, res) {
-    const pages = await Page.find({});
+    const pages = await Page.find({}).sort({ position: 1 });
     const header = await Header.findOne({});
     const footer = await Footer.findOne({});
     await res.render("admin/index", {
@@ -51,7 +51,15 @@ export default class PageController {
   }
 
   static async reorder(req, res) {
-    console.log("reorder");
+    const newOrder = req.body;
+
+    await newOrder.forEach(async (id, index) => {
+      const page = await Page.findOne({ _id: id });
+      page.position = index;
+      await page.save();
+    });
+
+    await res.send("OK");
   }
 
   // static async update(req, res) {
