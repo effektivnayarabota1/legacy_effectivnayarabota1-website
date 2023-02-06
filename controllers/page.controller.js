@@ -62,6 +62,12 @@ export default class PageController {
     await res.send("OK");
   }
 
+  static async indexPage(req, res) {
+    let id = req.params.id;
+    const page = await Page.findOne({ _id: id });
+    await res.render("admin/page", { page });
+  }
+
   // static async update(req, res) {
   //   let pageSlug = req.params.slug;
   //   let page = await Page.findOne({ slug: pageSlug });

@@ -1,0 +1,18 @@
+<form id="{{this.id}}" class="menu-wrapper wrapper grid-4">
+	<div class="element-container meta-container" >
+		<input type="text" readonly value="{{this.id}}" placeholder="id">
+		<input type="text" value="{{this.title}}" placeholder="title">
+		<textarea placeholder="desc">{{this.desc}}</textarea>
+		<div class="royal-pattern" ></div>
+	</div>
+	<div class="element-container some" >
+		{{>ui/input_file this}}
+		{{>ui/input_color this}}
+  		{{> element this }}
+	</div>
+  	{{> element this }}
+	<div class="element-container meta-container">
+		{{>ui/button_big class="save-meta" text="save-meta"}}
+		<div class="royal-pattern" ></div>
+	</div>
+</form>

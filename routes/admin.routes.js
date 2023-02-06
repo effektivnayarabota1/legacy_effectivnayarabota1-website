@@ -50,7 +50,10 @@ router.put("/page/reorder", (req, res) => {
   PageController.reorder(req, res);
 });
 
-//
+router.get("/:id", (req, res) => {
+  PageController.indexPage(req, res);
+});
+
 // router.get("/header", (req, res) => {
 //   HeaderController.edit(req, res);
 // });

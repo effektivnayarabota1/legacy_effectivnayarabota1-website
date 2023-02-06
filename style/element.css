@@ -12,6 +12,16 @@
   aspect-ratio: 2/3;
 }
 
+.some {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.some .element-container {
+  aspect-ratio: 3/2;
+}
+
 .element_abs-container {
   position: absolute;
   width: 100%;
