@@ -67,6 +67,8 @@
 
   object-fit: cover;
 }
-.element_img-container h1 {
-  color: var(--grey-64);
+.empty {
+  background-image: url("/assets/empty.png");
+  background-repeat: repeat;
+  background-position: center center;
 }
