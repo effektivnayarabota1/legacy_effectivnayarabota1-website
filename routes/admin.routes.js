@@ -53,6 +53,9 @@ router.put("/page/reorder", (req, res) => {
 router.get("/:id", (req, res) => {
   PageController.indexPage(req, res);
 });
+router.post("/meta/:id", (req, res) => {
+  PageController.meta(req, res);
+});
 
 // router.get("/header", (req, res) => {
 //   HeaderController.edit(req, res);

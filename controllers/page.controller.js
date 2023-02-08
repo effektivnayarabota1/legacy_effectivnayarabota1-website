@@ -68,6 +68,21 @@ export default class PageController {
     await res.render("admin/page", { page });
   }
 
+  static async meta(req, res) {
+    let id = req.params.id;
+    const page = await Page.findById(id);
+
+    const { title, desc, color } = req.body;
+
+    page.title = title;
+    page.desc = desc;
+    page.color = color;
+
+    await page.save();
+
+    await res.redirect(`/admin/${id}`);
+  }
+
   // static async update(req, res) {
   //   let pageSlug = req.params.slug;
   //   let page = await Page.findOne({ slug: pageSlug });

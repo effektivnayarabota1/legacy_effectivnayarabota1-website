@@ -1,11 +1,11 @@
-<form id="{{this.id}}" class="menu-wrapper wrapper grid-4">
+<form action="/admin/meta/{{this.id}}" method="post" id="{{this.id}}" class="menu-wrapper wrapper grid-4">
 	<div class="element-container meta-container" >
 		<input type="text" readonly value="{{this.id}}" placeholder="id">
-		<input type="text" value="{{this.title}}" placeholder="title">
-		<textarea placeholder="desc">{{this.desc}}</textarea>
+		<input type="text" name="title" value="{{this.title}}" placeholder="title">
+		<textarea placeholder="desc" name="desc">{{this.desc}}</textarea>
 		<div class="royal-pattern" ></div>
 	</div>
-	<div class="element-container some" >
+	<div class="element-container element-container_group" >
 		{{>ui/input_file this}}
 		{{>ui/input_color this}}
   		{{> element this }}
