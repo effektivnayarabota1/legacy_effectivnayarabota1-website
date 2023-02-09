@@ -9,10 +9,7 @@ import ElementController from "../controllers/element.controller.js";
 import HeaderController from "../controllers/header.controller.js";
 import FooterController from "../controllers/footer.controller.js";
 
-import uploadCover from "../middleware/uploadCover.middleware.js";
-import uploadElems from "../middleware/uploadElems.middleware.js";
-import uploadHeader from "../middleware/uploadHeader.middleware.js";
-import uploadFooter from "../middleware/uploadFooter.middleware.js";
+import upload from "../middleware/upload.middleware.js";
 
 export const router = express.Router();
 
@@ -53,7 +50,7 @@ router.put("/page/reorder", (req, res) => {
 router.get("/:id", (req, res) => {
   PageController.indexPage(req, res);
 });
-router.post("/meta/:id", (req, res) => {
+router.post("/meta/:pageId", upload.single("image"), (req, res) => {
   PageController.meta(req, res);
 });
 

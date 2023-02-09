@@ -69,7 +69,7 @@ export default class PageController {
   }
 
   static async meta(req, res) {
-    let id = req.params.id;
+    let id = req.params.pageId;
     const page = await Page.findById(id);
 
     const { title, desc, color } = req.body;
@@ -77,6 +77,20 @@ export default class PageController {
     page.title = title;
     page.desc = desc;
     page.color = color;
+
+    console.log(req.file);
+
+    if (!!req.file) {
+      const { mimetype, destination, filename } = req.file;
+
+      page.img = {
+        data: fs.readFileSync(
+          // path.join(`${__dirname}/uploads/${pageSlug}/${req.file.filename}`)
+          path.join(destination, filename)
+        ),
+        contentType: mimetype,
+      };
+    }
 
     await page.save();
 
