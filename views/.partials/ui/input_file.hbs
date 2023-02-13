@@ -7,9 +7,5 @@
     accept="image/*"
     hidden
   />
-  {{#if (is-image image)}}
-    <img src={{base64 image}} alt="element image" />
-  {{else}}
-    <img src="/assets/input_file.svg" />
-  {{/if}}
+  <img src="/assets/input_file.svg" />
 </label>

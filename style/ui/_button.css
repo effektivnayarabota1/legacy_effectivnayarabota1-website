@@ -9,6 +9,9 @@
   color: var(--grey-32);
   background-color: var(--grey-64);
 }
+a .button-text {
+  width: 100%;
+}
 
 .button-text:hover {
   color: var(--grey-64);

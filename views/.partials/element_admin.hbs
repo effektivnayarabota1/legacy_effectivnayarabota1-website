@@ -1,0 +1,36 @@
+<fieldset id="{{this.id}}" class="element-container">
+	<div class="element_abs-container" >
+		<div class="element_control-container">
+			<div class="move-container">
+				{{> ui/button_small text="▲" id=this.slug class="element-move-up"}}
+				{{> ui/button_small text="▼" class="element-move-down"}}
+			</div>
+			<a href="/admin/{{this.id}}" >{{> ui/button_small text=this.id}}</a>
+			{{> ui/button_small text="✕" class="element-remove"}}
+		</div>
+		<div>
+		</div>
+		<div class="element_text-container mono">
+			<input type="text" name="title" value="{{this.title}}" placeholder="title">
+			<textarea placeholder="desc" name="desc">{{this.desc}}</textarea>
+		</div>
+	</div>
+
+	<div id="{{this.id}}" class="element_img-container" style="border-color: {{this.color}}" >
+		<label class="element-container element_file-label">
+  			<input
+    			type="file"
+    			id="{{id}}"
+    			class="element_file-input"
+    			name="image"
+    			accept="image/*"
+    			hidden
+  			/>
+    		{{#if (is-image this.img)}}
+    			<img src={{base64 this.img}} alt="element image" />
+    		{{else}}
+				<img src="/assets/empty.png" >
+    		{{/if}}
+		</label>
+      </div>
+</fieldset>

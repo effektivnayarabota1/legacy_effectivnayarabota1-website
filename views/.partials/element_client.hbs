@@ -1,0 +1,20 @@
+<div id="{{this.id}}" class="element-container client">
+  <div class="element_abs-container">
+    <div class="element_text-container mono">
+      <h1><a href="admin/{{this.id}}">{{this.title}}</a></h1>
+      <p>{{this.desc}}</p>
+    </div>
+  </div>
+
+  <div
+    id="{{this.id}}"
+    class="element_img-container"
+    style="border-color: {{this.color}}"
+  >
+    {{#if (is-image this.img)}}
+      <img src={{base64 this.img}} alt="element image" />
+    {{else}}
+      <img src="/assets/empty.png" />
+    {{/if}}
+  </div>
+</div>

@@ -1,6 +1,11 @@
 .empty {
   float: bottom;
 }
+
+.element_control-container a {
+  width: 100%;
+}
+
 .move-container {
   display: flex;
 }
@@ -10,6 +15,9 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 2/3;
+}
+.element-container.client .element_abs-container {
+  justify-content: flex-end;
 }
 
 .element-container_group {
@@ -50,8 +58,10 @@
   flex-direction: column;
   gap: 12px;
 
-  background-color: var(--white);
-  opacity: 80%;
+  background-color: rgba(255, 255, 255, 0.8);
+
+  /* background-color: var(--white); */
+  /* opacity: 80%; */
 }
 .element-container_group .element_text-container {
   max-height: 36%;
