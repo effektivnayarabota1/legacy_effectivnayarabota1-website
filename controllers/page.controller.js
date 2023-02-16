@@ -78,8 +78,6 @@ export default class PageController {
     page.desc = desc;
     page.color = color;
 
-    console.log(req.file);
-
     if (!!req.file) {
       const { mimetype, destination, filename } = req.file;
 

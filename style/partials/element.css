@@ -17,7 +17,7 @@
   aspect-ratio: 2/3;
 }
 .element-container.client .element_abs-container {
-  justify-content: flex-end;
+  flex-direction: column-reverse;
 }
 
 .element-container_group {
@@ -72,7 +72,7 @@
   height: 100%;
   overflow: hidden;
 
-  border: 1px solid var(--grey-64);
+  border: 2px solid var(--grey-64);
   transition: border 0.1s ease-in;
 }
 .element_img-container:hover {

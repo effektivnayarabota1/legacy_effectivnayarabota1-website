@@ -11,14 +11,16 @@ for (let button of downButtons) {
 
 function moveElementUp(e) {
   e.preventDefault();
-  console.log("up");
-
   const form = this.closest("form");
 
   const elementContainer = this.closest(".element-container");
   const prevElementContainer = elementContainer.previousElementSibling;
 
-  if (prevElementContainer && prevElementContainer.nodeName == "FIELDSET")
+  if (
+    prevElementContainer &&
+    prevElementContainer.className.includes("element-container") &&
+    !prevElementContainer.className.includes("pages_button-container")
+  )
     form.insertBefore(elementContainer, prevElementContainer);
 }
 
@@ -29,6 +31,10 @@ async function moveElementDown(e) {
   const elementContainer = this.closest(".element-container");
   const nextElementContainer = elementContainer.nextElementSibling;
 
-  if (nextElementContainer && nextElementContainer.nodeName == "FIELDSET")
+  if (
+    nextElementContainer &&
+    nextElementContainer.className.includes("element-container") &&
+    !nextElementContainer.className.includes("pages_button-container")
+  )
     form.insertBefore(nextElementContainer, elementContainer);
 }

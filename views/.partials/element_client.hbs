@@ -4,6 +4,12 @@
       <h1><a href="admin/{{this.id}}">{{this.title}}</a></h1>
       <p>{{this.desc}}</p>
     </div>
+
+	{{#if @partial-block}}
+    	<div class="element_control-container">
+			{{> @partial-block }}
+    	</div>
+	{{/if}}
   </div>
 
   <div

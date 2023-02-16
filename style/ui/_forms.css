@@ -23,7 +23,7 @@ textarea:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px dashed var(--grey-64);
+  border: 2px dashed var(--grey-64);
   transition: border 0.1s ease-in;
 }
 .input-file_container:hover {

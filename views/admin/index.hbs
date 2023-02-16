@@ -2,7 +2,9 @@
 
 <form id="pages" class="menu-wrapper wrapper grid-4">
   {{#each pages}}
-  	{{> element_admin }}
+  	{{#> element_client }}
+		{{> ui/options_bar}}
+	{{/ element_client}}
   {{/each}}
   <div class="element-container pages_button-container">
 	{{> ui/button_big class="element-reorder" text="Reorder"}}

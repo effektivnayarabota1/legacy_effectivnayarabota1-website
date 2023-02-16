@@ -5,10 +5,11 @@ button.addEventListener("click", reorderElements);
 async function reorderElements(e) {
   e.preventDefault();
   const form = this.parentNode.parentNode;
-  const elements = form.querySelectorAll("fieldset");
+  let elements = form.querySelectorAll(".element-container");
+
   let newOrder = [];
   for (let element of elements) {
-    newOrder.push(element.id);
+    if (!!element.id) newOrder.push(element.id);
   }
 
   try {
