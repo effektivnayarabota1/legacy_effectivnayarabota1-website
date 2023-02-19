@@ -1,28 +1,30 @@
 {{> form_meta page}}
 
-<div class="blocks dynamic_container">
+<div id="{{page.id}}" class="blocks dynamic_container">
 	{{#each page.blocks}}
-		<div class="menu-wrapper wrapper block-container dynamic_element" >
+		<div id="{{this.id}}" class="menu-wrapper wrapper block-container dynamic_element" >
 			{{> block_options pageId=../page.id blockId=id}}
 			<div class="grid-main block_element-container {{this.type}}">
 				{{> (block . this) }}
 			</div>
 		</div>
 	{{/each}}
+
+	<div class="page_buttons grid-main menu-wrapper wrapper" >
+		<div class="block-create_container" >
+			{{>ui/button_big class="block-create image" text="Изображине"}}
+			{{>ui/button_big class="block-create text" text="Текст"}}
+			{{>ui/button_big class="block-create gallery" text="Галлерея"}}
+		</div>
+		<div>
+			{{>ui/button_big class="dynamic_reorder" text="Reorder"}}
+		</div>
+	</div>
 </div>
 
-<div class="page_buttons grid-main menu-wrapper wrapper" >
-	<div class="block-create_container" >
-		{{>ui/button_big class="block-create image" text="Изображине"}}
-		{{>ui/button_big class="block-create text" text="Текст"}}
-		{{>ui/button_big class="block-create gallery" text="Галлерея"}}
-	</div>
-	<div>
-		{{>ui/button_big class="block-reorder" text="Reorder"}}
-	</div>
-</div>
 
 <script type="module" src="/script/dynamic_move.js"></script>
+<script type="module" src="/script/dynamic_reorder.js"></script>
 
 <script type="module" src="/script/block-create.js"></script>
 <!-- <script type="module" src="/script/element-remove.js"></script> -->

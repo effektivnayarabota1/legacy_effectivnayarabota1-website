@@ -16,6 +16,10 @@ const ElementSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
+  position: {
+    type: Number,
+    default: Infinity,
+  },
   // slug: {
   //   slug: "slug",
   //   type: String,
@@ -37,6 +41,10 @@ const BlockSchema = new mongoose.Schema({
   img: {
     data: Buffer,
     contentType: String,
+  },
+  position: {
+    type: Number,
+    default: Infinity,
   },
   // slug: {
   //   slug: "slug",

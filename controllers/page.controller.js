@@ -50,21 +50,43 @@ export default class PageController {
     // await res.redirect(303, "/admin");
   }
 
-  static async reorder(req, res) {
+  static async reorderIndex(req, res) {
     const newOrder = req.body;
 
     await newOrder.forEach(async (id, index) => {
-      const page = await Page.findOne({ _id: id });
+      const page = await Page.findById(id);
       page.position = index;
-      await page.save();
     });
+    await page.save();
+    await res.send("OK");
+  }
+
+  static async reorder(req, res) {
+    const { pageId } = req.params;
+    const newOrder = req.body;
+
+    const page = await Page.findById(pageId);
+    const { blocks } = page;
+
+    await newOrder.forEach(async (id, index) => {
+      const block = await blocks.find((block) => {
+        return block._id.toString() == id;
+      });
+      block.position = index;
+    });
+    await page.save();
 
     await res.send("OK");
   }
 
   static async indexPage(req, res) {
     let id = req.params.id;
-    const page = await Page.findById(id);
+    let page = await Page.findById(id);
+
+    await page.blocks.sort((a, b) => {
+      return a.position - b.position;
+    });
+
     await res.render("admin/page", { page });
   }
 

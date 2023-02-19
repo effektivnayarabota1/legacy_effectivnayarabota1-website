@@ -43,10 +43,12 @@ router.post("/page/create", (req, res) => {
 router.delete("/page/:id", (req, res) => {
   PageController.remove(req, res);
 });
-router.put("/page/reorder", (req, res) => {
+router.put("/index/reorder", (req, res) => {
+  PageController.reorderIndex(req, res);
+});
+router.put("/:pageId/reorder", (req, res) => {
   PageController.reorder(req, res);
 });
-
 router.get("/:id", (req, res) => {
   PageController.indexPage(req, res);
 });

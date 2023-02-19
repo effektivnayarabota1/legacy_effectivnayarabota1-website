@@ -14,7 +14,6 @@ function moveElementUp(e) {
   const container = this.closest(".dynamic_container");
 
   const element = this.closest(".dynamic_element");
-  console.log(element);
   const prevElement = element.previousElementSibling;
 
   if (prevElement && prevElement.className.includes("dynamic_element"))
