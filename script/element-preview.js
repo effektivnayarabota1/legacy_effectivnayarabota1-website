@@ -1,5 +1,4 @@
 const inputs = document.querySelectorAll(".element_file-input");
-console.log(inputs);
 
 for (let input of inputs) {
   input.addEventListener("change", readImage);

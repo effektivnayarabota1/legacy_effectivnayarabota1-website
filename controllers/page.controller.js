@@ -64,7 +64,7 @@ export default class PageController {
 
   static async indexPage(req, res) {
     let id = req.params.id;
-    const page = await Page.findOne({ _id: id });
+    const page = await Page.findById(id);
     await res.render("admin/page", { page });
   }
 

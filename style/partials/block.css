@@ -1,0 +1,29 @@
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.block_control-container {
+  grid-column: 1 / 4;
+}
+
+.block-create_container {
+  grid-column: 1/3;
+  display: flex;
+  gap: 32px;
+}
+
+/* TEXT */
+.text_element-container {
+  grid-column: 1/3;
+  max-width: 720px;
+  width: 100%;
+  justify-self: center;
+}
+
+/* GALLERY */
+.gallery_element-container {
+  width: 100%;
+  aspect-ratio: 1/1;
+}

@@ -1,7 +1,29 @@
 {{> form_meta page}}
 
-<script type="module" src="/script/element-create.js"></script>
-<script type="module" src="/script/element-remove.js"></script>
-<script type="module" src="/script/element-move.js"></script>
+<div class="blocks">
+	{{#each page.blocks}}
+		<div class="menu-wrapper wrapper" >
+    		<div class="block_control-container grid-main">
+				{{> ui/options_block this}}
+    		</div>
+			{{> (block . this) }}
+		</div>
+	{{/each}}
+</div>
+
+<div class="page_buttons grid-main menu-wrapper wrapper" >
+	<div class="block-create_container" >
+		{{>ui/button_big class="block-create image" text="Изображине"}}
+		{{>ui/button_big class="block-create text" text="Текст"}}
+		{{>ui/button_big class="block-create gallery" text="Галлерея"}}
+	</div>
+	<div>
+		{{>ui/button_big class="block-reorder" text="Reorder"}}
+	</div>
+</div>
+
+<script type="module" src="/script/block-create.js"></script>
+<!-- <script type="module" src="/script/element-remove.js"></script> -->
+<!-- <script type="module" src="/script/element-move.js"></script> -->
 <!-- <script type="module" src="/script/element-reorder.js"></script> -->
-<script type="module" src="/script/element-preview.js"></script>
+<!-- <script type="module" src="/script/element-preview.js"></script> -->
