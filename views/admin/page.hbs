@@ -1,12 +1,12 @@
 {{> form_meta page}}
 
-<div class="blocks">
+<div class="blocks dynamic_container">
 	{{#each page.blocks}}
-		<div class="menu-wrapper wrapper" >
-    		<div class="block_control-container grid-main">
-				{{> ui/options_block this}}
-    		</div>
-			{{> (block . this) }}
+		<div class="menu-wrapper wrapper block-container dynamic_element" >
+			{{> block_options pageId=../page.id blockId=id}}
+			<div class="grid-main block_element-container {{this.type}}">
+				{{> (block . this) }}
+			</div>
 		</div>
 	{{/each}}
 </div>
@@ -22,8 +22,9 @@
 	</div>
 </div>
 
+<script type="module" src="/script/dynamic_move.js"></script>
+
 <script type="module" src="/script/block-create.js"></script>
 <!-- <script type="module" src="/script/element-remove.js"></script> -->
-<!-- <script type="module" src="/script/element-move.js"></script> -->
 <!-- <script type="module" src="/script/element-reorder.js"></script> -->
 <!-- <script type="module" src="/script/element-preview.js"></script> -->

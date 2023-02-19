@@ -1,9 +1,9 @@
 {{>header header}}
 
-<form id="pages" class="menu-wrapper wrapper grid-4">
+<form id="pages" class="menu-wrapper wrapper grid-4 dynamic_container">
   {{#each pages}}
   	{{#> element_client }}
-		{{> ui/options_element}}
+		{{> element_options}}
 	{{/ element_client}}
   {{/each}}
   <div class="element-container pages_button-container">
@@ -14,7 +14,9 @@
 
 <h1>footer</h1>
 
-<script type="module" src="/script/element-create.js"></script>
-<script type="module" src="/script/element-remove.js"></script>
-<script type="module" src="/script/element-move.js"></script>
-<script type="module" src="/script/element-reorder.js"></script>
+<script type="module" src="/script/dynamic_move.js"></script>
+
+<!-- <script type="module" src="/script/element-create.js"></script> -->
+<!-- <script type="module" src="/script/element-remove.js"></script> -->
+<!-- <script type="module" src="/script/element-move.js"></script> -->
+<!-- <script type="module" src="/script/element-reorder.js"></script> -->

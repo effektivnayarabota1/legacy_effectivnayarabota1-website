@@ -4,6 +4,12 @@
   gap: 64px;
 }
 
+.block-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 .block_control-container {
   grid-column: 1 / 4;
 }
