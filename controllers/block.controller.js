@@ -17,6 +17,30 @@ export default class BlockController {
     await res.send("OK");
   }
 
+  static async remove(req, res) {
+    const pageId = req.params.pageId;
+    const blockId = req.params.blockId;
+
+    try {
+      const page = await Page.findById(pageId);
+      const block = page.blocks.id(blockId);
+      await block.remove();
+      await page.save();
+      await res.send("OK");
+    } catch (err) {
+      await res.send(err);
+    }
+
+    // const page = await Page.findOne({ slug: pageSlug });
+    // const pageDir = `${__dirname}/uploads/${pageSlug}/`;
+    // await page.remove();
+    // await fsPromises.rm(pageDir, {
+    //   force: true,
+    //   recursive: true,
+    // });
+    // await res.redirect(303, "/admin");
+  }
+
   // static async editor(req, res) {
   //   const pageSlug = req.params.pageSlug;
   //   const blockSlug = req.params.blockSlug;

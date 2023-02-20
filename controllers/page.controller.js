@@ -31,10 +31,10 @@ export default class PageController {
   }
 
   static async remove(req, res) {
-    const id = req.params.id;
+    const pageId = req.params.pageId;
 
     try {
-      await Page.deleteOne({ _id: id });
+      await Page.deleteOne({ _id: pageId });
       await res.send("OK");
     } catch (err) {
       await res.send(err);
@@ -56,8 +56,8 @@ export default class PageController {
     await newOrder.forEach(async (id, index) => {
       const page = await Page.findById(id);
       page.position = index;
+      await page.save();
     });
-    await page.save();
     await res.send("OK");
   }
 

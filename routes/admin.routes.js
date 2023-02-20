@@ -37,10 +37,10 @@ router.get("/logout", (req, res) => {
 router.get("/", (req, res) => {
   PageController.index(req, res);
 });
-router.post("/page/create", (req, res) => {
+router.post("/", (req, res) => {
   PageController.create(req, res);
 });
-router.delete("/page/:id", (req, res) => {
+router.delete("/:pageId", (req, res) => {
   PageController.remove(req, res);
 });
 router.put("/index/reorder", (req, res) => {
@@ -57,8 +57,11 @@ router.post("/meta/:pageId", upload.single("image"), (req, res) => {
 });
 
 // BLOCK ROUTES
-router.post("/:pageId/:type/create", (req, res) => {
+router.post("/:pageId/:type", (req, res) => {
   BlockController.create(req, res);
+});
+router.delete("/:pageId/:blockId", (req, res) => {
+  BlockController.remove(req, res);
 });
 
 // router.get("/header", (req, res) => {
