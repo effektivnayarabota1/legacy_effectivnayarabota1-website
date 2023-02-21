@@ -1,0 +1,20 @@
+<div class="page_buttons grid-main menu-wrapper wrapper" >
+	<div class="block-create_container" >
+		{{>ui/button_big class="dynamic_create image" text="Изображине"}}
+		{{>ui/button_big class="dynamic_create text" text="Текст"}}
+		{{>ui/button_big class="dynamic_create gallery" text="Галлерея"}}
+	</div>
+</div>
+
+<div id="{{block.id}}" class="elements menu-wrapper wrapper grid-4 dynamic_container">
+	{{#each block.elements}}
+  		{{#> element_admin }}
+			{{> element_options}}
+		{{/ element_admin}}
+	{{/each}}
+
+  	<div class="element-container pages_button-container">
+		{{> ui/button_big class="dynamic_reorder" text="Reorder"}}
+  		{{> ui/button_plus}}
+  	</div>
+</div>

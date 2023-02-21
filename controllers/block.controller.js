@@ -7,6 +7,20 @@ import fsPromises from "fs/promises";
 const __dirname = path.resolve();
 
 export default class BlockController {
+  static async index(req, res) {
+    const { pageId, blockId } = req.params;
+
+    const page = await Page.findById(pageId);
+    const block = await page.blocks.find((block) => {
+      return block._id.toString() == blockId;
+    });
+    await block.elements.sort((a, b) => {
+      return a.position - b.position;
+    });
+
+    await res.render("admin/block", { block });
+  }
+
   static async create(req, res) {
     const { pageId, type } = req.params;
 

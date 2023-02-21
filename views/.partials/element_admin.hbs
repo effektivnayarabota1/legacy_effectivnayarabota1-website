@@ -1,10 +1,11 @@
-<fieldset id="{{this.id}}" class="element-container">
+<fieldset id="{{this.id}}" class="element-container admin">
   <div class="element_abs-container">
-    <div class="element_control-container">
-      {{ui/options_bar}}
-    </div>
-    <div>
-    </div>
+	{{#if @partial-block}}
+    	<div class="element_control-container">
+			{{> @partial-block }}
+    	</div>
+	{{/if}}
+
     <div class="element_text-container mono">
       <input
         type="text"

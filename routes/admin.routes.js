@@ -57,6 +57,9 @@ router.post("/meta/:pageId", upload.single("image"), (req, res) => {
 });
 
 // BLOCK ROUTES
+router.get("/:pageId/:blockId", (req, res) => {
+  BlockController.index(req, res);
+});
 router.post("/:pageId/:type", (req, res) => {
   BlockController.create(req, res);
 });
