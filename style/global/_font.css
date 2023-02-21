@@ -3,7 +3,9 @@
 
 .mono,
 .mono h1,
-.mono p {
+.mono p,
+input,
+textarea {
   font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 400;

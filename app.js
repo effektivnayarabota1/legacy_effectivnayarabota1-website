@@ -73,14 +73,9 @@ hbs.registerHelper("preview", function (data) {
     return " ";
   }
 });
-hbs.registerHelper("isImage", (blockType) => {
-  if (blockType === "image") return true;
-});
-hbs.registerHelper("isText", (blockType) => {
-  if (blockType === "text") return true;
-});
-hbs.registerHelper("isGallery", (blockType) => {
-  if (blockType === "gallery") return true;
+hbs.registerHelper("block", function (context) {
+  const type = context.type;
+  return `block_${type}`;
 });
 
 var port = process.env.PORT || "3000";

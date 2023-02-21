@@ -16,6 +16,10 @@ const ElementSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
+  position: {
+    type: Number,
+    default: Infinity,
+  },
   // slug: {
   //   slug: "slug",
   //   type: String,
@@ -38,6 +42,10 @@ const BlockSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
+  position: {
+    type: Number,
+    default: Infinity,
+  },
   // slug: {
   //   slug: "slug",
   //   type: String,
@@ -52,6 +60,10 @@ const PageSchema = new mongoose.Schema(
     title: {
       type: String,
       default: "*",
+    },
+    color: {
+      type: String,
+      default: "#a4a4a4",
     },
     desc: {
       type: String,

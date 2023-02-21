@@ -31,10 +31,10 @@ export default class PageController {
   }
 
   static async remove(req, res) {
-    const id = req.params.id;
+    const pageId = req.params.pageId;
 
     try {
-      await Page.deleteOne({ _id: id });
+      await Page.deleteOne({ _id: pageId });
       await res.send("OK");
     } catch (err) {
       await res.send(err);
@@ -50,16 +50,71 @@ export default class PageController {
     // await res.redirect(303, "/admin");
   }
 
-  static async reorder(req, res) {
+  static async reorderIndex(req, res) {
     const newOrder = req.body;
 
     await newOrder.forEach(async (id, index) => {
-      const page = await Page.findOne({ _id: id });
+      const page = await Page.findById(id);
       page.position = index;
       await page.save();
     });
+    await res.send("OK");
+  }
+
+  static async reorder(req, res) {
+    const { pageId } = req.params;
+    const newOrder = req.body;
+
+    const page = await Page.findById(pageId);
+    const { blocks } = page;
+
+    await newOrder.forEach(async (id, index) => {
+      const block = await blocks.find((block) => {
+        return block._id.toString() == id;
+      });
+      block.position = index;
+    });
+    await page.save();
 
     await res.send("OK");
+  }
+
+  static async indexPage(req, res) {
+    let id = req.params.id;
+    let page = await Page.findById(id);
+
+    await page.blocks.sort((a, b) => {
+      return a.position - b.position;
+    });
+
+    await res.render("admin/page", { page });
+  }
+
+  static async meta(req, res) {
+    let id = req.params.pageId;
+    const page = await Page.findById(id);
+
+    const { title, desc, color } = req.body;
+
+    page.title = title;
+    page.desc = desc;
+    page.color = color;
+
+    if (!!req.file) {
+      const { mimetype, destination, filename } = req.file;
+
+      page.img = {
+        data: fs.readFileSync(
+          // path.join(`${__dirname}/uploads/${pageSlug}/${req.file.filename}`)
+          path.join(destination, filename)
+        ),
+        contentType: mimetype,
+      };
+    }
+
+    await page.save();
+
+    await res.redirect(`/admin/${id}`);
   }
 
   // static async update(req, res) {

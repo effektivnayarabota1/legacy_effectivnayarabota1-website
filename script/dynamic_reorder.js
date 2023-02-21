@@ -1,18 +1,21 @@
-const button = document.querySelector(".element-reorder");
+const button = document.querySelector(".dynamic_reorder");
 
 button.addEventListener("click", reorderElements);
 
 async function reorderElements(e) {
   e.preventDefault();
-  const form = this.parentNode.parentNode;
-  const elements = form.querySelectorAll("fieldset");
+  const container = this.closest(".dynamic_container");
+  let elements = container.querySelectorAll(".dynamic_element");
+
   let newOrder = [];
   for (let element of elements) {
-    newOrder.push(element.id);
+    if (!!element.id) newOrder.push(element.id);
   }
 
+  const url = `/admin/${container.id}/reorder`;
+
   try {
-    await fetch("/admin/page/reorder", {
+    await fetch(url, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

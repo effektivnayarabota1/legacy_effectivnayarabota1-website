@@ -1,11 +1,25 @@
 {{>header header}}
 
-{{>admin_pages pages}}
+<form id="index" class="menu-wrapper wrapper grid-4 dynamic_container">
+  {{#each pages}}
+  	{{#> element_client }}
+		{{> element_options}}
+	{{/ element_client}}
+  {{/each}}
+  <div class="element-container pages_button-container">
+	{{> ui/button_big class="dynamic_reorder" text="Reorder"}}
+  	{{> ui/button_plus}}
+  </div>
+</form>
 
 <h1>footer</h1>
 
-<script type="module" src="/script/element-create.js"></script>
-<script type="module" src="/script/element-remove.js"></script>
-<script type="module" src="/script/element-move.js"></script>
-<script type="module" src="/script/element-reorder.js"></script>
-<script type="module" src="/script/element-preview.js"></script>
+<script type="module" src="/script/dynamic_create.js"></script>
+<script type="module" src="/script/dynamic_remove.js"></script>
+
+<script type="module" src="/script/dynamic_move.js"></script>
+<script type="module" src="/script/dynamic_reorder.js"></script>
+
+<!-- <script type="module" src="/script/element-create.js"></script> -->
+<!-- <script type="module" src="/script/element-remove.js"></script> -->
+<!-- <script type="module" src="/script/element-move.js"></script> -->

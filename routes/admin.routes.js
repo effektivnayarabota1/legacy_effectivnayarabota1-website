@@ -9,10 +9,7 @@ import ElementController from "../controllers/element.controller.js";
 import HeaderController from "../controllers/header.controller.js";
 import FooterController from "../controllers/footer.controller.js";
 
-import uploadCover from "../middleware/uploadCover.middleware.js";
-import uploadElems from "../middleware/uploadElems.middleware.js";
-import uploadHeader from "../middleware/uploadHeader.middleware.js";
-import uploadFooter from "../middleware/uploadFooter.middleware.js";
+import upload from "../middleware/upload.middleware.js";
 
 export const router = express.Router();
 
@@ -40,17 +37,33 @@ router.get("/logout", (req, res) => {
 router.get("/", (req, res) => {
   PageController.index(req, res);
 });
-router.post("/page/create", (req, res) => {
+router.post("/", (req, res) => {
   PageController.create(req, res);
 });
-router.delete("/page/:id", (req, res) => {
+router.delete("/:pageId", (req, res) => {
   PageController.remove(req, res);
 });
-router.put("/page/reorder", (req, res) => {
+router.put("/index/reorder", (req, res) => {
+  PageController.reorderIndex(req, res);
+});
+router.put("/:pageId/reorder", (req, res) => {
   PageController.reorder(req, res);
 });
+router.get("/:id", (req, res) => {
+  PageController.indexPage(req, res);
+});
+router.post("/meta/:pageId", upload.single("image"), (req, res) => {
+  PageController.meta(req, res);
+});
 
-//
+// BLOCK ROUTES
+router.post("/:pageId/:type", (req, res) => {
+  BlockController.create(req, res);
+});
+router.delete("/:pageId/:blockId", (req, res) => {
+  BlockController.remove(req, res);
+});
+
 // router.get("/header", (req, res) => {
 //   HeaderController.edit(req, res);
 // });

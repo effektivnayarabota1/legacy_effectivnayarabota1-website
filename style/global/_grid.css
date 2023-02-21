@@ -4,7 +4,7 @@
 
   /* grid-template-columns: 200px 1fr 1fr 1fr; */
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 24px;
+  gap: 24px;
 }
 .grid-4 {
   width: 100%;

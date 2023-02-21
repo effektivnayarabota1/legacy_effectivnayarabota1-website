@@ -1,0 +1,31 @@
+input[type="text"],
+textarea {
+  width: 100%;
+
+  color: var(--grey-32);
+  background-color: var(--grey-64);
+}
+input[readonly] {
+  color: var(--black);
+  background-color: var(--grey-64);
+}
+textarea {
+  min-height: 80px;
+  resize: none;
+}
+input[type="text"]:focus,
+textarea:focus {
+  outline: none !important;
+  color: var(--white);
+  background-color: var(--grey-32);
+}
+.input-file_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed var(--grey-64);
+  transition: border 0.1s ease-in;
+}
+.input-file_container:hover {
+  border: 8px solid var(--grey-64);
+}

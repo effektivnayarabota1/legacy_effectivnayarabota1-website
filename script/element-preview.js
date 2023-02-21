@@ -10,17 +10,15 @@ function readImage(e) {
   const reader = new FileReader();
   const file = e.target.files[0];
 
-  const label = this.parentNode;
+  const form = this.closest("form");
 
-  // const imgContainer = document.querySelector(containerId);
-  let img = label.querySelector("img");
-  if (!img) {
-    img = document.createElement("img");
-    img.setAttribute("alt", "element image");
-    label.appendChild(img);
+  const imgContainers = form.querySelectorAll(".element_img-container");
+
+  for (let container of imgContainers) {
+    let img = container.querySelector("img");
+    reader.addEventListener("load", (event) => {
+      img.src = event.target.result;
+    });
   }
-  reader.addEventListener("load", (event) => {
-    img.src = event.target.result;
-  });
   reader.readAsDataURL(file);
 }

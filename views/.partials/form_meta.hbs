@@ -1,0 +1,18 @@
+<form action="/admin/meta/{{this.id}}" method="post" enctype="multipart/form-data" id="{{this.id}}" class="menu-wrapper wrapper grid-4">
+	<div class="element-container meta-container" >
+		<input type="text" readonly value="{{this.id}}" placeholder="id">
+		<input type="text" name="title" value="{{this.title}}" placeholder="title">
+		<textarea placeholder="desc" name="desc">{{this.desc}}</textarea>
+		<div class="royal-pattern" ></div>
+	</div>
+	<div class="element-container element-container_group" >
+		{{>ui/input_file this}}
+		{{>ui/input_color this}}
+  		{{> element_client this }}
+	</div>
+  	{{> element_client this }}
+	<div class="element-container meta-container">
+		{{>ui/button_big class="save-meta" text="save-meta"}}
+		<div class="royal-pattern" ></div>
+	</div>
+</form>
