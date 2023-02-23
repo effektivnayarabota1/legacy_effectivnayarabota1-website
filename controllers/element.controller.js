@@ -20,6 +20,22 @@ export default class ElementController {
       await res.send(err);
     }
   }
+  static async remove(req, res) {
+    const { pageID, blockID, elementID } = req.params;
+
+    try {
+      const page = await Page.findById(pageID);
+      const block = await page.blocks.id(blockID);
+      if (block.elements.length - 1) {
+        const element = await block.elements.id(elementID);
+        await element.remove();
+        await page.save();
+      }
+      await res.send("OK");
+    } catch (err) {
+      await res.send(err);
+    }
+  }
   // static async blank(req, res) {
   //   const pageSlug = req.params.pageSlug;
   //   const blockSlug = req.params.blockSlug;

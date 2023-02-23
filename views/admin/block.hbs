@@ -6,7 +6,7 @@
 	</div>
 </div>
 
-<div id="{{block.id}}" class="elements menu-wrapper wrapper grid-4 dynamic_container">
+<div id="{{block.id}}" class="dynamic_container elements menu-wrapper wrapper grid-4">
 	{{#each block.elements}}
   		{{#> element_admin }}
 			{{> element_options}}
@@ -20,3 +20,4 @@
 </div>
 
 <script type="module" src="/script/dynamic_create.js"></script>
+<script type="module" src="/script/dynamic_remove.js"></script>

@@ -24,12 +24,14 @@ export default async function removeElement(e) {
   }
 
   if (type == "block") {
-    const pageId = currentUrl.split("/").at(-1);
-    deleteUrl = `/admin/${pageId}/${dynamicElementId}`;
+    const pageID = currentUrl.split("/").at(-1);
+    deleteUrl = `/admin/${pageID}/${dynamicElementId}`;
   }
 
   if (type == "element") {
-    console.log("Функционал не прописан.");
+    const pageID = currentUrl.split("/").at(-2);
+    const blockID = currentUrl.split("/").at(-1);
+    deleteUrl = `/admin/${pageID}/${blockID}/${dynamicElementId}`;
   }
 
   try {

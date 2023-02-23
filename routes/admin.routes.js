@@ -71,6 +71,9 @@ router.delete("/:pageID/:blockID", (req, res) => {
 router.post("/:pageID/:blockID/create", (req, res) => {
   ElementController.create(req, res);
 });
+router.delete("/:pageID/:blockID/:elementID", (req, res) => {
+  ElementController.remove(req, res);
+});
 
 // router.get("/header", (req, res) => {
 //   HeaderController.edit(req, res);
