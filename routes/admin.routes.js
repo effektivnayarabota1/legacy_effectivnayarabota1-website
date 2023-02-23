@@ -49,7 +49,7 @@ router.put("/index/reorder", (req, res) => {
 router.put("/:pageID/reorder", (req, res) => {
   PageController.reorder(req, res);
 });
-router.get("/:id", (req, res) => {
+router.get("/:pageID", (req, res) => {
   PageController.indexPage(req, res);
 });
 router.post("/meta/:pageID", upload.single("image"), (req, res) => {
@@ -60,7 +60,10 @@ router.post("/meta/:pageID", upload.single("image"), (req, res) => {
 router.get("/:pageID/:blockID", (req, res) => {
   BlockController.index(req, res);
 });
-router.post("/:pageID/:type", (req, res) => {
+router.post("/:pageID/:blockID", (req, res) => {
+  BlockController.save(req, res);
+});
+router.post("/:pageID/:type/create-block", (req, res) => {
   BlockController.create(req, res);
 });
 router.delete("/:pageID/:blockID", (req, res) => {
@@ -71,7 +74,7 @@ router.put("/:pageID/:blockID/reorder", (req, res) => {
 });
 
 // ELEMENT ROUTES
-router.post("/:pageID/:blockID/create", (req, res) => {
+router.post("/:pageID/:blockID/create-element", (req, res) => {
   ElementController.create(req, res);
 });
 router.delete("/:pageID/:blockID/:elementID", (req, res) => {

@@ -3,7 +3,8 @@
 	</div>
 </div>
 
-<div id="{{block.id}}" class="dynamic_container elements menu-wrapper wrapper grid-4">
+<form action="/admin/{{pageID}}/{{block.id}}" method="post" enctype="multipart/form-data" id="{{block.id}}" 
+class="dynamic_container elements menu-wrapper wrapper grid-4">
 	{{#each block.elements}}
   		{{#> element_admin }}
 			{{> element_options}}
@@ -15,9 +16,10 @@
 		{{>ui/button_big text="Текст"}}
 		{{>ui/button_big text="Галлерея"}}
   		{{> ui/button_plus}}
-		{{> ui/button_big class="dynamic_reorder" text="Reorder"}}
+		<!-- {{> ui/button_big class="dynamic_reorder" text="Reorder"}} -->
+		{{> ui/button_big "dynamic_reorder" text="Save"}}
   	</div>
-</div>
+</form>
 
 <script type="module" src="/script/dynamic_create.js"></script>
 <script type="module" src="/script/dynamic_remove.js"></script>

@@ -24,13 +24,13 @@ export default async function create(e) {
   if (type == "block") {
     const newBlockType = this.className.split(" ").at(-1);
     const pageID = currentUrl.split("/").at(-1);
-    postUrl = `/admin/${pageID}/${newBlockType}`;
+    postUrl = `/admin/${pageID}/${newBlockType}/create-block`;
   }
 
   if (type == "element") {
     const pageID = currentUrl.split("/").at(-2);
     const blockID = currentUrl.split("/").at(-1);
-    postUrl = `/admin/${pageID}/${blockID}/create`;
+    postUrl = `/admin/${pageID}/${blockID}/create-element`;
   }
 
   try {

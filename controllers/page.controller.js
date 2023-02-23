@@ -31,7 +31,7 @@ export default class PageController {
   }
 
   static async remove(req, res) {
-    const pageID = req.params.pageId;
+    const pageID = req.params.pageID;
 
     try {
       await Page.deleteOne({ _id: pageID });
@@ -80,8 +80,8 @@ export default class PageController {
   }
 
   static async indexPage(req, res) {
-    let id = req.params.id;
-    let page = await Page.findById(id);
+    let pageID = req.params.pageID;
+    let page = await Page.findById(pageID);
 
     await page.blocks.sort((a, b) => {
       return a.position - b.position;

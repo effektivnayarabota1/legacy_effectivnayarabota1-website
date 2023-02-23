@@ -18,7 +18,7 @@ export default class BlockController {
       return a.position - b.position;
     });
 
-    await res.render("admin/block", { block });
+    await res.render("admin/block", { pageID: page.id, block });
   }
 
   static async create(req, res) {
@@ -55,7 +55,7 @@ export default class BlockController {
     // await res.redirect(303, "/admin");
   }
 
-  static async reorder(req, res) {
+  static async save(req, res) {
     const { pageID, blockID } = req.params;
     const newOrder = req.body;
 
@@ -63,15 +63,21 @@ export default class BlockController {
     const block = await page.blocks.id(blockID);
     const { elements } = block;
 
+    await this.reorder(elements, newOrder);
+
+    await page.save();
+
+    await res.send("OK");
+  }
+
+  static async reorder(elements, newOrder) {
     await newOrder.forEach(async (id, index) => {
       const element = await elements.find((element) => {
         return element._id.toString() == id;
       });
       element.position = index;
     });
-    await page.save();
-
-    await res.send("OK");
+    return;
   }
 
   // static async editor(req, res) {
