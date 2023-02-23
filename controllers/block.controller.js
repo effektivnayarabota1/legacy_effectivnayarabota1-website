@@ -55,6 +55,25 @@ export default class BlockController {
     // await res.redirect(303, "/admin");
   }
 
+  static async reorder(req, res) {
+    const { pageID, blockID } = req.params;
+    const newOrder = req.body;
+
+    const page = await Page.findById(pageID);
+    const block = await page.blocks.id(blockID);
+    const { elements } = block;
+
+    await newOrder.forEach(async (id, index) => {
+      const element = await elements.find((element) => {
+        return element._id.toString() == id;
+      });
+      element.position = index;
+    });
+    await page.save();
+
+    await res.send("OK");
+  }
+
   // static async editor(req, res) {
   //   const pageSlug = req.params.pageSlug;
   //   const blockSlug = req.params.blockSlug;

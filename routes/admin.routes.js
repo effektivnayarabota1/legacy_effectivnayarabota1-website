@@ -66,6 +66,9 @@ router.post("/:pageID/:type", (req, res) => {
 router.delete("/:pageID/:blockID", (req, res) => {
   BlockController.remove(req, res);
 });
+router.put("/:pageID/:blockID/reorder", (req, res) => {
+  BlockController.reorder(req, res);
+});
 
 // ELEMENT ROUTES
 router.post("/:pageID/:blockID/create", (req, res) => {
