@@ -1,3 +1,5 @@
+import id from "./config/id.js";
+
 const button = document.querySelector(".dynamic_reorder");
 
 button.addEventListener("click", reorderElements);
@@ -12,17 +14,18 @@ async function reorderElements(e) {
     if (!!element.id) newOrder.push(element.id);
   }
 
-  const currentUrl = window.location.href;
-  const urlLength = currentUrl.split("/").length;
+  // const type = pageType(window.location.href);
+
+  const { pageID, blockID } = id(window.location.pathname);
 
   let putUrl;
 
-  if (urlLength < 6) {
-    putUrl = `/admin/${container.id}/reorder`;
-  } else {
-    const pageID = currentUrl.split("/").at(-2);
-    const blockID = currentUrl.split("/").at(-1);
+  if (blockID) {
     putUrl = `/admin/${pageID}/${blockID}/reorder`;
+  } else if (pageID) {
+    putUrl = `/admin/${pageID}/reorder`;
+  } else {
+    putUrl = `/admin/${container.id}/reorder`;
   }
 
   try {

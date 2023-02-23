@@ -69,8 +69,11 @@ router.post("/:pageID/:type/create-block", (req, res) => {
 router.delete("/:pageID/:blockID", (req, res) => {
   BlockController.remove(req, res);
 });
+// router.put("/:pageID/:blockID/reorder", (req, res) => {
+//   BlockController.reorder(req, res);
+// });
 router.put("/:pageID/:blockID/reorder", (req, res) => {
-  BlockController.reorder(req, res);
+  BlockController.save(req, res);
 });
 
 // ELEMENT ROUTES
