@@ -40,31 +40,36 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   PageController.create(req, res);
 });
-router.delete("/:pageId", (req, res) => {
+router.delete("/:pageID", (req, res) => {
   PageController.remove(req, res);
 });
 router.put("/index/reorder", (req, res) => {
   PageController.reorderIndex(req, res);
 });
-router.put("/:pageId/reorder", (req, res) => {
+router.put("/:pageID/reorder", (req, res) => {
   PageController.reorder(req, res);
 });
 router.get("/:id", (req, res) => {
   PageController.indexPage(req, res);
 });
-router.post("/meta/:pageId", upload.single("image"), (req, res) => {
+router.post("/meta/:pageID", upload.single("image"), (req, res) => {
   PageController.meta(req, res);
 });
 
 // BLOCK ROUTES
-router.get("/:pageId/:blockId", (req, res) => {
+router.get("/:pageID/:blockID", (req, res) => {
   BlockController.index(req, res);
 });
-router.post("/:pageId/:type", (req, res) => {
+router.post("/:pageID/:type", (req, res) => {
   BlockController.create(req, res);
 });
-router.delete("/:pageId/:blockId", (req, res) => {
+router.delete("/:pageID/:blockID", (req, res) => {
   BlockController.remove(req, res);
+});
+
+// ELEMENT ROUTES
+router.post("/:pageID/:blockID/create", (req, res) => {
+  ElementController.create(req, res);
 });
 
 // router.get("/header", (req, res) => {

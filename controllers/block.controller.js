@@ -8,11 +8,11 @@ const __dirname = path.resolve();
 
 export default class BlockController {
   static async index(req, res) {
-    const { pageId, blockId } = req.params;
+    const { pageID, blockID } = req.params;
 
-    const page = await Page.findById(pageId);
+    const page = await Page.findById(pageID);
     const block = await page.blocks.find((block) => {
-      return block._id.toString() == blockId;
+      return block._id.toString() == blockID;
     });
     await block.elements.sort((a, b) => {
       return a.position - b.position;
@@ -22,9 +22,9 @@ export default class BlockController {
   }
 
   static async create(req, res) {
-    const { pageId, type } = req.params;
+    const { pageID, type } = req.params;
 
-    const page = await Page.findById(pageId);
+    const page = await Page.findById(pageID);
     await page.blocks.push({ type, elements: {} });
 
     await page.save();
@@ -32,12 +32,12 @@ export default class BlockController {
   }
 
   static async remove(req, res) {
-    const pageId = req.params.pageId;
-    const blockId = req.params.blockId;
+    const pageID = req.params.pageID;
+    const blockID = req.params.blockID;
 
     try {
-      const page = await Page.findById(pageId);
-      const block = page.blocks.id(blockId);
+      const page = await Page.findById(pageID);
+      const block = page.blocks.id(blockID);
       await block.remove();
       await page.save();
       await res.send("OK");

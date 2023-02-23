@@ -23,12 +23,14 @@ export default async function create(e) {
 
   if (type == "block") {
     const newBlockType = this.className.split(" ").at(-1);
-    const pageId = currentUrl.split("/").at(-1);
-    postUrl = `/admin/${pageId}/${newBlockType}`;
+    const pageID = currentUrl.split("/").at(-1);
+    postUrl = `/admin/${pageID}/${newBlockType}`;
   }
 
   if (type == "element") {
-    console.log("Функционал не прописан.");
+    const pageID = currentUrl.split("/").at(-2);
+    const blockID = currentUrl.split("/").at(-1);
+    postUrl = `/admin/${pageID}/${blockID}/create`;
   }
 
   try {
