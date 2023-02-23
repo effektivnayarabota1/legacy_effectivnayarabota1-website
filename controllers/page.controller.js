@@ -50,7 +50,7 @@ export default class PageController {
     // await res.redirect(303, "/admin");
   }
 
-  static async reorderIndex(req, res) {
+  static async rewriteIndex(req, res) {
     const newOrder = req.body;
 
     await newOrder.forEach(async (id, index) => {
@@ -61,7 +61,7 @@ export default class PageController {
     await res.send("OK");
   }
 
-  static async reorder(req, res) {
+  static async rewrite(req, res) {
     const { pageID } = req.params;
     const newOrder = req.body;
 
@@ -91,8 +91,8 @@ export default class PageController {
   }
 
   static async meta(req, res) {
-    let id = req.params.pageID;
-    const page = await Page.findById(id);
+    let pageID = req.params.pageID;
+    const page = await Page.findById(pageID);
 
     const { title, desc, color } = req.body;
 
@@ -104,17 +104,14 @@ export default class PageController {
       const { mimetype, destination, filename } = req.file;
 
       page.img = {
-        data: fs.readFileSync(
-          // path.join(`${__dirname}/uploads/${pageSlug}/${req.file.filename}`)
-          path.join(destination, filename)
-        ),
+        data: fs.readFileSync(path.join(destination, filename)),
         contentType: mimetype,
       };
     }
 
     await page.save();
 
-    await res.redirect(`/admin/${id}`);
+    await res.redirect(`/admin/${pageID}`);
   }
 
   // static async update(req, res) {

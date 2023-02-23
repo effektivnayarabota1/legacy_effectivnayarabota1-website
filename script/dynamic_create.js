@@ -6,7 +6,7 @@ for (let button of buttons) {
   button.addEventListener("click", create);
 }
 
-export default async function create(e) {
+async function create(e) {
   e.preventDefault();
 
   const { pageID, blockID } = id(window.location.pathname);

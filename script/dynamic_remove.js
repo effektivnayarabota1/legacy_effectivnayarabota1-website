@@ -6,7 +6,7 @@ for (let button of buttons) {
   button.addEventListener("click", removeElement);
 }
 
-export default async function removeElement(e) {
+async function removeElement(e) {
   e.preventDefault();
 
   const { pageID, blockID } = id(window.location.pathname);

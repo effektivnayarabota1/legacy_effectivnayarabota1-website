@@ -43,11 +43,11 @@ router.post("/", (req, res) => {
 router.delete("/:pageID", (req, res) => {
   PageController.remove(req, res);
 });
-router.put("/index/reorder", (req, res) => {
-  PageController.reorderIndex(req, res);
+router.put("/index/rewrite", (req, res) => {
+  PageController.rewriteIndex(req, res);
 });
-router.put("/:pageID/reorder", (req, res) => {
-  PageController.reorder(req, res);
+router.put("/:pageID/rewrite", (req, res) => {
+  PageController.rewrite(req, res);
 });
 router.get("/:pageID", (req, res) => {
   PageController.indexPage(req, res);
@@ -60,19 +60,19 @@ router.post("/meta/:pageID", upload.single("image"), (req, res) => {
 router.get("/:pageID/:blockID", (req, res) => {
   BlockController.index(req, res);
 });
-router.post("/:pageID/:blockID", (req, res) => {
-  BlockController.save(req, res);
-});
 router.post("/:pageID/:type/create-block", (req, res) => {
   BlockController.create(req, res);
 });
 router.delete("/:pageID/:blockID", (req, res) => {
   BlockController.remove(req, res);
 });
-// router.put("/:pageID/:blockID/reorder", (req, res) => {
-//   BlockController.reorder(req, res);
+// router.post("/:pageID/:blockID",  (req, res) => {
+//   BlockController.rewrite(req, res);
 // });
-router.put("/:pageID/:blockID/reorder", (req, res) => {
+// router.put("/:pageID/:blockID/rewrite", (req, res) => {
+//   BlockController.rewrite(req, res);
+// });
+router.post("/:pageID/:blockID/rewrite", upload.array("image"), (req, res) => {
   BlockController.save(req, res);
 });
 
