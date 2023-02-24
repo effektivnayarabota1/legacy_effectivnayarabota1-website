@@ -42,20 +42,6 @@ async function rewriteElements(e) {
     };
   } else if (pageID) {
     putUrl = `/admin/${pageID}/rewrite`;
-    console.log(pageID);
-    return;
-
-    const formData = new FormData();
-    const inputs = document.querySelectorAll(".element_file-input");
-
-    for await (let input of inputs) {
-      formData.append("image", input.files[0] || new Blob(), input.id);
-    }
-
-    options = {
-      method: "POST",
-      body: formData,
-    };
   } else {
     putUrl = `/admin/${container.id}/rewrite`;
   }

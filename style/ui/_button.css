@@ -21,6 +21,7 @@ a .button-text {
 /* BIG */
 .button-big {
   padding: 8px 32px;
+  text-align: center;
 
   background-color: var(--white);
   border: 1px solid var(--grey-64);

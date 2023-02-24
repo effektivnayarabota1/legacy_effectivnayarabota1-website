@@ -77,6 +77,12 @@ hbs.registerHelper("block", function (context) {
   const type = context.type;
   return `block_${type}`;
 });
+hbs.registerHelper("isRadioChecked", function (context, options) {
+  const blockType = options.data.root.block.type;
+  const radioType = context;
+  if (blockType == radioType) return "checked";
+  else return;
+});
 
 var port = process.env.PORT || "3000";
 app.listen(port, (err) => {

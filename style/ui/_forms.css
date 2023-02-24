@@ -29,3 +29,16 @@ textarea:focus {
 .input-file_container:hover {
   border: 8px solid var(--grey-64);
 }
+
+/* radio */
+/* .button-big input[type="radio"]:checked { */
+/*   background-color: var(--grey-32); */
+/*   border: 1px solid var(--grey-32); */
+/* } */
+.button-big:has(input[type="radio"]:checked) {
+  background-color: var(--grey-32);
+  border: 1px solid var(--grey-32);
+}
+.button-big input[type="radio"]:checked + h1 {
+  color: var(--white);
+}
