@@ -1,10 +1,5 @@
 import Page from "../models/page.js";
-
-import fs from "fs";
-import fsPromises from "fs/promises";
-import path from "path";
-
-const __dirname = path.resolve();
+import File from "./config/file.js";
 
 export default class ElementController {
   static async create(req, res) {
@@ -28,6 +23,7 @@ export default class ElementController {
       const block = await page.blocks.id(blockID);
       if (block.elements.length - 1) {
         const element = await block.elements.id(elementID);
+        await File.remove(pageID, blockID, elementID);
         await element.remove();
         await page.save();
       }

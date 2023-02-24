@@ -1,10 +1,5 @@
 import Page from "../models/page.js";
-
-import path from "path";
-import fs from "fs";
-import fsPromises from "fs/promises";
-
-const __dirname = path.resolve();
+import File from "./config/file.js";
 
 export default class BlockController {
   static async index(req, res) {
@@ -39,6 +34,7 @@ export default class BlockController {
       const page = await Page.findById(pageID);
       const block = page.blocks.id(blockID);
       await block.remove();
+      await File.remove(pageID, blockID);
       await page.save();
       await res.send("OK");
     } catch (err) {
@@ -70,7 +66,7 @@ export default class BlockController {
 
   static async rewrite(elements, files) {
     await files.forEach(async (file, index) => {
-      const { mimetype, destination, filename, size } = file;
+      const { mimetype, filename, size } = file;
 
       const element = await elements.find((element) => {
         return element._id.toString() == filename;
@@ -78,10 +74,7 @@ export default class BlockController {
       element.position = index;
 
       if (size > 0 && mimetype != "application/octet-stream") {
-        element.img = {
-          data: fs.readFileSync(path.join(destination, filename)),
-          contentType: mimetype,
-        };
+        element.img = await File.write(file);
       }
     });
     return;

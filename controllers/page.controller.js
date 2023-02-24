@@ -2,12 +2,7 @@ import Page from "../models/page.js";
 import Header from "../models/header.js";
 import Footer from "../models/footer.js";
 
-import path from "path";
-import fs from "fs";
-import fsPromises from "fs/promises";
-import isEmpty from "../helpers/isEmpty.js";
-
-const __dirname = path.resolve();
+import File from "./config/file.js";
 
 export default class PageController {
   static async index(req, res) {
@@ -35,6 +30,7 @@ export default class PageController {
 
     try {
       await Page.deleteOne({ _id: pageID });
+      await File.remove(pageID);
       await res.send("OK");
     } catch (err) {
       await res.send(err);
@@ -101,12 +97,7 @@ export default class PageController {
     page.color = color;
 
     if (!!req.file) {
-      const { mimetype, destination, filename } = req.file;
-
-      page.img = {
-        data: fs.readFileSync(path.join(destination, filename)),
-        contentType: mimetype,
-      };
+      page.img = await File.write(req.file);
     }
 
     await page.save();
