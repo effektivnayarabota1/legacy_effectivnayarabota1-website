@@ -57,14 +57,15 @@ export default class BlockController {
     const block = await page.blocks.id(blockID);
     const { elements } = block;
 
-    await this.rewrite(elements, req.files);
+    block.type = req.body.type;
+    await this.rewrite(elements, req.body, req.files);
 
     await page.save();
 
     await res.send("OK");
   }
 
-  static async rewrite(elements, files) {
+  static async rewrite(elements, body, files) {
     await files.forEach(async (file, index) => {
       const { mimetype, filename, size } = file;
 
@@ -72,12 +73,13 @@ export default class BlockController {
         return element._id.toString() == filename;
       });
       element.position = index;
+      element.title = body.title[index];
+      element.desc = body.desc[index];
 
       if (size > 0 && mimetype != "application/octet-stream") {
         element.img = await File.write(file);
       }
     });
-    return;
   }
 
   // static async editor(req, res) {

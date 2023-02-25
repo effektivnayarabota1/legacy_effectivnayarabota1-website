@@ -30,8 +30,21 @@ async function rewriteElements(e) {
     putUrl = `/admin/${pageID}/${blockID}/rewrite`;
 
     const formData = new FormData();
-    const inputs = document.querySelectorAll(".element_file-input");
 
+    const type = document.querySelector('input[name="type"]:checked').value;
+    formData.append("type", type);
+
+    const fieldsets = document.querySelectorAll("fieldset");
+    for (let fieldset of fieldsets) {
+      const elementID = fieldset.id;
+      const title = fieldset.querySelector(".element_title-input").value;
+      const desc = fieldset.querySelector(".element_desc-input").value;
+      formData.append("elementID", elementID);
+      formData.append("title", title);
+      formData.append("desc", desc);
+    }
+
+    const inputs = document.querySelectorAll(".element_file-input");
     for await (let input of inputs) {
       formData.append("image", input.files[0] || new Blob(), input.id);
     }
