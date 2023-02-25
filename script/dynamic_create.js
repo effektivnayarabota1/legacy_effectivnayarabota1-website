@@ -1,34 +1,25 @@
+import id from "./config/id.js";
+
 const buttons = document.querySelectorAll(".dynamic_create");
 
 for (let button of buttons) {
   button.addEventListener("click", create);
 }
 
-export default async function create(e) {
+async function create(e) {
   e.preventDefault();
 
-  let type;
-  const currentUrl = window.location.href;
-  const urlLength = currentUrl.split("/").length;
-
-  if (urlLength == 4) type = "page";
-  else if (urlLength == 5) type = "block";
-  else if (urlLength == 6) type = "element";
+  const { pageID, blockID } = id(window.location.pathname);
 
   let postUrl;
 
-  if (type == "page") {
+  if (blockID) {
+    postUrl = `/admin/${pageID}/${blockID}/create-element`;
+  } else if (pageID) {
+    const type = this.className.split(" ").at(-1);
+    postUrl = `/admin/${pageID}/${type}/create-block`;
+  } else {
     postUrl = "/admin";
-  }
-
-  if (type == "block") {
-    const newBlockType = this.className.split(" ").at(-1);
-    const pageId = currentUrl.split("/").at(-1);
-    postUrl = `/admin/${pageId}/${newBlockType}`;
-  }
-
-  if (type == "element") {
-    console.log("Функционал не прописан.");
   }
 
   try {

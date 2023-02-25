@@ -1,3 +1,15 @@
+/* general */
+
+/* admin */
+.admin .element_text-container {
+  max-height: 64%;
+  height: 100%;
+}
+.element-container.admin textarea {
+  height: 100%;
+}
+
+/* client */
 .empty {
   float: bottom;
 }
@@ -49,14 +61,14 @@
 }
 .element_text-container {
   margin: 16px 24px;
-  padding: 4px 8px;
+  padding: 8px 6px;
 
   max-height: 64%;
   overflow-y: auto;
 
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
 
   background-color: rgba(255, 255, 255, 0.8);
 

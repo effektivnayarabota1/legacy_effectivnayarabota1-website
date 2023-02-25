@@ -2,12 +2,7 @@ import Page from "../models/page.js";
 import Header from "../models/header.js";
 import Footer from "../models/footer.js";
 
-import path from "path";
-import fs from "fs";
-import fsPromises from "fs/promises";
-import isEmpty from "../helpers/isEmpty.js";
-
-const __dirname = path.resolve();
+import File from "./config/file.js";
 
 export default class PageController {
   static async index(req, res) {
@@ -31,10 +26,11 @@ export default class PageController {
   }
 
   static async remove(req, res) {
-    const pageId = req.params.pageId;
+    const pageID = req.params.pageID;
 
     try {
-      await Page.deleteOne({ _id: pageId });
+      await Page.deleteOne({ _id: pageID });
+      await File.remove(pageID);
       await res.send("OK");
     } catch (err) {
       await res.send(err);
@@ -50,7 +46,7 @@ export default class PageController {
     // await res.redirect(303, "/admin");
   }
 
-  static async reorderIndex(req, res) {
+  static async rewriteIndex(req, res) {
     const newOrder = req.body;
 
     await newOrder.forEach(async (id, index) => {
@@ -61,11 +57,11 @@ export default class PageController {
     await res.send("OK");
   }
 
-  static async reorder(req, res) {
-    const { pageId } = req.params;
+  static async rewrite(req, res) {
+    const { pageID } = req.params;
     const newOrder = req.body;
 
-    const page = await Page.findById(pageId);
+    const page = await Page.findById(pageID);
     const { blocks } = page;
 
     await newOrder.forEach(async (id, index) => {
@@ -80,8 +76,8 @@ export default class PageController {
   }
 
   static async indexPage(req, res) {
-    let id = req.params.id;
-    let page = await Page.findById(id);
+    let pageID = req.params.pageID;
+    let page = await Page.findById(pageID);
 
     await page.blocks.sort((a, b) => {
       return a.position - b.position;
@@ -91,8 +87,8 @@ export default class PageController {
   }
 
   static async meta(req, res) {
-    let id = req.params.pageId;
-    const page = await Page.findById(id);
+    let pageID = req.params.pageID;
+    const page = await Page.findById(pageID);
 
     const { title, desc, color } = req.body;
 
@@ -101,20 +97,12 @@ export default class PageController {
     page.color = color;
 
     if (!!req.file) {
-      const { mimetype, destination, filename } = req.file;
-
-      page.img = {
-        data: fs.readFileSync(
-          // path.join(`${__dirname}/uploads/${pageSlug}/${req.file.filename}`)
-          path.join(destination, filename)
-        ),
-        contentType: mimetype,
-      };
+      page.img = await File.write(req.file);
     }
 
     await page.save();
 
-    await res.redirect(`/admin/${id}`);
+    await res.redirect(`/admin/${pageID}`);
   }
 
   // static async update(req, res) {

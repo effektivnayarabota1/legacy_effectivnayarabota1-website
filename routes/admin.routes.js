@@ -40,28 +40,48 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   PageController.create(req, res);
 });
-router.delete("/:pageId", (req, res) => {
+router.delete("/:pageID", (req, res) => {
   PageController.remove(req, res);
 });
-router.put("/index/reorder", (req, res) => {
-  PageController.reorderIndex(req, res);
+router.put("/index/rewrite", (req, res) => {
+  PageController.rewriteIndex(req, res);
 });
-router.put("/:pageId/reorder", (req, res) => {
-  PageController.reorder(req, res);
+router.put("/:pageID/rewrite", (req, res) => {
+  PageController.rewrite(req, res);
 });
-router.get("/:id", (req, res) => {
+router.get("/:pageID", (req, res) => {
   PageController.indexPage(req, res);
 });
-router.post("/meta/:pageId", upload.single("image"), (req, res) => {
+router.post("/meta/:pageID", upload.single("image"), (req, res) => {
   PageController.meta(req, res);
 });
 
 // BLOCK ROUTES
-router.post("/:pageId/:type", (req, res) => {
+router.get("/:pageID/:blockID", (req, res) => {
+  BlockController.index(req, res);
+});
+router.post("/:pageID/:type/create-block", (req, res) => {
   BlockController.create(req, res);
 });
-router.delete("/:pageId/:blockId", (req, res) => {
+router.delete("/:pageID/:blockID", (req, res) => {
   BlockController.remove(req, res);
+});
+// router.post("/:pageID/:blockID",  (req, res) => {
+//   BlockController.rewrite(req, res);
+// });
+// router.put("/:pageID/:blockID/rewrite", (req, res) => {
+//   BlockController.rewrite(req, res);
+// });
+router.post("/:pageID/:blockID/rewrite", upload.array("image"), (req, res) => {
+  BlockController.save(req, res);
+});
+
+// ELEMENT ROUTES
+router.post("/:pageID/:blockID/create-element", (req, res) => {
+  ElementController.create(req, res);
+});
+router.delete("/:pageID/:blockID/:elementID", (req, res) => {
+  ElementController.remove(req, res);
 });
 
 // router.get("/header", (req, res) => {

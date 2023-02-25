@@ -1,16 +1,25 @@
 import Page from "../models/page.js";
-
-import path from "path";
-import fs from "fs";
-import fsPromises from "fs/promises";
-
-const __dirname = path.resolve();
+import File from "./config/file.js";
 
 export default class BlockController {
-  static async create(req, res) {
-    const { pageId, type } = req.params;
+  static async index(req, res) {
+    const { pageID, blockID } = req.params;
 
-    const page = await Page.findById(pageId);
+    const page = await Page.findById(pageID);
+    const block = await page.blocks.find((block) => {
+      return block._id.toString() == blockID;
+    });
+    await block.elements.sort((a, b) => {
+      return a.position - b.position;
+    });
+
+    await res.render("admin/block", { pageID: page.id, block });
+  }
+
+  static async create(req, res) {
+    const { pageID, type } = req.params;
+
+    const page = await Page.findById(pageID);
     await page.blocks.push({ type, elements: {} });
 
     await page.save();
@@ -18,13 +27,14 @@ export default class BlockController {
   }
 
   static async remove(req, res) {
-    const pageId = req.params.pageId;
-    const blockId = req.params.blockId;
+    const pageID = req.params.pageID;
+    const blockID = req.params.blockID;
 
     try {
-      const page = await Page.findById(pageId);
-      const block = page.blocks.id(blockId);
+      const page = await Page.findById(pageID);
+      const block = page.blocks.id(blockID);
       await block.remove();
+      await File.remove(pageID, blockID);
       await page.save();
       await res.send("OK");
     } catch (err) {
@@ -39,6 +49,37 @@ export default class BlockController {
     //   recursive: true,
     // });
     // await res.redirect(303, "/admin");
+  }
+
+  static async save(req, res) {
+    const { pageID, blockID, elementID } = req.params;
+    const page = await Page.findById(pageID);
+    const block = await page.blocks.id(blockID);
+    const { elements } = block;
+
+    block.type = req.body.type;
+    await this.rewrite(elements, req.body, req.files);
+
+    await page.save();
+
+    await res.send("OK");
+  }
+
+  static async rewrite(elements, body, files) {
+    await files.forEach(async (file, index) => {
+      const { mimetype, filename, size } = file;
+
+      const element = await elements.find((element) => {
+        return element._id.toString() == filename;
+      });
+      element.position = index;
+      element.title = body.title[index];
+      element.desc = body.desc[index];
+
+      if (size > 0 && mimetype != "application/octet-stream") {
+        element.img = await File.write(file);
+      }
+    });
   }
 
   // static async editor(req, res) {
