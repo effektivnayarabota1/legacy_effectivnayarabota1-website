@@ -2,7 +2,9 @@
   <div class="element_abs-container">
     <div class="element_text-container mono">
       <h1><a href="admin/{{this.id}}">{{this.title}}</a></h1>
-      <p>{{this.desc}}</p>
+	  {{#if this.desc}}
+      	<p>{{this.desc}}</p>
+	  {{/if}}
     </div>
 
 	{{#if @partial-block}}
@@ -14,8 +16,8 @@
 
   <div
     id="{{this.id}}"
-    class="element_img-container"
-    style="border-color: {{this.color}}"
+    class="element_img-container border"
+    style="border-color: {{this.color.current}}"
   >
 	{{> (image . 'thumbnail')}}
   </div>

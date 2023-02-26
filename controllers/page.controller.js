@@ -1,5 +1,8 @@
 import { marked } from "marked";
 
+import getPixels from "get-pixels";
+import palette from "image-palette";
+
 import Page from "../models/page.js";
 import Header from "../models/header.js";
 import Footer from "../models/footer.js";
@@ -22,6 +25,41 @@ export default class PageController {
     });
 
     await res.render("admin/page", { page });
+  }
+
+  static async meta(req, res) {
+    let pageID = req.params.pageID;
+    const page = await Page.findById(pageID);
+
+    const { title, desc, color } = req.body;
+
+    page.title = title;
+    page.desc = desc;
+    page.color.current = color;
+
+    if (!!req.file) {
+      const { mimetype, destination, filename } = req.file;
+
+      page.img = await File.write(mimetype, destination, filename);
+      page.thumbnail = await File.thumbnail(destination, filename);
+
+      const url = `${destination}${filename}`;
+      await new Promise((resolve, reject) => {
+        getPixels(url, mimetype, async (err, pixels) => {
+          if (err) {
+            console.log("Bad image path");
+            return;
+          }
+          const { _ids, colors } = palette(pixels, 9);
+          page.color.other = colors;
+          resolve();
+        });
+      });
+    }
+
+    await page.save();
+
+    await res.redirect(`/admin/${pageID}`);
   }
 
   static async create(_req, res) {
@@ -61,26 +99,5 @@ export default class PageController {
     await page.save();
 
     await res.send("OK");
-  }
-
-  static async meta(req, res) {
-    let pageID = req.params.pageID;
-    const page = await Page.findById(pageID);
-
-    const { title, desc, color } = req.body;
-    const { mimetype, destination, filename } = req.file;
-
-    page.title = title;
-    page.desc = desc;
-    page.color = color;
-
-    if (!!req.file) {
-      page.img = await File.write(mimetype, destination, filename);
-      page.thumbnail = await File.thumbnail(destination, filename);
-    }
-
-    await page.save();
-
-    await res.redirect(`/admin/${pageID}`);
   }
 }

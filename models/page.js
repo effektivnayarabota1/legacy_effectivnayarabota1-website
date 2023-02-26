@@ -54,8 +54,11 @@ const PageSchema = new mongoose.Schema(
       default: "*",
     },
     color: {
-      type: String,
-      default: "#a4a4a4",
+      current: {
+        type: String,
+        default: "#a4a4a4",
+      },
+      other: [{ type: Array }],
     },
     desc: {
       type: String,

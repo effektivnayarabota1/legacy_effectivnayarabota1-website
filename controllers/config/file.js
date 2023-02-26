@@ -31,7 +31,13 @@ export default class File {
     const image = fs.readFileSync(path.join(destination, filename));
     filename += "-thumbnail";
     await sharp(image)
-      .resize({ width: 512, height: 512, fit: "inside", kernel: "mitchell" })
+      .resize({
+        width: 512,
+        height: 512,
+        fit: "inside",
+        kernel: "mitchell",
+        withoutEnlargement: true,
+      })
       .gif({ reoptimise: true, colours: 16 })
       .toFile(`${destination}/${filename}`);
 
