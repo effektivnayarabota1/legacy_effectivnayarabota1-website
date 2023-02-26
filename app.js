@@ -72,6 +72,7 @@ hbs.registerHelper("preview", function (data) {
 
 hbs.registerHelper("image", function (context, options) {
   if (!this.img || !this.img.data) return `ui/image_empty`;
+  if (options == "thumbnail") return `ui/image_thumbnail`;
   return `ui/image`;
 });
 hbs.registerHelper("base64", function (img) {

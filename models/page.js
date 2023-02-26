@@ -16,16 +16,14 @@ const ElementSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
+  thumbnail: {
+    data: Buffer,
+    contentType: String,
+  },
   position: {
     type: Number,
     default: Infinity,
   },
-  // slug: {
-  //   slug: "slug",
-  //   type: String,
-  //   forceIdSlug: true,
-  //   permanent: true,
-  // },
 });
 
 const BlockSchema = new mongoose.Schema({
@@ -36,7 +34,7 @@ const BlockSchema = new mongoose.Schema({
   },
   desc: {
     type: String,
-    default: "**",
+    default: "",
   },
   img: {
     data: Buffer,
@@ -46,12 +44,6 @@ const BlockSchema = new mongoose.Schema({
     type: Number,
     default: Infinity,
   },
-  // slug: {
-  //   slug: "slug",
-  //   type: String,
-  //   forceIdSlug: true,
-  //   permanent: true,
-  // },
   elements: [ElementSchema],
 });
 
@@ -67,7 +59,7 @@ const PageSchema = new mongoose.Schema(
     },
     desc: {
       type: String,
-      default: "*",
+      default: "",
     },
     img: {
       data: Buffer,
@@ -77,12 +69,10 @@ const PageSchema = new mongoose.Schema(
       type: Number,
       default: Infinity,
     },
-    // slug: {
-    //   slug: "slug",
-    //   type: String,
-    //   forceIdSlug: true,
-    //   permanent: true,
-    // },
+    thumbnail: {
+      data: Buffer,
+      contentType: String,
+    },
     blocks: [BlockSchema],
   },
   { timestamps: true }

@@ -2,7 +2,7 @@
   {{#each this.elements}}
     <div class="block_element-container grid-main">
       <div class="block-element_image-container">
-		  {{> (image) }}
+		  {{> (image . 'thumbnail') }}
 	  </div>
       <div class="block-element_text-container">
         <!-- <h2>{{this.title}}</h2> -->

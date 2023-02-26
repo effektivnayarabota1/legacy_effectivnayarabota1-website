@@ -68,13 +68,15 @@ export default class PageController {
     const page = await Page.findById(pageID);
 
     const { title, desc, color } = req.body;
+    const { mimetype, destination, filename } = req.file;
 
     page.title = title;
     page.desc = desc;
     page.color = color;
 
     if (!!req.file) {
-      page.img = await File.write(req.file);
+      page.img = await File.write(mimetype, destination, filename);
+      page.thumbnail = await File.thumbnail(destination, filename);
     }
 
     await page.save();

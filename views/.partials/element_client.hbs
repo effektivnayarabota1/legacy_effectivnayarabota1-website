@@ -17,10 +17,6 @@
     class="element_img-container"
     style="border-color: {{this.color}}"
   >
-    {{#if (is-image this.img)}}
-      <img src={{base64 this.img}} alt="element image" />
-    {{else}}
-      <img src="/assets/empty.png" />
-    {{/if}}
+	{{> (image . 'thumbnail')}}
   </div>
 </div>

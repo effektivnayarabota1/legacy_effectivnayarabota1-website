@@ -42,8 +42,8 @@ export default class BlockController {
     }
   }
 
-  static async save(req, res) {
-    const { pageID, blockID, elementID } = req.params;
+  static async rewrite(req, res) {
+    const { pageID, blockID } = req.params;
     const page = await Page.findById(pageID);
     const block = await page.blocks.id(blockID);
 
@@ -52,8 +52,10 @@ export default class BlockController {
     if (!Array.isArray(req.body.desc)) req.body.desc = [req.body.desc];
 
     const { elements } = block;
-    await req.files.forEach(async (file, index) => {
-      const { mimetype, filename, size } = file;
+    const files = req.files;
+    for (let file of files) {
+      const index = files.indexOf(file);
+      const { mimetype, destination, filename, size } = file;
 
       const element = await elements.find((element) => {
         return element._id.toString() == filename;
@@ -63,12 +65,11 @@ export default class BlockController {
       element.desc = req.body.desc[index];
 
       if (size > 0 && mimetype != "application/octet-stream") {
-        element.img = await File.write(file);
+        element.img = await File.write(mimetype, destination, filename);
+        element.thumbnail = await File.thumbnail(destination, filename);
       }
-    });
-
+    }
     await page.save();
-
     await res.send("OK");
   }
 }

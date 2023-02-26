@@ -67,7 +67,7 @@ router.delete("/:pageID/:blockID", (req, res) => {
   BlockController.remove(req, res);
 });
 router.put("/:pageID/:blockID", upload.array("image"), (req, res) => {
-  BlockController.save(req, res);
+  BlockController.rewrite(req, res);
 });
 
 // ELEMENT ROUTES

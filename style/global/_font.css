@@ -42,6 +42,9 @@ p:last-child {
 a {
   text-decoration: underline !important;
 }
+a:hover {
+  text-decoration: none !important;
+}
 
 h1 {
   margin-bottom: 64px;
@@ -79,8 +82,7 @@ h3 {
   margin-bottom: 24px;
 
   font-family: "Cormorant Garamond";
-  font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 24px;
   line-height: 24px;
   /* identical to box height, or 100% */
@@ -92,7 +94,7 @@ h3 {
 
 h4 {
   font-family: "Cormorant Garamond";
-  font-style: normal;
+  font-style: italic;
   font-weight: 300;
   font-size: 20px;
   line-height: 24px;
@@ -101,7 +103,7 @@ h4 {
   letter-spacing: 0.003em;
   font-feature-settings: "pnum" on, "lnum" on;
 
-  color: var(--black);
+  color: var(--grey-64);
 }
 
 p {
