@@ -11,7 +11,10 @@ export default class File {
     if (blockID) dir += blockID + "/";
     if (elementID) dir += elementID;
     if (fs.existsSync(dir)) {
-      // await fsPromises.unlink(dir);
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+    dir += "-thumbnail";
+    if (fs.existsSync(dir)) {
       fs.rmSync(dir, { recursive: true, force: true });
     }
     return;
