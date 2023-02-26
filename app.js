@@ -62,10 +62,6 @@ hbs.registerHelper("is-image", function (img) {
   if (!img.data) return false;
   else return true;
 });
-hbs.registerHelper("base64", function (img) {
-  if (!img.data) return;
-  else return `data:${img.contentType};base64,${img.data.toString("base64")}`;
-});
 hbs.registerHelper("preview", function (data) {
   if (data) {
     return data;
@@ -73,10 +69,16 @@ hbs.registerHelper("preview", function (data) {
     return " ";
   }
 });
-hbs.registerHelper("block", function (context) {
-  const type = context.type;
-  return `block_${type}`;
+
+hbs.registerHelper("image", function (context, options) {
+  if (!this.img || !this.img.data) return `ui/image_empty`;
+  return `ui/image`;
 });
+hbs.registerHelper("base64", function (img) {
+  if (!img.data) return;
+  else return `data:${img.contentType};base64,${img.data.toString("base64")}`;
+});
+
 hbs.registerHelper("isRadioChecked", function (context, options) {
   const blockType = options.data.root.block.type;
   const radioType = context;

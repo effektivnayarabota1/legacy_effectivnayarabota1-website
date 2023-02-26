@@ -1,0 +1,8 @@
+.block-element_image-container {
+  grid-column: 1 / 2;
+  display: flex;
+  justify-content: flex-end;
+}
+.block-element_image-container img {
+  height: fit-content;
+}

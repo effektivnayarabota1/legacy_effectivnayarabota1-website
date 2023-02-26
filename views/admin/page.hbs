@@ -4,9 +4,7 @@
 	{{#each page.blocks}}
 		<div id="{{this.id}}" class="menu-wrapper wrapper block-container dynamic_element" >
 			{{> block_options pageId=../page.id blockId=this.id}}
-			<div class="grid-main block_element-container {{this.type}}">
-				{{> (block . this) }}
-			</div>
+			{{> block}}
 		</div>
 	{{/each}}
 

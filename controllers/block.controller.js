@@ -48,6 +48,8 @@ export default class BlockController {
     const block = await page.blocks.id(blockID);
 
     block.type = req.body.type;
+    if (!Array.isArray(req.body.title)) req.body.title = [req.body.title];
+    if (!Array.isArray(req.body.desc)) req.body.desc = [req.body.desc];
 
     const { elements } = block;
     await req.files.forEach(async (file, index) => {
