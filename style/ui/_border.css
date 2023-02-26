@@ -1,5 +1,5 @@
 .border {
-  border: 2px solid var(--grey-64);
+  border: 1px solid var(--grey-64);
   transition: border 0.1s ease-in;
 }
 .border:hover {

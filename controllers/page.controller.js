@@ -90,12 +90,22 @@ export default class PageController {
     const page = await Page.findById(pageID);
     const { blocks } = page;
 
-    await newOrder.forEach(async (id, index) => {
+    for (let id of newOrder) {
+      const index = newOrder.indexOf(id);
+
       const block = await blocks.find((block) => {
         return block._id.toString() == id;
       });
       block.position = index;
-    });
+    }
+
+    // await newOrder.forEach(async (id, index) => {
+    //   const block = await blocks.find((block) => {
+    //     return block._id.toString() == id;
+    //   });
+    //   block.position = index;
+    // });
+
     await page.save();
 
     await res.send("OK");

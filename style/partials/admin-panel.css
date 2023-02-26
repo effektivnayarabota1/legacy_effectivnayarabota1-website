@@ -1,7 +1,23 @@
 .admin-panel {
+  z-index: 1;
   width: 100%;
-  padding-top: 0;
-  padding-bottom: 0;
+  top: 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
   position: fixed;
-  background-color: var(--grey-64);
+  /* background-color: var(--grey-64); */
+  background-color: var(--grey-32);
+
+  display: flex;
+  justify-content: space-between;
+}
+.admin-panel a,
+.admin-panel {
+  /* color: var(--grey-32); */
+  color: var(--white);
+  text-transform: uppercase;
+}
+.admin-panel_left-side {
+  display: flex;
+  gap: 16px;
 }
