@@ -10,7 +10,7 @@ const ElementSchema = new mongoose.Schema({
   },
   desc: {
     type: String,
-    default: "***",
+    default: "",
   },
   img: {
     data: Buffer,

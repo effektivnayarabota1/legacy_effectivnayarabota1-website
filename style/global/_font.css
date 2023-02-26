@@ -39,6 +39,10 @@ p:last-child {
   margin-bottom: 0 !important;
 }
 
+a {
+  text-decoration: underline !important;
+}
+
 h1 {
   margin-bottom: 64px;
 
@@ -101,6 +105,8 @@ h4 {
 }
 
 p {
+  margin-bottom: 24px;
+
   font-family: "Cormorant Garamond";
   font-style: normal;
   font-weight: 400;

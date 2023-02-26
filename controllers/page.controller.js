@@ -1,3 +1,5 @@
+import { marked } from "marked";
+
 import Page from "../models/page.js";
 import Header from "../models/header.js";
 import Footer from "../models/footer.js";
@@ -11,6 +13,12 @@ export default class PageController {
 
     await page.blocks.sort((a, b) => {
       return a.position - b.position;
+    });
+
+    page.blocks.forEach((block) => {
+      block.elements.forEach((element) => {
+        element.desc = marked.parse(element.desc);
+      });
     });
 
     await res.render("admin/page", { page });

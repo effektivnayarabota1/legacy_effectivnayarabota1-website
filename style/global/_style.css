@@ -1,3 +1,6 @@
 img {
   max-height: 100vh;
 }
+hr {
+  border-top: 2px solid var(--grey-64);
+}
