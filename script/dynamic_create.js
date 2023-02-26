@@ -14,10 +14,10 @@ async function create(e) {
   let postUrl;
 
   if (blockID) {
-    postUrl = `/admin/${pageID}/${blockID}/create-element`;
+    postUrl = `/admin/${pageID}/${blockID}/new`;
   } else if (pageID) {
     const type = this.className.split(" ").at(-1);
-    postUrl = `/admin/${pageID}/${type}/create-block`;
+    postUrl = `/admin/${pageID}/${type}`;
   } else {
     postUrl = "/admin";
   }
