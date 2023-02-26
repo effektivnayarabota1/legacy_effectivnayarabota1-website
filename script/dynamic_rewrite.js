@@ -27,7 +27,7 @@ async function rewriteElements(e) {
   };
 
   if (blockID) {
-    putUrl = `/admin/${pageID}/${blockID}/rewrite`;
+    putUrl = `/admin/${pageID}/${blockID}`;
 
     const formData = new FormData();
 
@@ -50,13 +50,13 @@ async function rewriteElements(e) {
     }
 
     options = {
-      method: "POST",
+      method: "PUT",
       body: formData,
     };
   } else if (pageID) {
-    putUrl = `/admin/${pageID}/rewrite`;
+    putUrl = `/admin/${pageID}`;
   } else {
-    putUrl = `/admin/${container.id}/rewrite`;
+    putUrl = `/admin`;
   }
 
   try {

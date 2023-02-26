@@ -1,3 +1,8 @@
 img {
   max-height: 100vh;
 }
+hr {
+  border-top: 2px solid var(--grey-64);
+  margin: 8px 0;
+  opacity: 0.2;
+}

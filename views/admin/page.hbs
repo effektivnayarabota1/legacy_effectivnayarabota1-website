@@ -1,12 +1,17 @@
 {{> form_meta page}}
 
+<div>
+	<hr>
+	<hr>
+	<hr>
+</div>
+
 <div id="{{page.id}}" class="blocks dynamic_container">
 	{{#each page.blocks}}
 		<div id="{{this.id}}" class="menu-wrapper wrapper block-container dynamic_element" >
 			{{> block_options pageId=../page.id blockId=this.id}}
-			<div class="grid-main block_element-container {{this.type}}">
-				{{> (block . this) }}
-			</div>
+			{{> block}}
+			<hr>
 		</div>
 	{{/each}}
 

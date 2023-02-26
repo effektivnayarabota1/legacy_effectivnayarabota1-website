@@ -1,3 +1,4 @@
+import sharp from "sharp";
 import fs from "fs";
 // import fsPromises from "fs/promises";
 import path from "path";
@@ -10,18 +11,36 @@ export default class File {
     if (blockID) dir += blockID + "/";
     if (elementID) dir += elementID;
     if (fs.existsSync(dir)) {
-      // await fsPromises.unlink(dir);
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+    dir += "-thumbnail";
+    if (fs.existsSync(dir)) {
       fs.rmSync(dir, { recursive: true, force: true });
     }
     return;
   }
 
-  static async write(file) {
-    const { mimetype, destination, filename } = file;
-
+  static async write(mimetype, destination, filename) {
     return {
       data: fs.readFileSync(path.join(destination, filename)),
       contentType: mimetype,
     };
+  }
+
+  static async thumbnail(destination, filename) {
+    const image = fs.readFileSync(path.join(destination, filename));
+    filename += "-thumbnail";
+    await sharp(image)
+      .resize({
+        width: 512,
+        height: 512,
+        fit: "inside",
+        kernel: "mitchell",
+        withoutEnlargement: true,
+      })
+      .gif({ reoptimise: true, colours: 16 })
+      .toFile(`${destination}/${filename}`);
+
+    return await this.write("image/gif", destination, filename);
   }
 }

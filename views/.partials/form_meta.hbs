@@ -1,13 +1,28 @@
-<form action="/admin/meta/{{this.id}}" method="post" enctype="multipart/form-data" id="{{this.id}}" class="menu-wrapper wrapper grid-4 meta">
+<form action="/admin/{{this.id}}/meta" method="post" enctype="multipart/form-data" id="{{this.id}}" class="menu-wrapper wrapper grid-4 meta">
 	<div class="element-container meta-container" >
-		<input type="text" readonly value="{{this.id}}" placeholder="id">
+		<!-- <input type="text" readonly value="{{this.id}}" placeholder="id"> -->
 		<input type="text" name="title" value="{{this.title}}" placeholder="title">
 		<textarea placeholder="desc" name="desc">{{this.desc}}</textarea>
 		<div class="royal-pattern" ></div>
 	</div>
 	<div class="element-container element-container_group" >
 		{{>ui/input_file this}}
-		{{>ui/input_color this}}
+		<div class="meta_color-container">
+			{{>ui/input_color this}}
+			<div class="mono" style="display: flex; justify-content: center;align-items: center; color: var(--white);" >*</div>
+			<div class="meta_color-other-container">
+				<div class="main" >
+					{{#each this.color.other}}
+						<div class="element_other-color" style="background-color: rgba({{this}});"></div>
+					{{/each}}
+				</div>
+				<div class="contrast" >
+					{{#each this.color.other}}
+						<div class="element_other-color" style="background-color: rgba({{this}});"></div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
   		{{> element_client this }}
 	</div>
   	{{> element_client this }}
