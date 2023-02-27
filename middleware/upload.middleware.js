@@ -7,7 +7,9 @@ const __dirname = path.resolve();
 
 const storage = multer.diskStorage({
   destination: async function (req, file, cb) {
-    const { pageID, blockID, elementID } = req.params;
+    let { pageID, blockID, elementID } = req.params;
+    if (req.url.split("/").includes("header")) pageID = "header";
+    if (req.url.split("/").includes("footer")) pageID = "footer";
     const dir = await directory(pageID, blockID, elementID);
     cb(null, dir);
   },

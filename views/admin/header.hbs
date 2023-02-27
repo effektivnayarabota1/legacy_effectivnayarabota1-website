@@ -1,0 +1,25 @@
+{{#> header header}}
+	{{> header_options}}
+{{/ header}}
+
+<form action="/admin/header" method="post" enctype="multipart/form-data" id="header" 
+class="dynamic_container elements menu-wrapper wrapper grid-4">
+	{{#each header.elements}}
+  		{{#> element_admin }}
+			{{> element_options}}
+		{{/ element_admin}}
+	{{/each}}
+
+  	<div class="element-container pages_button-container">
+  		{{> ui/button_plus}}
+		{{> ui/button_big class="dynamic_rewrite" text="Save"}}
+  	</div>
+</form>
+
+<script type="module" src="/script/dynamic_create.js"></script>
+<script type="module" src="/script/dynamic_remove.js"></script>
+
+<script type="module" src="/script/dynamic_move.js"></script>
+<script type="module" src="/script/dynamic_rewrite.js"></script>
+
+<script type="module" src="/script/element_preview.js"></script>

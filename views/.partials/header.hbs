@@ -3,6 +3,12 @@
     <h1><a href="/admin/header">{{this.title}}</a></h1>
   </div>
 
+	{{#if @partial-block}}
+    	<div class="header_control-container menu-wrapper wrapper grid-main">
+			{{> @partial-block }}
+    	</div>
+	{{/if}}
+
   <div class="header_bcg-container">
     {{#each elements}}
       {{#if (is-image this.img)}}

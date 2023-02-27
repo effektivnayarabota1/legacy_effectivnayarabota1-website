@@ -30,6 +30,18 @@ router.get("/logout", (req, res) => {
 });
 
 // HEADER ROUTES
+router.get("/header", (req, res) => {
+  HeaderController.index(req, res);
+});
+router.put("/header", upload.array("image"), (req, res) => {
+  HeaderController.rewrite(req, res);
+});
+router.post("/header/dynamic_create", (req, res) => {
+  HeaderController.create(req, res);
+});
+router.delete("/header/:elementID", (req, res) => {
+  HeaderController.remove(req, res);
+});
 
 // INDEX ROUTES
 router.get("/", (req, res) => {

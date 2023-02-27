@@ -13,6 +13,12 @@ function readImage(e) {
   const container = this.closest(".element_img-container");
   if (!!container) {
     let img = container.querySelector("img");
+    if (!img) {
+      img = document.createElement("img");
+      const label = container.querySelector(".element_file-label");
+      label.querySelector("h1").remove();
+      label.appendChild(img);
+    }
     reader.addEventListener("load", (event) => {
       img.src = event.target.result;
     });

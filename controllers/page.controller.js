@@ -99,15 +99,7 @@ export default class PageController {
       block.position = index;
     }
 
-    // await newOrder.forEach(async (id, index) => {
-    //   const block = await blocks.find((block) => {
-    //     return block._id.toString() == id;
-    //   });
-    //   block.position = index;
-    // });
-
     await page.save();
-
     await res.send("OK");
   }
 }

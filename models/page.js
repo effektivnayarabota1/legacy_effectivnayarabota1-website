@@ -8,7 +8,7 @@ const ElementSchema = new mongoose.Schema({
     type: String,
     default: "***",
   },
-  desc: {
+  text: {
     type: String,
     default: "",
   },
@@ -32,7 +32,7 @@ const BlockSchema = new mongoose.Schema({
     type: String,
     default: "**",
   },
-  desc: {
+  text: {
     type: String,
     default: "",
   },
@@ -60,7 +60,7 @@ const PageSchema = new mongoose.Schema(
       },
       other: [{ type: Array }],
     },
-    desc: {
+    text: {
       type: String,
       default: "",
     },

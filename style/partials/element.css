@@ -10,10 +10,6 @@
 }
 
 /* client */
-.empty {
-  float: bottom;
-}
-
 .element_control-container a {
   width: 100%;
 }
@@ -89,9 +85,4 @@
   height: 100%;
 
   object-fit: cover;
-}
-.empty {
-  background-image: url("/assets/empty.png");
-  background-repeat: repeat;
-  background-position: center center;
 }

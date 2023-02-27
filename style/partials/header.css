@@ -1,5 +1,6 @@
 .header {
   height: 100vh;
+  position: relative;
 }
 .header_title {
   width: 100%;
@@ -33,6 +34,9 @@
 }
 
 /* ADMIN */
+.header_control-container {
+  position: absolute;
+}
 .header_fieldset {
   position: relative;
 }
