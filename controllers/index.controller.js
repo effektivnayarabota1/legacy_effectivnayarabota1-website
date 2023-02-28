@@ -12,9 +12,9 @@ export default class IndexController {
     });
 
     const footer = await Footer.findOne({});
-    await footer.elements.sort((a, b) => {
-      return a.position - b.position;
-    });
+    // await footer.elements.sort((a, b) => {
+    //   return a.position - b.position;
+    // });
 
     await res.render("admin/index", {
       pages: pages,

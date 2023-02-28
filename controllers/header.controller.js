@@ -25,6 +25,15 @@ export default class HeaderController {
     }
   }
 
+  static async title(req, res) {
+    const header = await Header.findOne({});
+    const { title, color } = req.body;
+    header.title = title;
+    header.color.current = color;
+    await header.save();
+    await res.redirect("/admin/header");
+  }
+
   static async rewrite(req, res) {
     const header = await Header.findOne({});
 

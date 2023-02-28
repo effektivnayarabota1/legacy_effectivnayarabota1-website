@@ -75,6 +75,13 @@ hbs.registerHelper("image", function (context, options) {
   if (options == "thumbnail") return `ui/image_thumbnail`;
   return `ui/image`;
 });
+hbs.registerHelper("letters", function (context, options) {
+  let ret = "";
+  for (let letter of context) {
+    ret = ret + "<div class='header_letter' ><h2>" + letter + "</h2></div>";
+  }
+  return ret;
+});
 hbs.registerHelper("base64", function (img) {
   if (!img.data) return;
   else return `data:${img.contentType};base64,${img.data.toString("base64")}`;

@@ -33,6 +33,9 @@ router.get("/logout", (req, res) => {
 router.get("/header", (req, res) => {
   HeaderController.index(req, res);
 });
+router.post("/header", (req, res) => {
+  HeaderController.title(req, res);
+});
 router.put("/header", upload.array("image"), (req, res) => {
   HeaderController.rewrite(req, res);
 });

@@ -24,9 +24,16 @@ const ElementSchema = new mongoose.Schema({
 });
 
 const HeaderSchema = new mongoose.Schema({
-  color: {
+  title: {
     type: String,
-    default: "#a4a4a4",
+    default: "",
+  },
+  color: {
+    current: {
+      type: String,
+      default: "#a4a4a4",
+    },
+    other: [{ type: Array }],
   },
   elements: [ElementSchema],
 });
