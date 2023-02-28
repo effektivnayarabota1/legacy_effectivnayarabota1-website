@@ -20,7 +20,7 @@ export default class PageController {
 
     page.blocks.forEach((block) => {
       block.elements.forEach((element) => {
-        element.desc = marked.parse(element.desc);
+        element.text = marked.parse(element.text);
       });
     });
 
@@ -31,10 +31,10 @@ export default class PageController {
     let pageID = req.params.pageID;
     const page = await Page.findById(pageID);
 
-    const { title, desc, color } = req.body;
+    const { title, text, color } = req.body;
 
     page.title = title;
-    page.desc = desc;
+    page.text = text;
     page.color.current = color;
 
     if (!!req.file) {
