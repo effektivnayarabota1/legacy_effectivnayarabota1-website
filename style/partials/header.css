@@ -2,6 +2,7 @@
   height: 100vh;
   position: relative;
 }
+/* TITLE */
 .header_title{
   width: 100%;
   height: 100%;
@@ -14,6 +15,7 @@
   flex-wrap: wrap;
 }
 .header_letter-container{
+	z-index: 1;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -29,12 +31,23 @@
 .header_letter h2 {
 	color: inherit;
 }
-.header_bcg-container {
+.header_bcg {
+	z-index: 0;
+}
+
+/* CONTROL */
+.header_control-container{
+	z-index: 1;
+}
+
+/* BACKGROUND */
+.header_bcg {
   height: 100%;
   width: auto;
   overflow: hidden;
-
-  display: flex;
+}
+.header_bcg-container {
+  position: relative;
 }
 .header_bcg-image {
   min-width: 100%;
@@ -46,6 +59,14 @@
   max-height: 100%;
 
   margin: 0 auto;
+}
+.header_bcg-text{
+	position: absolute;
+	top: 50%;
+}
+.header_bcg-text * {
+	color: var(--grey-32);
+	mix-blend-mode: difference;
 }
 
 /* ADMIN */

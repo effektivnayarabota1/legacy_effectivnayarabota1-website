@@ -1,3 +1,5 @@
+import { marked } from "marked";
+
 import File from "./config/file.js";
 import path from "path";
 
@@ -10,6 +12,10 @@ export default class HeaderController {
     const header = await Header.findOne({});
     await header.elements.sort((a, b) => {
       return a.position - b.position;
+    });
+
+    header.elements.forEach((element) => {
+      element.HTMLtext = marked.parse(element.text);
     });
     await res.render("admin/header", { header });
   }

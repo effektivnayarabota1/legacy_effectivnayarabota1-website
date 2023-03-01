@@ -4,8 +4,6 @@ import getPixels from "get-pixels";
 import palette from "image-palette";
 
 import Page from "../models/page.js";
-import Header from "../models/header.js";
-import Footer from "../models/footer.js";
 
 import File from "./config/file.js";
 
