@@ -64,6 +64,7 @@ export default class HeaderController {
         element.thumbnail = await File.thumbnail(destination, filename);
       }
     }
+    header.gif = await File.gif("header", header.elements);
     await header.save();
     await res.send("OK");
   }
@@ -73,12 +74,13 @@ export default class HeaderController {
     const header = await Header.findOne({});
     const element = await header.elements.id(elementID);
     if (header.elements.length - 1) {
-      await File.remove(elementID);
+      await File.remove("header", elementID);
       await element.remove();
     }
     await header.save();
     await res.send("OK");
   }
+
   // static async edit(req, res) {
   //   let header = await Header.findOne({});
   //   if (!header) header = await Header.create({});

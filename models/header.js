@@ -28,6 +28,10 @@ const HeaderSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  gif: {
+    data: Buffer,
+    contentType: String,
+  },
   color: {
     current: {
       type: String,
