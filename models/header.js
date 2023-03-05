@@ -28,6 +28,10 @@ const HeaderSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  delay: {
+    type: Number,
+    default: 0.667,
+  },
   gif: {
     data: Buffer,
     contentType: String,

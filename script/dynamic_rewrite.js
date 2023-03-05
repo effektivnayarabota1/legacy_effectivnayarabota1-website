@@ -31,6 +31,9 @@ async function rewriteElements(e) {
     const formData = new FormData();
     const fieldsets = document.querySelectorAll("fieldset");
 
+    const delay = document.querySelector(".header_delay-input").value;
+    formData.append("delay", delay);
+
     for (let fieldset of fieldsets) {
       const elementID = fieldset.id;
       const title = fieldset.querySelector(".element_title-input").value;

@@ -3,6 +3,8 @@ import getPixels from "get-pixels";
 import gifEncoder from "gif-encoder";
 
 import fs from "fs";
+import * as fsPromises from "node:fs/promises";
+import stream from "stream";
 import path from "path";
 
 const __dirname = path.resolve();
@@ -16,7 +18,6 @@ export default class File {
       fs.rmSync(dir, { recursive: true, force: true });
     }
     dir += "-thumbnail";
-    console.log(dir);
     if (fs.existsSync(dir)) {
       fs.rmSync(dir, { recursive: true, force: true });
     }
@@ -37,7 +38,9 @@ export default class File {
       .resize({
         width: 512,
         height: 512,
-        fit: "inside",
+        // fit: "inside",
+        fit: "contain",
+        background: { r: 255, g: 255, b: 255, alpha: 1 },
         kernel: "mitchell",
         withoutEnlargement: true,
       })
@@ -47,30 +50,69 @@ export default class File {
     return await this.write("image/gif", destination, filename);
   }
 
-  static async gif(directory, elements) {
-    var gif = new gifEncoder(100, 100);
-    let dir = `${__dirname}/uploads/${directory}/gif.gif`;
+  static async gif(elements, destination, delay = 667) {
+    const filename = `thumbmails`;
+    await elements.sort((a, b) => {
+      return a.position - b.position;
+    });
 
-    var file = fs.createWriteStream(dir);
-    gif.pipe(file);
-    gif.writeHeader();
-    gif.setDelay(1);
-    gif.setRepeat(0);
+    const gif = await new Promise(async (resolve, _reject) => {
+      const width = 512;
+      const height = 512;
 
-    for (let element of elements) {
-      const { data, contentType } = element.thumbnail;
-      const pixel = await new Promise((resolve, _reject) => {
-        getPixels(data, contentType, async (err, pixels) => {
-          if (err) {
-            console.log("Bad image path");
-            return;
+      let gif = new gifEncoder(width, height);
+
+      var file = fs.createWriteStream(path.join(destination, filename));
+      gif.pipe(file);
+      gif.writeHeader();
+      gif.setDelay(delay);
+      gif.setRepeat(0);
+
+      for (let element of elements) {
+        if (!element.thumbnail.data) continue;
+
+        const { data, contentType } = element.thumbnail;
+        const img = await sharp(data)
+          .resize({
+            width,
+            height,
+            fit: "contain",
+          })
+          .gif({ reoptimise: true, colours: 12 })
+          .toBuffer();
+
+        const pixels = await new Promise((resolve, _reject) => {
+          getPixels(img, contentType, async (err, pixels) => {
+            if (err) {
+              console.log("Bad image path");
+              return;
+            }
+            resolve(pixels);
+          });
+        });
+
+        gif.read();
+        gif.addFrame(pixels.data);
+      }
+
+      gif.on("finish#stop", async function () {
+        stream.finished(file, (err) => {
+          if (err) console.log(err);
+          else {
+            resolve();
           }
-          resolve(pixels);
         });
       });
-      gif.addFrame(pixel.data);
-    }
 
-    gif.finish();
+      gif.finish();
+    });
+
+    const dir = path.join(destination, filename);
+    const data = await fsPromises.readFile(dir);
+
+    return {
+      data,
+      contentType: "image/gif",
+    };
   }
 }

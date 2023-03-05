@@ -64,7 +64,14 @@ export default class HeaderController {
         element.thumbnail = await File.thumbnail(destination, filename);
       }
     }
-    header.gif = await File.gif("header", header.elements);
+
+    const destination = req.files[0].destination;
+    // const order = req.files.map((file) => [file.originalname]);
+    const delay = req.body.delay;
+    header.gif = await File.gif(elements, destination, delay);
+
+    header.delay = delay;
+
     await header.save();
     await res.send("OK");
   }
