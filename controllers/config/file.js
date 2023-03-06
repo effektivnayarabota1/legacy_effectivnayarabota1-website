@@ -50,7 +50,10 @@ export default class File {
     return await this.write("image/gif", destination, filename);
   }
 
-  static async gif(elements, destination, delay = 667) {
+  static async gif(elements, pageID, delay = 667) {
+    let destination = `${__dirname}/uploads/${pageID}/`;
+    // if (blockID) destination += blockID;
+
     const filename = `thumbmails`;
     await elements.sort((a, b) => {
       return a.position - b.position;

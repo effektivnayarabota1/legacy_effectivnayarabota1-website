@@ -12,22 +12,17 @@
 	{{/if}}
 </div>
 
-<img src={{base64 this.gif}} />
-
 <div class="header_bcg" >
-    {{#each elements}}
   <div class="header_bcg-container">
-      {{#if (is-image this.img)}}
-		<div class="header_bcg-text wrapper menu-wrapper grid-main" >
-			<div>
-				{{{this.HTMLtext}}}
-			</div>
-		</div>
+		<!-- <div class="header_bcg-text wrapper menu-wrapper grid-main" > -->
+		<!-- 	<div> -->
+		<!-- 		{{{this.HTMLtext}}} -->
+		<!-- 	</div> -->
+		<!-- </div> -->
+
         <div class="header_bcg-image">
-          <img src={{base64 this.img}} alt="header background" />
+          <img src={{base64 this.gif}} alt="header background" />
         </div>
-      {{/if}}
   </div>
-    {{/each}}
 </div>
 </header>

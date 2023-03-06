@@ -65,10 +65,9 @@ export default class HeaderController {
       }
     }
 
-    const destination = req.files[0].destination;
     // const order = req.files.map((file) => [file.originalname]);
     const delay = req.body.delay;
-    header.gif = await File.gif(elements, destination, delay);
+    header.gif = await File.gif(elements, "header", delay);
 
     header.delay = delay;
 
@@ -84,6 +83,7 @@ export default class HeaderController {
       await File.remove("header", elementID);
       await element.remove();
     }
+    header.gif = await File.gif(header.elements, "header", header.delay);
     await header.save();
     await res.send("OK");
   }
