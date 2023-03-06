@@ -70,6 +70,7 @@ export default class HeaderController {
     header.gif = await File.gif(elements, "header", delay);
 
     header.delay = delay;
+    header.objectFit = req.body.objectFit;
 
     await header.save();
     await res.send("OK");

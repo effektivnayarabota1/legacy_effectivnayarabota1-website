@@ -36,6 +36,10 @@ const HeaderSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
+  objectFit: {
+    type: String,
+    default: "contain",
+  },
   color: {
     current: {
       type: String,

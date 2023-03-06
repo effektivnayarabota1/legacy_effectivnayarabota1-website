@@ -34,6 +34,11 @@ async function rewriteElements(e) {
     const delay = document.querySelector(".header_delay-input").value;
     formData.append("delay", delay);
 
+    const objectFit = document.querySelector(
+      'input[name="objectFit"]:checked'
+    ).value;
+    formData.append("objectFit", objectFit);
+
     for (let fieldset of fieldsets) {
       const elementID = fieldset.id;
       const title = fieldset.querySelector(".element_title-input").value;

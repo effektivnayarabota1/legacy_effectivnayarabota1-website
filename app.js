@@ -88,7 +88,10 @@ hbs.registerHelper("base64", function (img) {
 });
 
 hbs.registerHelper("isRadioChecked", function (context, options) {
-  const blockType = options.data.root.block.type;
+  const root = options.data.root;
+  let blockType;
+  if (root.block) blockType = root.block.type;
+  if (root.header) blockType = root.header.objectFit;
   const radioType = context;
   if (blockType == radioType) return "checked";
   else return;
