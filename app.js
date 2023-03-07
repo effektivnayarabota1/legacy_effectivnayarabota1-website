@@ -91,6 +91,7 @@ hbs.registerHelper("isRadioChecked", function (context, options) {
   const root = options.data.root;
   let blockType;
   if (root.block) blockType = root.block.type;
+  if (root.page) blockType = root.page.objectFit;
   if (root.header) blockType = root.header.objectFit;
   const radioType = context;
   if (blockType == radioType) return "checked";

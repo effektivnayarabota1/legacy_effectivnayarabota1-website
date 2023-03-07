@@ -1,7 +1,4 @@
-import slug from "mongoose-slug-updater";
 import mongoose from "mongoose";
-
-mongoose.plugin(slug);
 
 const ElementSchema = new mongoose.Schema({
   title: {
@@ -67,6 +64,10 @@ const PageSchema = new mongoose.Schema(
     img: {
       data: Buffer,
       contentType: String,
+    },
+    objectFit: {
+      type: String,
+      default: "contain",
     },
     position: {
       type: Number,

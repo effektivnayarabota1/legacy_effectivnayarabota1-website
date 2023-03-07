@@ -29,10 +29,11 @@ export default class PageController {
     let pageID = req.params.pageID;
     const page = await Page.findById(pageID);
 
-    const { title, text, color } = req.body;
+    const { title, text, color, objectFit } = req.body;
 
     page.title = title;
     page.text = text;
+    page.objectFit = objectFit;
     page.color.current = color;
 
     if (!!req.file) {
