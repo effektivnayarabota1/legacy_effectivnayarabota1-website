@@ -17,13 +17,13 @@ export const router = express.Router();
 // LOGIN ROUTES
 
 router.get("/login", (req, res) => {
-  LoginController.showLoginFrom(req, res);
-});
-router.post("/create", (req, res) => {
-  LoginController.create(req, res);
+  LoginController.index(req, res);
 });
 router.post("/login", (req, res) => {
   LoginController.newSession(req, res);
+});
+router.post("/create", (req, res) => {
+  LoginController.create(req, res);
 });
 router.get("/logout", (req, res) => {
   LoginController.outSession(req, res);
