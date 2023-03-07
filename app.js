@@ -75,15 +75,35 @@ hbs.registerHelper("image", function (context, options) {
   if (options == "thumbnail") return `ui/image_thumbnail`;
   return `ui/image`;
 });
+hbs.registerHelper("letters", function (context, options) {
+  let ret = "";
+  for (let letter of context) {
+    ret = ret + "<div class='header_letter' ><h2>" + letter + "</h2></div>";
+  }
+  return ret;
+});
 hbs.registerHelper("base64", function (img) {
   if (!img.data) return;
   else return `data:${img.contentType};base64,${img.data.toString("base64")}`;
 });
 
 hbs.registerHelper("isRadioChecked", function (context, options) {
-  const blockType = options.data.root.block.type;
+  const root = options.data.root;
+  let blockType;
+  if (root.block) blockType = root.block.type;
+  if (root.page) blockType = root.page.objectFit;
+  if (root.header) blockType = root.header.objectFit;
   const radioType = context;
   if (blockType == radioType) return "checked";
+  else return;
+});
+
+hbs.registerHelper("isSelected", function (context, options) {
+  const root = options.data.root;
+  if (!root) return;
+
+  const selectValue = root.header.mixBlendMode;
+  if (selectValue == context) return "selected";
   else return;
 });
 

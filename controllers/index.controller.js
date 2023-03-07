@@ -5,8 +5,17 @@ import Footer from "../models/footer.js";
 export default class IndexController {
   static async index(req, res) {
     const pages = await Page.find({}).sort({ position: 1 });
+
     const header = await Header.findOne({});
+    await header.elements.sort((a, b) => {
+      return a.position - b.position;
+    });
+
     const footer = await Footer.findOne({});
+    // await footer.elements.sort((a, b) => {
+    //   return a.position - b.position;
+    // });
+
     await res.render("admin/index", {
       pages: pages,
       header: header,

@@ -1,10 +1,14 @@
 <form action="/admin/{{this.id}}/meta" method="post" enctype="multipart/form-data" id="{{this.id}}" class="menu-wrapper wrapper grid-4 meta">
+
 	<div class="element-container meta-container" >
 		<!-- <input type="text" readonly value="{{this.id}}" placeholder="id"> -->
 		<input type="text" name="title" value="{{this.title}}" placeholder="title">
-		<textarea placeholder="desc" name="desc">{{this.desc}}</textarea>
+		<textarea placeholder="text" name="text">{{this.text}}</textarea>
 		<div class="royal-pattern" ></div>
+			{{>ui/radio_big checked=(isRadioChecked "cover") class="cover" text="Cover" name="objectFit" value="cover"}}
+			{{>ui/radio_big checked=(isRadioChecked "contain") class="contain" text="Contain" name="objectFit" value="contain"}}
 	</div>
+
 	<div class="element-container element-container_group" >
 		{{>ui/input_file this}}
 		<div class="meta_color-container">
@@ -25,9 +29,12 @@
 		</div>
   		{{> element_client this }}
 	</div>
+
   	{{> element_client this }}
+
 	<div class="element-container meta-container">
 		{{>ui/button_big class="save-meta" text="save-meta"}}
 		<div class="royal-pattern" ></div>
 	</div>
+
 </form>

@@ -49,7 +49,7 @@ export default class BlockController {
 
     block.type = req.body.type;
     if (!Array.isArray(req.body.title)) req.body.title = [req.body.title];
-    if (!Array.isArray(req.body.desc)) req.body.desc = [req.body.desc];
+    if (!Array.isArray(req.body.text)) req.body.text = [req.body.text];
 
     const { elements } = block;
     const files = req.files;
@@ -62,7 +62,7 @@ export default class BlockController {
       });
       element.position = index;
       element.title = req.body.title[index];
-      element.desc = req.body.desc[index];
+      element.text = req.body.text[index];
 
       if (size > 0 && mimetype != "application/octet-stream") {
         element.img = await File.write(mimetype, destination, filename);

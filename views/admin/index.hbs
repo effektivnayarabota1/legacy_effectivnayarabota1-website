@@ -1,4 +1,6 @@
-{{>header header}}
+{{#> header header}}
+	<a href="/admin/header" >{{> ui/button_big class="header_open-editor" text="Редактировать"}}</a>
+{{/ header}}
 
 <form id="index" class="menu-wrapper wrapper grid-4 dynamic_container">
   {{#each pages}}

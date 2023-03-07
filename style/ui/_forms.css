@@ -4,7 +4,7 @@ textarea {
   padding: 2px;
   box-sizing: border-box;
 
-  outline: 1px solid var(--grey-32);
+  /* outline: 1px solid var(--grey-32); */
   color: var(--grey-32);
   background-color: var(--grey-64);
 }
@@ -18,11 +18,8 @@ textarea {
 }
 input[type="text"]:focus,
 textarea:focus {
-  /* outline: none !important; */
-  /* color: var(--white); */
-  /* background-color: var(--grey-32); */
   color: var(--black);
-  outline: 1px solid var(--black);
+  outline: 1px solid var(--grey-32);
 }
 .input-file_container {
   display: flex;

@@ -4,8 +4,6 @@ import getPixels from "get-pixels";
 import palette from "image-palette";
 
 import Page from "../models/page.js";
-import Header from "../models/header.js";
-import Footer from "../models/footer.js";
 
 import File from "./config/file.js";
 
@@ -20,7 +18,7 @@ export default class PageController {
 
     page.blocks.forEach((block) => {
       block.elements.forEach((element) => {
-        element.desc = marked.parse(element.desc);
+        element.text = marked.parse(element.text);
       });
     });
 
@@ -31,10 +29,11 @@ export default class PageController {
     let pageID = req.params.pageID;
     const page = await Page.findById(pageID);
 
-    const { title, desc, color } = req.body;
+    const { title, text, color, objectFit } = req.body;
 
     page.title = title;
-    page.desc = desc;
+    page.text = text;
+    page.objectFit = objectFit;
     page.color.current = color;
 
     if (!!req.file) {
@@ -99,15 +98,7 @@ export default class PageController {
       block.position = index;
     }
 
-    // await newOrder.forEach(async (id, index) => {
-    //   const block = await blocks.find((block) => {
-    //     return block._id.toString() == id;
-    //   });
-    //   block.position = index;
-    // });
-
     await page.save();
-
     await res.send("OK");
   }
 }

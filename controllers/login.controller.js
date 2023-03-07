@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import Admin from "../models/admin.js";
 
 export default class AdminController {
-  static async showLoginFrom(_req, res) {
+  static async index(_req, res) {
     const admin = await Admin.findOne({});
     if (!admin) res.render("admin/create");
     else res.render("admin/login");

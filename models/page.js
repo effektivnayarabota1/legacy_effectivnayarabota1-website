@@ -1,14 +1,11 @@
-import slug from "mongoose-slug-updater";
 import mongoose from "mongoose";
-
-mongoose.plugin(slug);
 
 const ElementSchema = new mongoose.Schema({
   title: {
     type: String,
     default: "***",
   },
-  desc: {
+  text: {
     type: String,
     default: "",
   },
@@ -32,7 +29,7 @@ const BlockSchema = new mongoose.Schema({
     type: String,
     default: "**",
   },
-  desc: {
+  text: {
     type: String,
     default: "",
   },
@@ -60,13 +57,17 @@ const PageSchema = new mongoose.Schema(
       },
       other: [{ type: Array }],
     },
-    desc: {
+    text: {
       type: String,
       default: "",
     },
     img: {
       data: Buffer,
       contentType: String,
+    },
+    objectFit: {
+      type: String,
+      default: "contain",
     },
     position: {
       type: Number,

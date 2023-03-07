@@ -17,19 +17,34 @@ export const router = express.Router();
 // LOGIN ROUTES
 
 router.get("/login", (req, res) => {
-  LoginController.showLoginFrom(req, res);
-});
-router.post("/create", (req, res) => {
-  LoginController.create(req, res);
+  LoginController.index(req, res);
 });
 router.post("/login", (req, res) => {
   LoginController.newSession(req, res);
+});
+router.post("/create", (req, res) => {
+  LoginController.create(req, res);
 });
 router.get("/logout", (req, res) => {
   LoginController.outSession(req, res);
 });
 
 // HEADER ROUTES
+router.get("/header", (req, res) => {
+  HeaderController.index(req, res);
+});
+router.post("/header", (req, res) => {
+  HeaderController.title(req, res);
+});
+router.put("/header", upload.array("image"), (req, res) => {
+  HeaderController.rewrite(req, res);
+});
+router.post("/header/dynamic_create", (req, res) => {
+  HeaderController.create(req, res);
+});
+router.delete("/header/:elementID", (req, res) => {
+  HeaderController.remove(req, res);
+});
 
 // INDEX ROUTES
 router.get("/", (req, res) => {

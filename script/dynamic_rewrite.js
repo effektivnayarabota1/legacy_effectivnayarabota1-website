@@ -26,7 +26,38 @@ async function rewriteElements(e) {
     body: JSON.stringify(newOrder),
   };
 
-  if (blockID) {
+  if (pageID == "header") {
+    putUrl = `/admin/header`;
+    const formData = new FormData();
+    const fieldsets = document.querySelectorAll("fieldset");
+
+    const delay = document.querySelector(".header_delay-input").value;
+    formData.append("delay", delay);
+
+    const objectFit = document.querySelector(
+      'input[name="objectFit"]:checked'
+    ).value;
+    formData.append("objectFit", objectFit);
+
+    for (let fieldset of fieldsets) {
+      const elementID = fieldset.id;
+      const title = fieldset.querySelector(".element_title-input").value;
+      const text = fieldset.querySelector(".element_text-input").value;
+      formData.append("elementID", elementID);
+      formData.append("title", title);
+      formData.append("text", text);
+    }
+
+    const inputs = document.querySelectorAll(".element_file-input");
+    for await (let input of inputs) {
+      formData.append("image", input.files[0] || new Blob(), input.id);
+    }
+
+    options = {
+      method: "PUT",
+      body: formData,
+    };
+  } else if (blockID) {
     putUrl = `/admin/${pageID}/${blockID}`;
 
     const formData = new FormData();
@@ -38,10 +69,10 @@ async function rewriteElements(e) {
     for (let fieldset of fieldsets) {
       const elementID = fieldset.id;
       const title = fieldset.querySelector(".element_title-input").value;
-      const desc = fieldset.querySelector(".element_desc-input").value;
+      const text = fieldset.querySelector(".element_text-input").value;
       formData.append("elementID", elementID);
       formData.append("title", title);
-      formData.append("desc", desc);
+      formData.append("text", text);
     }
 
     const inputs = document.querySelectorAll(".element_file-input");
