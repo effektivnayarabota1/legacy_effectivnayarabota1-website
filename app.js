@@ -98,6 +98,15 @@ hbs.registerHelper("isRadioChecked", function (context, options) {
   else return;
 });
 
+hbs.registerHelper("isSelected", function (context, options) {
+  const root = options.data.root;
+  if (!root) return;
+
+  const selectValue = root.header.mixBlendMode;
+  if (selectValue == context) return "selected";
+  else return;
+});
+
 var port = process.env.PORT || "3000";
 app.listen(port, (err) => {
   if (err) throw err;

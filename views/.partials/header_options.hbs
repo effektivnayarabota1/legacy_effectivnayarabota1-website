@@ -2,5 +2,23 @@
 	<label for="header mono" >Letters:</label>
 	<input id="header" type="text" name="title" value="{{this.title}}" placeholder="title" maxlength="24" >
 	{{>ui/input_color this}}
+	<select name="mixBlendMode" id="header_mix-blend-mode_select">
+		{{>ui/select_option selected=(isSelected "normal") value="normal"}}
+		{{>ui/select_option selected=(isSelected "multiply") value="multiply"}}
+		{{>ui/select_option selected=(isSelected "screen") value="screen"}}
+		{{>ui/select_option selected=(isSelected "overlay") value="overlay"}}
+		{{>ui/select_option selected=(isSelected "darken") value="darken"}}
+		{{>ui/select_option selected=(isSelected "lighten") value="lighten"}}
+		{{>ui/select_option selected=(isSelected "color-dodge") value="color-dodge"}}
+		{{>ui/select_option selected=(isSelected "color-burn") value="color-burn"}}
+		{{>ui/select_option selected=(isSelected "hard-light") value="hard-light"}}
+		{{>ui/select_option selected=(isSelected "soft-light") value="soft-light"}}
+		{{>ui/select_option selected=(isSelected "difference") value="difference"}}
+		{{>ui/select_option selected=(isSelected "exclusion") value="exclusion"}}
+		{{>ui/select_option selected=(isSelected "hue") value="hue"}}
+		{{>ui/select_option selected=(isSelected "saturation") value="saturation"}}
+		{{>ui/select_option selected=(isSelected "color") value="color"}}
+		{{>ui/select_option selected=(isSelected "luminosity") value="luminosity"}}
+	</select>
 	<input type="submit" value="Send" />
 </form>
