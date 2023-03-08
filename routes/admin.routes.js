@@ -15,7 +15,6 @@ import upload from "../middleware/upload.middleware.js";
 export const router = express.Router();
 
 // LOGIN ROUTES
-
 router.get("/login", (req, res) => {
   LoginController.index(req, res);
 });
@@ -44,6 +43,11 @@ router.post("/header/dynamic_create", (req, res) => {
 });
 router.delete("/header/:elementID", (req, res) => {
   HeaderController.remove(req, res);
+});
+
+// FOOTER ROUTES
+router.get("/footer", (req, res) => {
+  FooterController.index(req, res);
 });
 
 // INDEX ROUTES

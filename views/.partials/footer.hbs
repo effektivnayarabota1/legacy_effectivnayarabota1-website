@@ -1,0 +1,25 @@
+<footer class="footer">
+	{{#if @partial-block}}
+		<div class="footer_control-container menu-wrapper wrapper grid-main">
+			{{> @partial-block }}
+		</div>
+	{{/if}}
+
+	<div class="footer_control-container menu-wrapper wrapper grid-main">
+		<div class="footer_link-container-1">
+			<h1>gllery about</h1>
+			{{#each footer.group1}}
+				{{this}}
+			{{/each}}
+		</div>
+		<div class="footer_link-container-2">
+			<h1>projects text description</h1>
+		</div>
+		<div class="footer_link-container-3">
+			<h1>links effetivnayarabota 1 Novosibirsk</h1>
+		</div>
+	</div>
+
+	<div class="footer_bcg-container element_img-container">
+	</div>
+</footer>

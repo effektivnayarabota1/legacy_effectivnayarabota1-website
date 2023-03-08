@@ -14,7 +14,9 @@
   </div>
 </form>
 
-<h1>footer</h1>
+{{#> footer header}}
+	<a href="/admin/footer" >{{> ui/button_big class="footer_open-editor" text="Редактировать"}}</a>
+{{/ footer}}
 
 <script type="module" src="/script/dynamic_create.js"></script>
 <script type="module" src="/script/dynamic_remove.js"></script>

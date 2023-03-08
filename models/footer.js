@@ -10,7 +10,10 @@ const FooterSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
-  groups: [[LinkSchema], [LinkSchema], [LinkSchema], [LinkSchema]],
+  group1: [LinkSchema],
+  group2: [LinkSchema],
+  group3: [LinkSchema],
+  group4: [LinkSchema],
 });
 
 const Footer = new mongoose.model("Footer", FooterSchema);

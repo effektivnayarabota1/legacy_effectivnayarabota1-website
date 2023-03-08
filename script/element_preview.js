@@ -22,7 +22,26 @@ function readImage(e) {
     reader.addEventListener("load", (event) => {
       img.src = event.target.result;
     });
-  } else {
+  } else if (!!this.closest("footer")) {
+    const footer = this.closest("footer");
+    const imgContainers = footer.querySelectorAll(".element_img-container");
+    for (let container of imgContainers) {
+      let img = container.querySelector("img");
+
+      if (!!img) {
+        reader.addEventListener("load", (event) => {
+          img.src = event.target.result;
+        });
+      } else {
+        img = document.createElement("img");
+        container.appendChild(img);
+
+        reader.addEventListener("load", (event) => {
+          img.src = event.target.result;
+        });
+      }
+    }
+  } else if (!!this.closest("form")) {
     const form = this.closest("form");
     if (form.className.includes("meta")) {
       const imgContainers = form.querySelectorAll(".element_img-container");
