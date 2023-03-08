@@ -1,11 +1,8 @@
 import { marked } from "marked";
 
 import File from "./config/file.js";
-import path from "path";
 
 import Header from "../models/header.js";
-
-const __dirname = path.resolve();
 
 export default class HeaderController {
   static async index(req, res) {
@@ -14,9 +11,10 @@ export default class HeaderController {
       return a.position - b.position;
     });
 
-    header.elements.forEach((element) => {
-      element.HTMLtext = marked.parse(element.text);
-    });
+    // header.elements.forEach((element) => {
+    //   element.HTMLtext = marked.parse(element.text);
+    // });
+
     await res.render("admin/header", { header });
   }
 
