@@ -15,6 +15,9 @@ async function create(e) {
 
   if (blockID) {
     postUrl = `/admin/${pageID}/${blockID}/new`;
+  } else if (pageID == "footer") {
+    const group = this.id;
+    postUrl = `/admin/${pageID}/${group}`;
   } else if (pageID) {
     const type = this.className.split(" ").at(-1);
     postUrl = `/admin/${pageID}/${type}`;

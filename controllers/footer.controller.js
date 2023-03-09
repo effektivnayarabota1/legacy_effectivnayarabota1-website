@@ -13,6 +13,14 @@ export default class FooterController {
     });
   }
 
+  static async create(req, res) {
+    const { group } = req.params;
+    const footer = await Footer.findOne({});
+    footer[group].push({});
+    await footer.save();
+    res.send("OK");
+  }
+
   static async rewrite(_req, res) {
     console.log("rewrite");
   }
