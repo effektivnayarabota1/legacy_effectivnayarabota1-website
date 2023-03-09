@@ -1,8 +1,14 @@
 import mongoose from "mongoose";
 
 const LinkSchema = new mongoose.Schema({
-  text: String,
-  url: String,
+  text: {
+    type: String,
+    default: "",
+  },
+  url: {
+    type: String,
+    default: "",
+  },
 });
 
 const FooterSchema = new mongoose.Schema({

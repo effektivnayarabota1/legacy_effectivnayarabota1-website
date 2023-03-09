@@ -16,7 +16,7 @@ export default class FooterController {
   static async create(req, res) {
     const { group } = req.params;
     const footer = await Footer.findOne({});
-    footer[group].push({});
+    footer[group].push({ text: "" });
     await footer.save();
     res.send("OK");
   }

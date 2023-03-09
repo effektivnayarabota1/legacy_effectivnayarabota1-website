@@ -11,6 +11,12 @@
   gap: 8px;
 }
 
+.footer_link-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 /* BACKGROUND */
 .footer_bcg-container {
   width: 100%;

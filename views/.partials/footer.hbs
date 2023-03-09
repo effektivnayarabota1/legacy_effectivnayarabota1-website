@@ -5,14 +5,38 @@
 		</div>
 	{{/if}}
 
-	<div class="footer_control-container menu-wrapper wrapper grid-main">
-		<div class="footer_link-container-1">
+	<div class="footer_content-container menu-wrapper wrapper grid-main">
+		<div class="footer_link-container">
+			{{#each this.group1}}
+				<div class="footer_link-input-container">
+					<input type="text" value={{this.text}} >
+					<input type="text" value={{this.url}} >
+					{{>ui/button_small id=this.id class="dynamic_remove" text="-" }}
+				</div>
+			{{/each}}
+
 			{{>ui/button_small id="group1" class="dynamic_create" text="+" }}
 		</div>
-		<div class="footer_link-container-2">
+		<div class="footer_link-container">
+			{{#each this.group1}}
+				<div class="footer_link-input-container">
+					<input type="text" value={{this.text}} >
+					<input type="text" value={{this.url}} >
+					{{>ui/button_small id=this.id class="dynamic_remove" text="-" }}
+				</div>
+			{{/each}}
+
 			{{>ui/button_small id="group2" class="dynamic_create" text="+" }}
 		</div>
-		<div class="footer_link-container-3">
+		<div class="footer_link-container">
+			{{#each this.group1}}
+				<div class="footer_link-input-container">
+					<input type="text" value={{this.text}} >
+					<input type="text" value={{this.url}} >
+					{{>ui/button_small id=this.id class="dynamic_remove" text="-" }}
+				</div>
+			{{/each}}
+
 			{{>ui/button_small id="group3" class="dynamic_create" text="+" }}
 		</div>
 	</div>
