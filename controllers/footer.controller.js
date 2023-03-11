@@ -36,7 +36,18 @@ export default class FooterController {
     await res.send("OK");
   }
 
-  static async rewrite(_req, res) {
-    console.log("rewrite");
+  static async rewrite(req, res) {
+    const footer = await Footer.findOne({});
+
+    if (!Array.isArray(req.body.text)) req.body.text = [req.body.text];
+
+    footer[req.body.group] = [];
+
+    for (let text of req.body.text) {
+      footer[req.body.group].push({ text });
+    }
+
+    footer.save();
+    res.send("OK");
   }
 }

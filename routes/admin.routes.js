@@ -49,8 +49,11 @@ router.delete("/header/:elementID", (req, res) => {
 router.get("/footer", (req, res) => {
   FooterController.index(req, res);
 });
-router.put("/footer", upload.single("image"), (req, res) => {
+router.put("/footer/meta", upload.single("image"), (req, res) => {
   FooterController.background(req, res);
+});
+router.put("/footer", (req, res) => {
+  FooterController.rewrite(req, res);
 });
 router.post("/footer/:group", (req, res) => {
   FooterController.create(req, res);

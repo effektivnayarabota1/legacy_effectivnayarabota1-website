@@ -1,8 +1,10 @@
 import id from "./config/id.js";
 
-const button = document.querySelector(".dynamic_rewrite");
+const buttons = document.querySelectorAll(".dynamic_rewrite");
 
-button.addEventListener("click", rewriteElements);
+for (let button of buttons) {
+  button.addEventListener("click", rewriteElements);
+}
 
 async function rewriteElements(e) {
   e.preventDefault();
@@ -56,6 +58,28 @@ async function rewriteElements(e) {
     options = {
       method: "PUT",
       body: formData,
+    };
+  } else if (pageID == "footer") {
+    putUrl = `/admin/footer`;
+    console.log(container.id);
+    let data = {
+      group: container.id,
+      text: [],
+    };
+    const fieldsets = container.querySelectorAll("fieldset");
+
+    for (let fieldset of fieldsets) {
+      const elementID = fieldset.id;
+      const textarea = fieldset.querySelector(".footer_text-input").value;
+      data.text.push(textarea);
+    }
+
+    options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     };
   } else if (blockID) {
     putUrl = `/admin/${pageID}/${blockID}`;

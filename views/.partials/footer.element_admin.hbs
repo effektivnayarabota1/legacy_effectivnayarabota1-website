@@ -1,7 +1,6 @@
-<div id={{this.id}} class="footer_link-input-container dynamic_element">
-	<input type="text" value={{this.text}} >
-	<input type="text" value={{this.url}} >
+<fieldset id={{this.id}} class="footer_link-input-container dynamic_element">
+	<textarea class="footer_text-input">{{this.text}}</textarea>
 	{{> ui/button_small text="▲" class="dynamic_move-up"}}
 	{{> ui/button_small text="▼" class="dynamic_move-down"}}
 	{{>ui/button_small id=this.id class="dynamic_remove" text="-" }}
-</div>
+</fieldset>

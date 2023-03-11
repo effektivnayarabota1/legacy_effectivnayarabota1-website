@@ -47,6 +47,7 @@ a:hover {
 }
 
 h1 {
+  word-break: break-all;
   margin-bottom: 64px;
 
   font-family: "Cormorant Garamond";

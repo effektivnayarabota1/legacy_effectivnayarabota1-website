@@ -5,10 +5,6 @@ const LinkSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  url: {
-    type: String,
-    default: "",
-  },
 });
 
 const FooterSchema = new mongoose.Schema({
