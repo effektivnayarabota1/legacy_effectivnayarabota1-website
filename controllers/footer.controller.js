@@ -21,6 +21,21 @@ export default class FooterController {
     res.send("OK");
   }
 
+  static async remove(req, res) {
+    const elementID = req.params.elementID;
+    const footer = await Footer.findOne({});
+
+    // TODO Перепиши, это некрасиво.
+    const element =
+      (await footer.group1.id(elementID)) ||
+      (await footer.group2.id(elementID)) ||
+      (await footer.group3.id(elementID));
+
+    await element.remove();
+    await footer.save();
+    await res.send("OK");
+  }
+
   static async rewrite(_req, res) {
     console.log("rewrite");
   }

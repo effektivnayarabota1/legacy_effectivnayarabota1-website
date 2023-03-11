@@ -1,0 +1,7 @@
+<div id={{this.id}} class="footer_link-input-container dynamic_element">
+	<input type="text" value={{this.text}} >
+	<input type="text" value={{this.url}} >
+	{{> ui/button_small text="▲" class="dynamic_move-up"}}
+	{{> ui/button_small text="▼" class="dynamic_move-down"}}
+	{{>ui/button_small id=this.id class="dynamic_remove" text="-" }}
+</div>
