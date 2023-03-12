@@ -50,7 +50,7 @@ router.get("/footer", (req, res) => {
   FooterController.index(req, res);
 });
 router.put("/footer/meta", upload.single("image"), (req, res) => {
-  FooterController.background(req, res);
+  FooterController.meta(req, res);
 });
 router.put("/footer", (req, res) => {
   FooterController.rewrite(req, res);

@@ -71,8 +71,8 @@ hbs.registerHelper("preview", function (data) {
 });
 
 hbs.registerHelper("image", function (context, options) {
-  if (!this.img || !this.img.data) return `ui/image_empty`;
-  if (options == "thumbnail") return `ui/image_thumbnail`;
+  if (!this.img || !this.img.data) return `ui/image.empty`;
+  if (options == "thumbnail") return `ui/image.thumbnail`;
   return `ui/image`;
 });
 hbs.registerHelper("letters", function (context, options) {

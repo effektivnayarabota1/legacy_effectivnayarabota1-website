@@ -5,14 +5,14 @@
 		<input type="text" name="title" value="{{this.title}}" placeholder="title">
 		<textarea placeholder="text" name="text">{{this.text}}</textarea>
 		<div class="royal-pattern" ></div>
-			{{>ui/radio_big checked=(isRadioChecked "cover") class="cover" text="Cover" name="objectFit" value="cover"}}
-			{{>ui/radio_big checked=(isRadioChecked "contain") class="contain" text="Contain" name="objectFit" value="contain"}}
+			{{>ui/radio.big checked=(isRadioChecked "cover") class="cover" text="Cover" name="objectFit" value="cover"}}
+			{{>ui/radio.big checked=(isRadioChecked "contain") class="contain" text="Contain" name="objectFit" value="contain"}}
 	</div>
 
 	<div class="element-container element-container_group" >
-		{{>ui/input_file this}}
+		{{>ui/input.file this}}
 		<div class="meta_color-container">
-			{{>ui/input_color this}}
+			{{>ui/input.color this}}
 			<div class="mono" style="display: flex; justify-content: center;align-items: center; color: var(--white);" >*</div>
 			<div class="meta_color-other-container">
 				<div class="main" >
@@ -27,13 +27,13 @@
 				</div>
 			</div>
 		</div>
-  		{{> element_client this }}
+  		{{> element.client this }}
 	</div>
 
-  	{{> element_client this }}
+  	{{> element.client this }}
 
 	<div class="element-container meta-container">
-		{{>ui/button_big class="save-meta" text="save-meta"}}
+		{{>ui/button.big class="save-meta" text="save-meta"}}
 		<div class="royal-pattern" ></div>
 	</div>
 

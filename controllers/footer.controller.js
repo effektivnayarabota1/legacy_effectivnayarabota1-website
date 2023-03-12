@@ -13,6 +13,11 @@ export default class FooterController {
     });
   }
 
+  static async meta(_req, res) {
+    let footer = await Footer.findOne({});
+    // res.send;
+  }
+
   static async create(req, res) {
     const { group } = req.params;
     const footer = await Footer.findOne({});

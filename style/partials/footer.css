@@ -1,3 +1,9 @@
+/* META */
+.footer_meta-container {
+  display: flex;
+  gap: 8px;
+}
+
 /* MAIN */
 .footer {
   overflow: hidden;
