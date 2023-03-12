@@ -61,7 +61,6 @@ async function rewriteElements(e) {
     };
   } else if (pageID == "footer") {
     putUrl = `/admin/footer`;
-    console.log(container.id);
     let data = {
       group: container.id,
       text: [],
