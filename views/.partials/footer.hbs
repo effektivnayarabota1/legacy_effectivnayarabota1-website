@@ -1,7 +1,7 @@
 <footer class="footer">
 	{{#if @partial-block}}
 		<div class="footer_control-container menu-wrapper wrapper grid-main">
-			{{> @partial-block }}
+			{{> @partial-block}}
 		</div>
 	{{/if}}
 
@@ -12,7 +12,7 @@
 			{{/each}}
 
 			{{>ui/button.small id="group1" class="dynamic_create" text="+" }}
-			{{>ui/button.small text="R" class="dynamic_rewrite"}}
+			{{>ui/button.small text="REWRITE" class="dynamic_rewrite"}}
 		</div>
 		<div id="group2" class="dynamic_container footer_link-container group2">
 			{{#each this.group2}}
@@ -20,7 +20,7 @@
 			{{/each}}
 
 			{{>ui/button.small id="group2" class="dynamic_create" text="+" }}
-			{{>ui/button.small text="R" class="dynamic_rewrite"}}
+			{{>ui/button.small text="REWRITE" class="dynamic_rewrite"}}
 		</div>
 		<div id="group3" class="dynamic_container footer_link-container group3">
 			{{#each this.group3}}
@@ -28,11 +28,14 @@
 			{{/each}}
 
 			{{>ui/button.small id="group3" class="dynamic_create" text="+" }}
-			{{>ui/button.small text="R" class="dynamic_rewrite"}}
+			{{>ui/button.small text="REWRITE" class="dynamic_rewrite"}}
 		</div>
 	</div>
 
 
 	<div class="footer_bcg-container element_img-container">
+        <div class="footer_bcg-image">
+			<img src={{base64 this.thumbnail}} style="object-fit: {{this.objectFit}}; object-position: {{this.objectPosition}}" alt="header background" />
+        </div>
 	</div>
 </footer>

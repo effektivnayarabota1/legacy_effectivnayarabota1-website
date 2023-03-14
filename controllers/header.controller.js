@@ -29,12 +29,14 @@ export default class HeaderController {
     }
   }
 
-  static async title(req, res) {
+  static async meta(req, res) {
     const header = await Header.findOne({});
+
     const { title, color, mixBlendMode } = req.body;
     header.title = title;
     header.color.current = color;
     header.mixBlendMode = mixBlendMode;
+
     await header.save();
     await res.redirect("/admin/header");
   }
@@ -54,6 +56,7 @@ export default class HeaderController {
       const element = await elements.find((element) => {
         return element._id.toString() == filename;
       });
+
       element.position = index;
       element.title = req.body.title[index];
       element.text = req.body.text[index];

@@ -55,6 +55,14 @@ a .button-text {
   color: var(--white) !important;
 }
 
+.button-text:has(input[type="radio"]:checked) {
+  background-color: var(--grey-32) !important;
+  border: 1px solid var(--grey-32) !important;
+}
+.button-text input[type="radio"]:checked + h1 {
+  color: var(--white) !important;
+}
+
 /* CREATE */
 .button_plus {
   width: 100%;

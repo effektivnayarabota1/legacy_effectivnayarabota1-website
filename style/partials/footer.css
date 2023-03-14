@@ -41,6 +41,7 @@
   height: 100%;
 
   object-fit: cover;
+  image-rendering: pixelated;
   /* TODO Добавить в админку возможно изменять положение изображения. */
   object-position: 50% 50%;
 }

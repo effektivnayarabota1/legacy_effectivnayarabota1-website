@@ -1,6 +1,6 @@
-import Footer from "../models/footer.js";
+import File from "./config/file.js";
 
-import path from "path";
+import Footer from "../models/footer.js";
 
 export default class FooterController {
   static async index(_req, res) {
@@ -13,9 +13,23 @@ export default class FooterController {
     });
   }
 
-  static async meta(_req, res) {
+  static async meta(req, res) {
     let footer = await Footer.findOne({});
-    // res.send;
+
+    console.log(req.body);
+
+    footer.color.current = req.body.color;
+    footer.objectFit = req.body.objectFit;
+
+    if (!!req.file) {
+      const { mimetype, destination, filename, size } = req.file;
+      if (size > 0 && mimetype != "application/octet-stream") {
+        footer.img = await File.write(mimetype, destination, filename);
+        footer.thumbnail = await File.thumbnail(destination, filename);
+      }
+    }
+    await footer.save();
+    await res.redirect("/admin/footer");
   }
 
   static async create(req, res) {

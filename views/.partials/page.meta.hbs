@@ -5,8 +5,8 @@
 		<input type="text" name="title" value="{{this.title}}" placeholder="title">
 		<textarea placeholder="text" name="text">{{this.text}}</textarea>
 		<div class="royal-pattern" ></div>
-			{{>ui/radio.big checked=(isRadioChecked "cover") class="cover" text="Cover" name="objectFit" value="cover"}}
-			{{>ui/radio.big checked=(isRadioChecked "contain") class="contain" text="Contain" name="objectFit" value="contain"}}
+			{{>ui/radio.big checked=(radio_check "cover") class="cover" text="Cover" name="objectFit" value="cover"}}
+			{{>ui/radio.big checked=(radio_check "contain") class="contain" text="Contain" name="objectFit" value="contain"}}
 	</div>
 
 	<div class="element-container element-container_group" >

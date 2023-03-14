@@ -1,5 +1,10 @@
-<form action="/admin/footer/meta" method="POST" class="footer_meta-container mono" >
+<form action="/admin/footer/meta" method="POST" class="footer_meta-container mono" enctype="multipart/form-data" >
 	{{> ui/input.file.small class="element-file_input" id="footer" text="BACKGROUND"}}
-	{{> ui/input.color class="element-color_input" id="footer"}}
+	{{> ui/radio.small name='objectFit' text="cover" checked=(radio_check "cover") }}
+	{{> ui/radio.small name='objectFit' text="contain" checked=(radio_check "contain")}}
+
+	{{> ui/input.color this}}
+	{{> ui/select.mixBlendMode this }}
+
 	<input type="submit" class="button-text" value="SEND" />
 </form>

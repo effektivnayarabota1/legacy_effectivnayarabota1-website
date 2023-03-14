@@ -12,9 +12,9 @@ class="dynamic_container elements menu-wrapper wrapper grid-4">
 	{{/each}}
 
   	<div class="element-container pages_button-container">
-		{{>ui/radio.big checked=(isRadioChecked "image") class="image" text="Изображине" name="type" value="image"}}
-		{{>ui/radio.big checked=(isRadioChecked "text") class="text" text="Текст" name="type" value="text"}}
-		{{>ui/radio.big checked=(isRadioChecked "gallery") class="gallery" text="Галлерея" name="type" value="gallery"}}
+		{{>ui/radio.big checked=(radio_check "image") class="image" text="Изображине" name="type" value="image"}}
+		{{>ui/radio.big checked=(radio_check "text") class="text" text="Текст" name="type" value="text"}}
+		{{>ui/radio.big checked=(radio_check "gallery") class="gallery" text="Галлерея" name="type" value="gallery"}}
 
   		{{> ui/button.plus}}
 		{{> ui/button.big class="dynamic_rewrite" text="Save"}}
