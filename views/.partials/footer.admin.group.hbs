@@ -1,0 +1,19 @@
+<div id="{{id}}" class="dynamic_container footer_link-container {{id}}">
+
+	{{#each links}}
+		<fieldset id={{this.id}} class="footer_element-container dynamic_element">
+			<textarea class="footer_text-input">{{this.text}}</textarea>
+			<div class="footer_element-options-container">
+				{{>ui/button.small id=this.id class="dynamic_remove" text="-" }}
+				<div class="footer_element-arrows-container">
+					{{> ui/button.small text="▲" class="dynamic_move-up"}}
+					{{> ui/button.small text="▼" class="dynamic_move-down"}}
+				</div>
+			</div>
+		</fieldset>
+	{{/each}}
+
+	{{>ui/button.small id="group1" class="dynamic_create" text="+" }}
+	{{>ui/button.small text="REWRITE" class="dynamic_rewrite"}}
+
+</div>

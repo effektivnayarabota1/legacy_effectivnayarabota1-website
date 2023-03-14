@@ -50,7 +50,6 @@ router.get("/footer", (req, res) => {
   FooterController.index(req, res);
 });
 router.post("/footer/meta", upload.single("image"), (req, res) => {
-  console.log("meta");
   FooterController.meta(req, res);
 });
 router.put("/footer", (req, res) => {

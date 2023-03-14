@@ -1,0 +1,13 @@
+<div id="{{id}}" class="dynamic_container footer_link-container {{id}}">
+
+  {{#each links}}
+    <div
+      id={{this.id}}
+      style="color: inherit;"
+      class="footer_element-container"
+    >
+      {{{this.markup}}}
+    </div>
+  {{/each}}
+
+</div>

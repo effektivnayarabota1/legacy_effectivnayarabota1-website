@@ -86,7 +86,6 @@ hbs.registerHelper("base64", function (img) {
   if (!img.data) return;
   else return `data:${img.contentType};base64,${img.data.toString("base64")}`;
 });
-
 hbs.registerHelper("radio_check", function (context, options) {
   const root = options.data.root;
   let blockType;

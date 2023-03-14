@@ -5,6 +5,10 @@ const ElementSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  markup: {
+    type: String,
+    default: "",
+  },
 });
 
 const FooterSchema = new mongoose.Schema({
@@ -20,16 +24,13 @@ const FooterSchema = new mongoose.Schema({
     type: String,
     default: "cover",
   },
+  mixBlendMode: {
+    type: String,
+    default: "normal",
+  },
   objectPosition: {
     type: String,
     default: "50% 50%",
-  },
-  color: {
-    current: {
-      type: String,
-      default: "#a4a4a4",
-    },
-    other: [{ type: Array }],
   },
   group1: [ElementSchema],
   group2: [ElementSchema],

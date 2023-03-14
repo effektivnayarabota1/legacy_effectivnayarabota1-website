@@ -1,0 +1,18 @@
+<footer class="footer">
+
+	<div class="footer_content-container menu-wrapper wrapper grid-main mono" style="mix-blend-mode: {{this.mixBlendMode}}">
+		{{> footer.client.group links=group1 id='group1'}}
+		{{> footer.client.group links=group2 id='group2'}}
+		{{> footer.client.group links=group3 id='group3'}}
+  </div>
+
+  <div class="footer_bcg-container element_img-container">
+    <div class="footer_bcg-image">
+      <img
+        src={{base64 this.thumbnail}}
+        style="object-fit: {{this.objectFit}}; object-position: {{this.objectPosition}}"
+        alt="header background"
+      />
+    </div>
+  </div>
+</footer>

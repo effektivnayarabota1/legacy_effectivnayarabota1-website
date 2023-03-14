@@ -1,13 +1,17 @@
+import Footer from "../models/footer.js";
 import File from "./config/file.js";
 
-import Footer from "../models/footer.js";
+import { marked } from "marked";
 
 export default class FooterController {
   static async index(_req, res) {
-    let footer = await Footer.findOne({});
+    let footer = {};
+    footer = await Footer.findOne({});
+
     if (!footer) {
       footer = await Footer.create({});
     }
+
     await res.render("admin/footer", {
       footer,
     });
@@ -16,16 +20,19 @@ export default class FooterController {
   static async meta(req, res) {
     let footer = await Footer.findOne({});
 
-    console.log(req.body);
-
-    footer.color.current = req.body.color;
+    // footer.color.current = req.body.color;
+    footer.mixBlendMode = req.body.mixBlendMode;
     footer.objectFit = req.body.objectFit;
 
     if (!!req.file) {
       const { mimetype, destination, filename, size } = req.file;
       if (size > 0 && mimetype != "application/octet-stream") {
         footer.img = await File.write(mimetype, destination, filename);
-        footer.thumbnail = await File.thumbnail(destination, filename);
+        footer.thumbnail = await File.thumbnail(
+          destination,
+          filename,
+          "inside"
+        );
       }
     }
     await footer.save();
@@ -37,6 +44,24 @@ export default class FooterController {
     const footer = await Footer.findOne({});
     footer[group].push({ text: "" });
     await footer.save();
+    res.send("OK");
+  }
+
+  static async rewrite(req, res) {
+    const footer = await Footer.findOne({});
+
+    if (!Array.isArray(req.body.text)) req.body.text = [req.body.text];
+
+    footer[req.body.group] = [];
+
+    for (let text of req.body.text) {
+      footer[req.body.group].push({
+        text: text,
+        markup: marked.parse(text),
+      });
+    }
+
+    footer.save();
     res.send("OK");
   }
 
@@ -53,20 +78,5 @@ export default class FooterController {
     await element.remove();
     await footer.save();
     await res.send("OK");
-  }
-
-  static async rewrite(req, res) {
-    const footer = await Footer.findOne({});
-
-    if (!Array.isArray(req.body.text)) req.body.text = [req.body.text];
-
-    footer[req.body.group] = [];
-
-    for (let text of req.body.text) {
-      footer[req.body.group].push({ text });
-    }
-
-    footer.save();
-    res.send("OK");
   }
 }
