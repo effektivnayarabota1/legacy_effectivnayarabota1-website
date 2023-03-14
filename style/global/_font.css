@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
 
+code,
 .mono,
 .mono h1,
 .mono p,
@@ -13,19 +14,23 @@ textarea {
   line-height: 16px;
   /* identical to box height, or 114% */
 
-  color: var(--black);
+  color: var(--grey-32);
 }
+code,
 .mono h1,
 .mono p {
   margin: 0;
 }
+code a,
 .mono a {
   text-decoration-line: underline;
-  color: var(--black);
+  color: var(--grey-32);
 }
+code a:hover,
 .mono a:hover {
   text-decoration-line: none;
 }
+code p,
 .mono p {
   text-decoration: none;
   color: var(--grey-32);
@@ -47,6 +52,7 @@ a:hover {
 }
 
 h1 {
+  /* word-break: break-all; */
   margin-bottom: 64px;
 
   font-family: "Cormorant Garamond";

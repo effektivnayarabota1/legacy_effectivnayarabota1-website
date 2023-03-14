@@ -15,7 +15,6 @@ import upload from "../middleware/upload.middleware.js";
 export const router = express.Router();
 
 // LOGIN ROUTES
-
 router.get("/login", (req, res) => {
   LoginController.index(req, res);
 });
@@ -33,8 +32,8 @@ router.get("/logout", (req, res) => {
 router.get("/header", (req, res) => {
   HeaderController.index(req, res);
 });
-router.post("/header", (req, res) => {
-  HeaderController.title(req, res);
+router.post("/header/meta", (req, res) => {
+  HeaderController.meta(req, res);
 });
 router.put("/header", upload.array("image"), (req, res) => {
   HeaderController.rewrite(req, res);
@@ -44,6 +43,23 @@ router.post("/header/dynamic_create", (req, res) => {
 });
 router.delete("/header/:elementID", (req, res) => {
   HeaderController.remove(req, res);
+});
+
+// FOOTER ROUTES
+router.get("/footer", (req, res) => {
+  FooterController.index(req, res);
+});
+router.post("/footer/meta", upload.single("image"), (req, res) => {
+  FooterController.meta(req, res);
+});
+router.put("/footer", (req, res) => {
+  FooterController.rewrite(req, res);
+});
+router.post("/footer/:group", (req, res) => {
+  FooterController.create(req, res);
+});
+router.delete("/footer/:elementID", (req, res) => {
+  FooterController.remove(req, res);
 });
 
 // INDEX ROUTES

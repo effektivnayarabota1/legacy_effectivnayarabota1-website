@@ -84,7 +84,7 @@
 	height: auto;
 }
 .header_letters-input input[type="submit"]{
-	padding: 2px 4px;
+	/* padding: 2px 4px; */
 	color: var(--grey-32);
 	background-color: var(--grey-64);
 }

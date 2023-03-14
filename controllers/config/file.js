@@ -31,7 +31,7 @@ export default class File {
     };
   }
 
-  static async thumbnail(destination, filename) {
+  static async thumbnail(destination, filename, fit = "contain") {
     const image = fs.readFileSync(path.join(destination, filename));
     filename += "-thumbnail";
     await sharp(image)
@@ -39,7 +39,7 @@ export default class File {
         width: 512,
         height: 512,
         // fit: "inside",
-        fit: "contain",
+        fit: fit,
         background: { r: 255, g: 255, b: 255, alpha: 1 },
         kernel: "mitchell",
         withoutEnlargement: true,

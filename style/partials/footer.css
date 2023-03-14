@@ -1,22 +1,46 @@
+/* META */
+.footer_meta-container {
+  display: flex;
+  gap: 8px;
+}
+
 /* MAIN */
 .footer {
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   position: relative;
 }
-
-/* LINKS */
-.footer_link-container {
-  margin: 80px 0;
+.footer_content-container {
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
-.footer_link-group {
+.footer_move-container {
   display: flex;
-  flex-wrap: wrap;
-  /* flex-direction: column; */
-  align-content: flex-start;
-  gap: 14px 16px;
+  gap: 8px;
 }
+.footer_link-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.footer_element-container {
+  mix-blend-mode: luminosity;
 
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.footer_element-options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.footer_element-arrows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 /* BACKGROUND */
 .footer_bcg-container {
   width: 100%;
@@ -33,6 +57,7 @@
   height: 100%;
 
   object-fit: cover;
+  image-rendering: pixelated;
   /* TODO Добавить в админку возможно изменять положение изображения. */
-  object-position: 50% 75%;
+  object-position: 50% 50%;
 }

@@ -1,13 +1,17 @@
 .button-text {
-  width: 18px;
-  height: 18px;
+  min-width: 20px;
+
+  width: fit-content;
+  height: 20px;
+
+  padding: 2px 2px;
 
   cursor: pointer;
   text-align: center;
   flex-shrink: 0;
 
-  color: var(--grey-32);
-  background-color: var(--grey-64);
+  color: var(--grey-32) !important;
+  background-color: var(--grey-64) !important;
 }
 a .button-text {
   width: 100%;
@@ -15,7 +19,7 @@ a .button-text {
 
 .button-text:hover {
   color: var(--grey-64);
-  background-color: var(--grey-32);
+  background-color: var(--grey-32) !important;
 }
 
 /* BIG */
@@ -32,15 +36,31 @@ a .button-text {
   font-size: 24px;
   line-height: 24px;
 
-  color: var(--grey-32);
+  color: var(--grey-32) !important;
   transition: color 0.1s ease-in;
 }
 .button-big:hover {
-  background-color: var(--grey-32);
-  border: 1px solid var(--grey-32);
+  background-color: var(--grey-32) !important;
+  border: 1px solid var(--grey-32) !important;
 }
 .button-big:hover h1 {
-  color: var(--white);
+  color: var(--white) !important;
+}
+
+.button-big:has(input[type="radio"]:checked) {
+  background-color: var(--grey-32) !important;
+  border: 1px solid var(--grey-32) !important;
+}
+.button-big input[type="radio"]:checked + h1 {
+  color: var(--white) !important;
+}
+
+.button-text:has(input[type="radio"]:checked) {
+  background-color: var(--grey-32) !important;
+  border: 1px solid var(--grey-32) !important;
+}
+.button-text input[type="radio"]:checked + h1 {
+  color: var(--white) !important;
 }
 
 /* CREATE */
@@ -52,11 +72,11 @@ a .button-text {
   justify-content: center;
   align-items: center;
 
-  background-color: var(--white);
-  border: 1px solid var(--grey-64);
+  background-color: var(--white) !important;
+  border: 1px solid var(--grey-64) !important;
   transition: border 0.1s ease-in, background-color 0.1s ease-in;
 }
 .button_plus:hover {
-  background-color: var(--grey-32);
-  border: 1px solid var(--grey-32);
+  background-color: var(--grey-32) !important;
+  border: 1px solid var(--grey-32) !important;
 }

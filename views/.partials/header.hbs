@@ -6,20 +6,21 @@
 	  </div>
   </div>
 
-<div class="header_control-container menu-wrapper wrapper grid-main">
-	{{#if @partial-block}}
+{{#if @partial-block}}
+	<div class="header_control-container menu-wrapper wrapper grid-main">
 		{{> @partial-block }}
-	{{/if}}
-</div>
+	</div>
+{{/if}}
 
-<div class="header_bcg" >
-  <div class="header_bcg-container">
+		<!-- EACH ELEMENTS -->
 		<!-- <div class="header_bcg-text wrapper menu-wrapper grid-main" > -->
 		<!-- 	<div> -->
 		<!-- 		{{{this.HTMLtext}}} -->
 		<!-- 	</div> -->
 		<!-- </div> -->
 
+<div class="header_bcg" >
+  <div class="header_bcg-container">
         <div class="header_bcg-image">
 			<img src={{base64 this.gif}} style="object-fit: {{this.objectFit}}" alt="header background" />
         </div>

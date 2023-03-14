@@ -1,27 +1,25 @@
 {{#> header header}}
-	<a href="/admin/header" >{{> ui/button_big class="header_open-editor" text="Редактировать"}}</a>
+	<a href="/admin/header" >{{> ui/button.big class="header_open-editor" text="Редактировать"}}</a>
 {{/ header}}
 
 <form id="index" class="menu-wrapper wrapper grid-4 dynamic_container">
   {{#each pages}}
-  	{{#> element_client }}
-		{{> element_options}}
-	{{/ element_client}}
+  	{{#> element.client }}
+		{{> element.options}}
+	{{/ element.client}}
   {{/each}}
   <div class="element-container pages_button-container">
-	{{> ui/button_big class="dynamic_rewrite" text="Reorder"}}
-  	{{> ui/button_plus}}
+	{{> ui/button.big class="dynamic_rewrite" text="Reorder"}}
+  	{{> ui/button.plus}}
   </div>
 </form>
 
-<h1>footer</h1>
+{{#> footer footer}}
+	<a href="/admin/footer" >{{> ui/button.big class="footer_open-editor" text="Редактировать"}}</a>
+{{/ footer}}
 
 <script type="module" src="/script/dynamic_create.js"></script>
 <script type="module" src="/script/dynamic_remove.js"></script>
 
 <script type="module" src="/script/dynamic_move.js"></script>
 <script type="module" src="/script/dynamic_rewrite.js"></script>
-
-<!-- <script type="module" src="/script/element-create.js"></script> -->
-<!-- <script type="module" src="/script/element-remove.js"></script> -->
-<!-- <script type="module" src="/script/element-move.js"></script> -->

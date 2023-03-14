@@ -39,6 +39,8 @@
 }
 
 .element_abs-container {
+  mix-blend-mode: luminosity;
+
   position: absolute;
   z-index: 1;
   width: 100%;

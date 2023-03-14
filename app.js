@@ -71,8 +71,8 @@ hbs.registerHelper("preview", function (data) {
 });
 
 hbs.registerHelper("image", function (context, options) {
-  if (!this.img || !this.img.data) return `ui/image_empty`;
-  if (options == "thumbnail") return `ui/image_thumbnail`;
+  if (!this.img || !this.img.data) return `ui/image.empty`;
+  if (options == "thumbnail") return `ui/image.thumbnail`;
   return `ui/image`;
 });
 hbs.registerHelper("letters", function (context, options) {
@@ -86,13 +86,16 @@ hbs.registerHelper("base64", function (img) {
   if (!img.data) return;
   else return `data:${img.contentType};base64,${img.data.toString("base64")}`;
 });
-
-hbs.registerHelper("isRadioChecked", function (context, options) {
+hbs.registerHelper("radio_check", function (context, options) {
   const root = options.data.root;
   let blockType;
+  if (!root) return;
+
   if (root.block) blockType = root.block.type;
   if (root.page) blockType = root.page.objectFit;
   if (root.header) blockType = root.header.objectFit;
+  if (root.footer) blockType = root.footer.objectFit;
+
   const radioType = context;
   if (blockType == radioType) return "checked";
   else return;
@@ -102,7 +105,9 @@ hbs.registerHelper("isSelected", function (context, options) {
   const root = options.data.root;
   if (!root) return;
 
-  const selectValue = root.header.mixBlendMode;
+  const object = root.header || root.footer;
+
+  const selectValue = object.mixBlendMode;
   if (selectValue == context) return "selected";
   else return;
 });

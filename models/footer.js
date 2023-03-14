@@ -1,8 +1,14 @@
 import mongoose from "mongoose";
 
-const LinkSchema = new mongoose.Schema({
-  text: String,
-  url: String,
+const ElementSchema = new mongoose.Schema({
+  text: {
+    type: String,
+    default: "",
+  },
+  markup: {
+    type: String,
+    default: "",
+  },
 });
 
 const FooterSchema = new mongoose.Schema({
@@ -10,7 +16,25 @@ const FooterSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
-  groups: [[LinkSchema], [LinkSchema], [LinkSchema], [LinkSchema]],
+  thumbnail: {
+    data: Buffer,
+    contentType: String,
+  },
+  objectFit: {
+    type: String,
+    default: "cover",
+  },
+  mixBlendMode: {
+    type: String,
+    default: "normal",
+  },
+  objectPosition: {
+    type: String,
+    default: "50% 50%",
+  },
+  group1: [ElementSchema],
+  group2: [ElementSchema],
+  group3: [ElementSchema],
 });
 
 const Footer = new mongoose.model("Footer", FooterSchema);
