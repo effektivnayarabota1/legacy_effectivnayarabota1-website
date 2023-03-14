@@ -41,6 +41,10 @@
   flex-direction: column;
   gap: 4px;
 }
+.footer_group-options {
+  display: flex;
+  justify-content: space-between;
+}
 /* BACKGROUND */
 .footer_bcg-container {
   width: 100%;
