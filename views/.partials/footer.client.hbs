@@ -1,4 +1,9 @@
 <footer class="footer">
+	{{#if @partial-block}}
+		<div class="footer_control-container menu-wrapper wrapper grid-main">
+			{{> @partial-block }}
+		</div>
+	{{/if}}
 
 	<div class="footer_content-container menu-wrapper wrapper grid-main mono" style="mix-blend-mode: {{this.mixBlendMode}}">
 		{{> footer.client.group links=group1 id='group1'}}
@@ -11,7 +16,7 @@
       <img
         src={{base64 this.thumbnail}}
         style="object-fit: {{this.objectFit}}; object-position: {{this.objectPosition}}"
-        alt="header background"
+        alt="footer background"
       />
     </div>
   </div>

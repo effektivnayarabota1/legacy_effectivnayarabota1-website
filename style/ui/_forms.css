@@ -5,6 +5,7 @@ textarea {
   box-sizing: border-box;
 
   /* outline: 1px solid var(--grey-32); */
+  mix-blend-mode: luminosity;
   color: var(--grey-32);
   background-color: var(--grey-64);
 }

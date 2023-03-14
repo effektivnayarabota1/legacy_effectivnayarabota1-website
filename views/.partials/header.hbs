@@ -1,29 +1,21 @@
 <header class="header">
-  <div class="header_title">
-	  <div class="header_letter-container" style="color: {{this.color.current}}; mix-blend-mode: {{this.mixBlendMode}}" >
-	  	{{#letters this.title}}
-	  	{{/letters}}
-	  </div>
-  </div>
 
-{{#if @partial-block}}
-	<div class="header_control-container menu-wrapper wrapper grid-main">
-		{{> @partial-block }}
-	</div>
-{{/if}}
+	{{#if @partial-block}}
+		<div class="header_control-container menu-wrapper wrapper grid-main">
+			{{> @partial-block }}
+		</div>
+	{{/if}}
 
-		<!-- EACH ELEMENTS -->
-		<!-- <div class="header_bcg-text wrapper menu-wrapper grid-main" > -->
-		<!-- 	<div> -->
-		<!-- 		{{{this.HTMLtext}}} -->
-		<!-- 	</div> -->
-		<!-- </div> -->
+  	<div class="header_title">
+	  	<div class="header_letter-container" style="color: {{this.color.current}}; mix-blend-mode: {{this.mixBlendMode}}" >
+	  		{{#letters this.title}}
+	  		{{/letters}}
+	  	</div>
+  	</div>
 
-<div class="header_bcg" >
-  <div class="header_bcg-container">
+  	<div class="header_bcg-container">
         <div class="header_bcg-image">
 			<img src={{base64 this.gif}} style="object-fit: {{this.objectFit}}" alt="header background" />
         </div>
-  </div>
-</div>
+	</div>
 </header>

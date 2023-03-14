@@ -11,6 +11,9 @@
   flex-direction: column;
   position: relative;
 }
+.footer_control-container {
+  mix-blend-mode: luminosity;
+}
 .footer_content-container {
   padding-top: 80px;
   padding-bottom: 80px;
