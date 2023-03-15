@@ -5,12 +5,24 @@
   gap: 64px;
 }
 .block-container {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   gap: 64px;
 }
+.block-container > div:last-child {
+  display: none;
+}
 .block_control-container {
-  grid-column: 1 / 4;
+  position: absolute;
+}
+.block_control-container div {
+  display: flex;
+  gap: 8px;
+}
+.block_control-container div a {
+  width: 100%;
 }
 .block-create_container {
   grid-column: 1/3;

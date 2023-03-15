@@ -15,18 +15,8 @@ dotenv.config();
 import * as url from "url";
 
 const __filename = url.fileURLToPath(import.meta.url);
-// const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const __dirname = path.resolve();
 
-// MONGOOSE SETUP
-// main().catch((err) => console.log(err));
-// async function main() {
-//   await mongoose.connect(process.env.MONGO_URL),
-//     { useNewUrlParser: true, useUnifiedTopology: true },
-//     (err) => {
-//       console.log("connected");
-//     };
-// }
 mongoose.connect(process.env.MONGO_URL, () =>
   console.log("Mongoose connected")
 );
@@ -41,11 +31,10 @@ app.use(
   cookieSession({
     name: "session",
     keys: ["admin2002"],
-    // maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
   })
 );
 
-// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/", indexRoutes);
@@ -75,6 +64,7 @@ hbs.registerHelper("image", function (context, options) {
   if (options == "thumbnail") return `ui/image.thumbnail`;
   return `ui/image`;
 });
+
 hbs.registerHelper("letters", function (context, options) {
   let ret = "";
   for (let letter of context) {
