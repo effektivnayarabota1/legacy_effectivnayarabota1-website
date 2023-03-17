@@ -15,7 +15,7 @@
 .meta_color-container {
   display: flex;
   gap: 4px;
-  background-color: var(--grey-64);
+  /* background-color: var(--grey-64); */
 }
 .meta_color-other-container {
   width: 100%;
