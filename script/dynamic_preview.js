@@ -10,49 +10,25 @@ function readImage(e) {
   const reader = new FileReader();
   const file = e.target.files[0];
 
-  const container = this.closest(".element_img-container");
-  if (!!container) {
+  const elementContainer = this.closest(".dynamic_element");
+  const previewContainerS = elementContainer.querySelectorAll(
+    ".dynamic_preview-container"
+  );
+  console.log(previewContainerS);
+
+  for (let container of previewContainerS) {
     let img = container.querySelector("img");
+
     if (!img) {
+      container.querySelector(".empty").remove();
+
       img = document.createElement("img");
-      const label = container.querySelector(".element_file-label");
-      label.querySelector("h1").remove();
-      label.appendChild(img);
+      container.appendChild(img);
     }
+
     reader.addEventListener("load", (event) => {
       img.src = event.target.result;
     });
-  } else if (!!this.closest("footer")) {
-    const footer = this.closest("footer");
-    const imgContainers = footer.querySelectorAll(".element_img-container");
-    for (let container of imgContainers) {
-      let img = container.querySelector("img");
-
-      if (!!img) {
-        reader.addEventListener("load", (event) => {
-          img.src = event.target.result;
-        });
-      } else {
-        img = document.createElement("img");
-        container.appendChild(img);
-
-        reader.addEventListener("load", (event) => {
-          img.src = event.target.result;
-        });
-      }
-    }
-  } else if (!!this.closest("form")) {
-    const form = this.closest("form");
-    if (form.className.includes("meta")) {
-      const imgContainers = form.querySelectorAll(".element_img-container");
-      for (let container of imgContainers) {
-        let img = container.querySelector("img");
-        reader.addEventListener("load", (event) => {
-          img.src = event.target.result;
-        });
-      }
-    }
   }
-
   reader.readAsDataURL(file);
 }
