@@ -14,7 +14,6 @@ function readImage(e) {
   const previewContainerS = elementContainer.querySelectorAll(
     ".dynamic_preview-container"
   );
-  console.log(previewContainerS);
 
   for (let container of previewContainerS) {
     let img = container.querySelector("img");
