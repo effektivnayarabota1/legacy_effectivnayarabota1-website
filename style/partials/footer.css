@@ -11,9 +11,6 @@
   flex-direction: column;
   position: relative;
 }
-.footer_control-container {
-  mix-blend-mode: luminosity;
-}
 .footer_content-container {
   padding-top: 80px;
   padding-bottom: 80px;
@@ -28,11 +25,13 @@
   gap: 16px;
 }
 .footer_element-container {
-  mix-blend-mode: luminosity;
-
   display: flex;
   flex-direction: row;
   gap: 8px;
+}
+.footer_link-container.client > div * {
+  color: inherit;
+  mix-blend-mode: inherit;
 }
 .footer_element-options-container {
   display: flex;

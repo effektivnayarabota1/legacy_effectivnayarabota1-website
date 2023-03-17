@@ -1,13 +1,11 @@
-<div class="footer_control-container menu-wrapper wrapper grid-main">
+<div class="footer_control-container menu-wrapper wrapper grid-main dynamic-element">
 	<form action="/admin/footer/meta" method="POST" class="footer_meta-container mono" enctype="multipart/form-data" >
-		{{> ui/button.small text="▲" class="footer_move-up"}}
-		{{> ui/button.small text="▼" class="footer_move-down"}}
 
 		{{> ui/input.file.small class="element-file_input" id="footer" text="BACKGROUND"}}
 		{{> ui/radio.small name='objectFit' text="cover" checked=(radio_check "cover") }}
 		{{> ui/radio.small name='objectFit' text="contain" checked=(radio_check "contain")}}
 
-		<!-- {{> ui/input.color this}} -->
+		{{> ui/input.color this}}
 		{{> ui/select.mixBlendMode this }}
 
 		{{> ui/button.small text="Send" type="submit"}}

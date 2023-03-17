@@ -36,6 +36,15 @@ textarea:focus {
 /* COLOR */
 .input-color_container {
   height: 20px;
+
+  display: flex;
+  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+}
+.input-color_container * {
+  height: 100%;
+  aspect-ratio: 1/2;
 }
 input[type="color"] {
   height: 100%;

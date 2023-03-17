@@ -75,9 +75,6 @@
   display: flex;
   gap: 16px;
 }
-.header_letters-input input[type="color"] {
-  height: auto;
-}
 .header_letters-input input[type="submit"] {
   /* padding: 2px 4px; */
   color: var(--grey-32);

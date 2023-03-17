@@ -20,7 +20,7 @@ export default class FooterController {
   static async meta(req, res) {
     let footer = await Footer.findOne({});
 
-    // footer.color.current = req.body.color;
+    footer.color.current = req.body.color;
     footer.mixBlendMode = req.body.mixBlendMode;
     footer.objectFit = req.body.objectFit;
 

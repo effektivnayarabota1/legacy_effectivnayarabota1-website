@@ -28,9 +28,12 @@ const FooterSchema = new mongoose.Schema({
     type: String,
     default: "normal",
   },
-  objectPosition: {
-    type: String,
-    default: "50% 50%",
+  color: {
+    current: {
+      type: String,
+      default: "#a4a4a4",
+    },
+    other: [{ type: Array }],
   },
   group1: [ElementSchema],
   group2: [ElementSchema],
