@@ -74,7 +74,7 @@
 }
 .header_letters-input {
   display: flex;
-  gap: 16px;
+  gap: 8px;
 }
 .header_letters-input input[type="submit"] {
   /* padding: 2px 4px; */

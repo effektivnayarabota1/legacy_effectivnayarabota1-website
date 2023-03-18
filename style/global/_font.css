@@ -44,7 +44,7 @@ p:last-child {
   margin-bottom: 0 !important;
 }
 
-a {
+.mono a {
   text-decoration: underline !important;
 }
 a:hover {
