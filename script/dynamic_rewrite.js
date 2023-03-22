@@ -60,6 +60,8 @@ async function rewriteElements(e) {
       body: formData,
     };
   } else if (pageID == "footer") {
+    // TODO Переписать функцию Rewrite. Чтобы она была не для каждого элемента, а глобально на весь футер.
+
     putUrl = `/admin/footer`;
     let data = {
       group: container.id,

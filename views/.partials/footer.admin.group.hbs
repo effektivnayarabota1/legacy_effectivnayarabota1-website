@@ -2,7 +2,7 @@
 
 	{{#each links}}
 		<fieldset id={{this.id}} class="footer_element-container dynamic_element">
-			<textarea class="footer_text-input">{{this.text}}</textarea>
+			<textarea class="footer_text-input">{{{this.text}}}</textarea>
 			<div class="footer_element-options-container">
 				{{>ui/button.small id=this.id class="dynamic_remove" text="-" }}
 				<div class="footer_element-arrows-container">
@@ -14,8 +14,10 @@
 	{{/each}}
 
 	<div class="footer_group-options">
-		{{>ui/button.small text="Rewrite" class="dynamic_rewrite"}}
+		<!-- TODO Переписать функцию Rewrite. Чтобы она была не для каждого элемента, а глобально на весь футер. -->
+
 		{{>ui/button.small id=id class="dynamic_create" text="+" }}
+		{{>ui/button.small text="Rewrite" class="dynamic_rewrite"}}
 	</div>
 
 </div>

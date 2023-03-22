@@ -55,6 +55,10 @@ export default class FooterController {
     footer[req.body.group] = [];
 
     for (let text of req.body.text) {
+      text = text.split("\n");
+
+      // Без этой фишки в хроме выставляются табы. Изза этого все содержимое текстареа съезжает.
+      text = text.join("&#10;");
       footer[req.body.group].push({
         text: text,
         markup: marked.parse(text),

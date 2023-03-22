@@ -18,6 +18,12 @@ export default {
     return ret;
   },
 
+  textarea(options) {
+    return new hbs.SafeString(
+      `<textarea class="footer_text-input">${options.fn(this)}</textarea>`
+    );
+  },
+
   select_check(context, options) {
     const root = options.data.root;
     if (!root) return;
