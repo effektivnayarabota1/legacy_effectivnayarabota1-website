@@ -11,10 +11,6 @@ export default class HeaderController {
       return a.position - b.position;
     });
 
-    // header.elements.forEach((element) => {
-    //   element.HTMLtext = marked.parse(element.text);
-    // });
-
     await res.render("admin/header", { header });
   }
 
@@ -34,6 +30,7 @@ export default class HeaderController {
 
     const { title, color, mixBlendMode } = req.body;
     header.title = title;
+    header.markup = marked.parse(title);
     header.color.current = color;
     header.mixBlendMode = mixBlendMode;
 
@@ -67,7 +64,6 @@ export default class HeaderController {
       }
     }
 
-    // const order = req.files.map((file) => [file.originalname]);
     const delay = req.body.delay;
     header.gif = await File.gif(elements, "header", delay);
 

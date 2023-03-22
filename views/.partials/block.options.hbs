@@ -1,8 +1,8 @@
-<div class="block_control-container grid-main">
-	<div class="blockl_move-container" >
-		{{>ui/button.big class="dynamic_move-up" text="Вверх"}}
-		{{>ui/button.big class="dynamic_move-down" text="Вниз"}}
+<div class="block_control-container grid-main menu-wrapper wrapper">
+	<div>
+		{{>ui/button.small class="dynamic_move-up" text="Вверх"}}
+		{{>ui/button.small class="dynamic_move-down" text="Вниз"}}
+	<a href="/admin/{{pageId}}/{{blockId}}">{{> ui/button.small text=blockId}}</a>
+{{> ui/button.small text="Удалить" class="dynamic_remove"}}
 	</div>
-	<a href="/admin/{{pageId}}/{{blockId}}">{{> ui/button.big text=blockId}}</a>
-<div>{{> ui/button.big text="Удалить" class="dynamic_remove"}}</div>
 </div>

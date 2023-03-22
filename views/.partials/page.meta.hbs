@@ -1,4 +1,4 @@
-<form action="/admin/{{this.id}}/meta" method="post" enctype="multipart/form-data" id="{{this.id}}" class="menu-wrapper wrapper grid-4 meta">
+<form action="/admin/{{this.id}}/meta" method="post" enctype="multipart/form-data" id="{{this.id}}" class="menu-wrapper wrapper grid-4 meta dynamic_element">
 
 	<div class="element-container meta-container" >
 		<!-- <input type="text" readonly value="{{this.id}}" placeholder="id"> -->
@@ -13,7 +13,7 @@
 		{{>ui/input.file this}}
 		<div class="meta_color-container">
 			{{>ui/input.color this}}
-			<div class="mono" style="display: flex; justify-content: center;align-items: center; color: var(--white);" >*</div>
+			<div class="mono" style="display: flex; justify-content: center;align-items: center; color: var(--black);" >*</div>
 			<div class="meta_color-other-container">
 				<div class="main" >
 					{{#each this.color.other}}

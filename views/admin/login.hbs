@@ -1,5 +1,12 @@
-<form id="login" method="post" action="/admin/login">
-  <input id="login" type="text" name="email" placeholder="email" />
-  <input id="login" type="text" name="password" placeholder="password" />
-  <input id="login" type="submit" placeholder="password" />
+<form
+  id="login"
+  method="post"
+  action="/admin/login"
+  class="wrapper menu-wrapper grid-main"
+>
+	<div class="login-container">
+  		<input id="login" type="text" name="email" placeholder="email" />
+  		<input id="login" type="text" name="password" placeholder="password" />
+  		{{>ui/button.small type='submit' text="Login"}}
+	</div>
 </form>

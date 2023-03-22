@@ -25,11 +25,13 @@
   gap: 16px;
 }
 .footer_element-container {
-  mix-blend-mode: luminosity;
-
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 16px;
+}
+.footer_link-container.client > div * {
+  color: inherit;
+  mix-blend-mode: inherit;
 }
 .footer_element-options-container {
   display: flex;
@@ -40,6 +42,10 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+.footer_group-options {
+  display: flex;
+  justify-content: space-between;
 }
 /* BACKGROUND */
 .footer_bcg-container {

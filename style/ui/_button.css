@@ -1,4 +1,5 @@
-.button-text {
+/* SMALL */
+.button-small {
   min-width: 20px;
 
   width: fit-content;
@@ -7,27 +8,39 @@
   padding: 2px 2px;
 
   cursor: pointer;
+  text-transform: uppercase;
   text-align: center;
   flex-shrink: 0;
 
-  color: var(--grey-32) !important;
-  background-color: var(--grey-64) !important;
+  mix-blend-mode: luminosity;
+  color: var(--grey-32);
+  background-color: var(--grey-64);
 }
-a .button-text {
+a .button-small {
   width: 100%;
 }
-
-.button-text:hover {
-  color: var(--grey-64);
-  background-color: var(--grey-32) !important;
+.button-small:hover {
+  color: var(--white);
+  background-color: var(--grey-64);
+}
+.button-small:has(input[type="radio"]:checked) {
+  color: var(--white);
+  background-color: var(--grey-32);
 }
 
 /* BIG */
+#button_plus {
+  height: 100%;
+}
 .button-big {
   padding: 8px 32px;
   text-align: center;
 
-  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
   border: 1px solid var(--grey-64);
   transition: border 0.1s ease-in, background-color 0.1s ease-in;
 }
@@ -36,47 +49,35 @@ a .button-text {
   font-size: 24px;
   line-height: 24px;
 
-  color: var(--grey-32) !important;
+  color: var(--grey-32);
   transition: color 0.1s ease-in;
 }
 .button-big:hover {
-  background-color: var(--grey-32) !important;
-  border: 1px solid var(--grey-32) !important;
+  background-color: var(--grey-32);
+  border: 1px solid var(--grey-32);
+}
+.button-big_svg path {
+  transition: fill 0.1s ease-in;
+}
+.button-big_svg:hover path {
+  fill: var(--white);
 }
 .button-big:hover h1 {
-  color: var(--white) !important;
+  color: var(--white);
 }
 
 .button-big:has(input[type="radio"]:checked) {
-  background-color: var(--grey-32) !important;
-  border: 1px solid var(--grey-32) !important;
+  background-color: var(--grey-32);
+  border: 1px solid var(--grey-32);
 }
 .button-big input[type="radio"]:checked + h1 {
-  color: var(--white) !important;
+  color: var(--black);
 }
 
 .button-text:has(input[type="radio"]:checked) {
-  background-color: var(--grey-32) !important;
-  border: 1px solid var(--grey-32) !important;
+  background-color: var(--grey-32);
+  border: 1px solid var(--grey-32);
 }
 .button-text input[type="radio"]:checked + h1 {
-  color: var(--white) !important;
-}
-
-/* CREATE */
-.button_plus {
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: var(--white) !important;
-  border: 1px solid var(--grey-64) !important;
-  transition: border 0.1s ease-in, background-color 0.1s ease-in;
-}
-.button_plus:hover {
-  background-color: var(--grey-32) !important;
-  border: 1px solid var(--grey-32) !important;
+  color: var(--white);
 }

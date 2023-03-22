@@ -16,8 +16,8 @@
 
   <div
     id="{{this.id}}"
-    class="element_img-container border"
-    style="border-color: {{this.color.current}}"
+    class="element_img-container border dynamic_preview-container"
+	style="border-color: {{this.color.current}}; object-fit: {{this.objectFit}}"
   >
 	{{> (image . 'thumbnail')}}
   </div>

@@ -28,6 +28,10 @@ const HeaderSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  markup: {
+    type: String,
+    default: "",
+  },
   mixBlendMode: {
     type: String,
     default: "normal",

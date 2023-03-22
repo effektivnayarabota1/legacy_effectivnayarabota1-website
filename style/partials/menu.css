@@ -1,5 +1,6 @@
 .menu {
   width: 232px;
+  height: 100%;
   /* margin: 24px 0 0 32px; */
   margin-top: 24px;
   position: fixed;

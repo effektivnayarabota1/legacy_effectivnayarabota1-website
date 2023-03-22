@@ -2,5 +2,5 @@ body {
   max-width: 1920px;
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: 256px;
 }

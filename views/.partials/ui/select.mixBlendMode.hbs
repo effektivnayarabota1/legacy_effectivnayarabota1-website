@@ -1,18 +1,18 @@
-<select name="mixBlendMode" id="mix-blend-mode_select">
-	{{> ui/select.option selected=(isSelected "normal") value="normal"}}
-	{{> ui/select.option selected=(isSelected "multiply") value="multiply"}}
-	{{> ui/select.option selected=(isSelected "screen") value="screen"}}
-	{{> ui/select.option selected=(isSelected "overlay") value="overlay"}}
-	{{> ui/select.option selected=(isSelected "darken") value="darken"}}
-	{{> ui/select.option selected=(isSelected "lighten") value="lighten"}}
-	{{> ui/select.option selected=(isSelected "color-dodge") value="color-dodge"}}
-	{{> ui/select.option selected=(isSelected "color-burn") value="color-burn"}}
-	{{> ui/select.option selected=(isSelected "hard-light") value="hard-light"}}
-	{{> ui/select.option selected=(isSelected "soft-light") value="soft-light"}}
-	{{> ui/select.option selected=(isSelected "difference") value="difference"}}
-	{{> ui/select.option selected=(isSelected "exclusion") value="exclusion"}}
-	{{> ui/select.option selected=(isSelected "hue") value="hue"}}
-	{{> ui/select.option selected=(isSelected "saturation") value="saturation"}}
-	{{> ui/select.option selected=(isSelected "color") value="color"}}
-	{{> ui/select.option selected=(isSelected "luminosity") value="luminosity"}}
+<select name="mixBlendMode" id="mix-blend-mode_select" class="button-small">
+	{{> ui/select.option selected=(select_check "normal") value="normal"}}
+	{{> ui/select.option selected=(select_check "multiply") value="multiply"}}
+	{{> ui/select.option selected=(select_check "screen") value="screen"}}
+	{{> ui/select.option selected=(select_check "overlay") value="overlay"}}
+	{{> ui/select.option selected=(select_check "darken") value="darken"}}
+	{{> ui/select.option selected=(select_check "lighten") value="lighten"}}
+	{{> ui/select.option selected=(select_check "color-dodge") value="color-dodge"}}
+	{{> ui/select.option selected=(select_check "color-burn") value="color-burn"}}
+	{{> ui/select.option selected=(select_check "hard-light") value="hard-light"}}
+	{{> ui/select.option selected=(select_check "soft-light") value="soft-light"}}
+	{{> ui/select.option selected=(select_check "difference") value="difference"}}
+	{{> ui/select.option selected=(select_check "exclusion") value="exclusion"}}
+	{{> ui/select.option selected=(select_check "hue") value="hue"}}
+	{{> ui/select.option selected=(select_check "saturation") value="saturation"}}
+	{{> ui/select.option selected=(select_check "color") value="color"}}
+	{{> ui/select.option selected=(select_check "luminosity") value="luminosity"}}
 </select>

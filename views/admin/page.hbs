@@ -1,17 +1,11 @@
 {{> page.meta page}}
 
-<div>
-	<hr>
-	<hr>
-	<hr>
-</div>
-
 <div id="{{page.id}}" class="blocks dynamic_container">
 	{{#each page.blocks}}
-		<div id="{{this.id}}" class="menu-wrapper wrapper block-container dynamic_element" >
+		<div id="{{this.id}}" class="block-container dynamic_element" >
 			{{> block.options pageId=../page.id blockId=this.id}}
 			{{> block}}
-			<hr>
+			<div class="menu-wrapper wrapper"><hr></div>
 		</div>
 	{{/each}}
 
@@ -34,4 +28,4 @@
 <script type="module" src="/script/dynamic_move.js"></script>
 <script type="module" src="/script/dynamic_rewrite.js"></script>
 
-<script type="module" src="/script/element_preview.js"></script>
+<script type="module" src="/script/dynamic_preview.js"></script>
