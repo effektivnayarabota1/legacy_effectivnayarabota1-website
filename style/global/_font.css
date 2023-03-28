@@ -45,7 +45,8 @@ p:last-child {
 }
 
 .mono a {
-  text-decoration: underline !important;
+  /* text-decoration: underline !important; */
+  text-decoration: underline;
 }
 a:hover {
   text-decoration: none !important;
