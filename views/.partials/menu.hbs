@@ -1,9 +1,9 @@
 <ul class="menu mono">
   <li><a href="/">Дом</a></li>
-  <br />
+  <li>*</li>
   {{#each pages}}
-    <li><a href="/{{this.id}}">{{this.title}}</a></li>
+    <li><a href="{{this.id}}/">{{this.title}}</a></li>
   {{/each}}
-  <br />
-  <li><a href="/">Связь</a></li>
+  <li>*</li>
+  <li><a href="/connection">Связь</a></li>
 </ul>
