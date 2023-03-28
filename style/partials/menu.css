@@ -12,16 +12,20 @@
   flex-direction: column;
 }
 .menu li {
-  /* padding-left: 32px; */
-  padding-left: 8px;
-  /* border-left: 2px solid var(--grey-32); */
+  padding-left: 12px;
+  overflow-wrap: anywhere;
 }
 .menu a {
+  position: relative;
   cursor: pointer;
   text-decoration: none;
 
-  transition: transform 0.1s ease-in;
+  color: var(--grey-64);
+
+  left: 0;
+  transition: left 0.02s ease-in;
 }
 .menu a:hover {
-  transform: translateX(2px);
+  left: 4px;
+  /* transform: translateX(8px); */
 }
