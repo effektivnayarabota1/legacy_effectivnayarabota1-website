@@ -28,7 +28,10 @@ export default class HeaderController {
   static async meta(req, res) {
     const header = await Header.findOne({});
 
-    const { title, color, mixBlendMode } = req.body;
+    let { title, color, mixBlendMode } = req.body;
+    title = title.replace("\r", "").replace("\t", "");
+    title = title.split("\n");
+    title = title.join("&#10;");
     header.title = title;
     header.markup = marked.parse(title);
     header.color.current = color;
