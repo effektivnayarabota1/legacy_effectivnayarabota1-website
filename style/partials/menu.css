@@ -1,17 +1,31 @@
 .menu {
-  width: 232px;
-  height: 100%;
-  /* margin: 24px 0 0 32px; */
-  margin-top: 24px;
   position: fixed;
   z-index: 1;
+
+  width: 232px;
+  height: 100%;
+  margin-top: 24px;
+  padding-top: 32px;
+
   display: flex;
   gap: 16px;
   flex-direction: column;
 }
+.menu li {
+  padding-left: 12px;
+  overflow-wrap: anywhere;
+}
 .menu a {
-  padding-left: 32px;
-  border-left: 2px solid var(--grey-32);
-
+  position: relative;
+  cursor: pointer;
   text-decoration: none;
+
+  color: var(--grey-64);
+
+  left: 0;
+  transition: left 0.02s ease-in;
+}
+.menu a:hover {
+  left: 4px;
+  /* transform: translateX(8px); */
 }

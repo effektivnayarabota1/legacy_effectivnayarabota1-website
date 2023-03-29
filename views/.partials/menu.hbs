@@ -1,3 +1,9 @@
-<menu class="menu">
-  <h1>menu</h1>
-</menu>
+<ul class="menu mono">
+  <li><a href="/">Дом</a></li>
+  <li>*</li>
+  {{#each pages}}
+    <li><a href="{{this.id}}/">{{this.title}}</a></li>
+  {{/each}}
+  <li>*</li>
+  <li><a href="/connection">Связь</a></li>
+</ul>

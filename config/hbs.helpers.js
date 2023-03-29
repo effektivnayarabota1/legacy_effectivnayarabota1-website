@@ -10,20 +10,6 @@ export default {
     return `ui/image`;
   },
 
-  letters(context, options) {
-    let ret = "";
-    for (let letter of context) {
-      ret = ret + "<div class='header_letter' ><h2>" + letter + "</h2></div>";
-    }
-    return ret;
-  },
-
-  textarea(options) {
-    return new hbs.SafeString(
-      `<textarea class="footer_text-input">${options.fn(this)}</textarea>`
-    );
-  },
-
   select_check(context, options) {
     const root = options.data.root;
     if (!root) return;
