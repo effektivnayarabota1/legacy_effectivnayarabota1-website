@@ -6,7 +6,7 @@ export default class AdminController {
   static async index(_req, res) {
     const admin = await Admin.findOne({});
     if (!admin) res.render("admin/create");
-    else res.render("admin/login");
+    else res.render("admin_login");
   }
 
   static async create(req, res) {

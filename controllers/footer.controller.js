@@ -12,7 +12,7 @@ export default class FooterController {
       footer = await Footer.create({});
     }
 
-    await res.render("admin/footer", {
+    await res.render("admin_footer", {
       footer,
     });
   }

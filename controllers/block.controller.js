@@ -13,7 +13,7 @@ export default class BlockController {
       return a.position - b.position;
     });
 
-    await res.render("admin/block", { pageID: page.id, block });
+    await res.render("admin_block", { pageID: page.id, block });
   }
 
   static async create(req, res) {

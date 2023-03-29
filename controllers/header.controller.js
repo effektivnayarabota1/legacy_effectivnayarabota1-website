@@ -11,7 +11,7 @@ export default class HeaderController {
       return a.position - b.position;
     });
 
-    await res.render("admin/header", { header });
+    await res.render("admin_header", { header });
   }
 
   static async create(_req, res) {

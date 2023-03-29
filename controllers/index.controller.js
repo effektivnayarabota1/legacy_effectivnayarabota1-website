@@ -13,7 +13,7 @@ export default class IndexController {
 
     const footer = await Footer.findOne({});
 
-    await res.render("admin/index", {
+    await res.render("admin_index", {
       pages,
       header,
       footer,

@@ -41,15 +41,14 @@ app.use(bodyParser.json());
 app.use("/", indexRoutes);
 app.use("/admin", checkAuth, adminRoutes);
 
-app.use("/components", express.static(__dirname + "/components"));
-hbs.registerPartials(path.join(__dirname, "components/"));
-
 app.use("/assets", express.static(__dirname + "/assets"));
 app.use("/style", express.static(__dirname + "/style"));
 app.use("/script", express.static(__dirname + "/script"));
 
 app.set("view engine", "hbs");
-hbs.registerPartials(path.join(__dirname, "views/.partials/"));
+app.set("views", path.join(__dirname, "pages"));
+app.use("/components", express.static(__dirname + "/components"));
+hbs.registerPartials(path.join(__dirname, "components/"));
 hbs.registerHelper(hbsHelpers);
 
 var port = process.env.PORT || "3000";

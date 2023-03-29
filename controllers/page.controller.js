@@ -22,7 +22,7 @@ export default class PageController {
       });
     });
 
-    await res.render("admin/page", { page });
+    await res.render("admin_page", { page });
   }
 
   static async meta(req, res) {
