@@ -1,12 +1,12 @@
-{{#> header header}}
+{{#> header/header header}}
 	<a href="/admin/header" >{{> ui/button.big class="header_open-editor" text="Редактировать"}}</a>
-{{/ header}}
+{{/ header/header}}
 
 <form id="index" class="menu-wrapper wrapper grid-4 dynamic_container">
   {{#each pages}}
-  	{{#> element.client }}
-		{{> element.options}}
-	{{/ element.client}}
+  	{{#> element/element.client }}
+		{{> element/element.options}}
+	{{/ element/element.client}}
   {{/each}}
   <div class="element-container pages_button-container">
 	{{> ui/button.big class="dynamic_rewrite" text="Reorder"}}
@@ -14,9 +14,9 @@
   </div>
 </form>
 
-{{#> footer.client footer}}
+{{#> footer/footer.client footer}}
 	<a href="/admin/footer" >{{> ui/button.big class="footer_open-editor" text="Редактировать"}}</a>
-{{/ footer.client}}
+{{/ footer/footer.client}}
 
 <script type="module" src="/script/dynamic_create.js"></script>
 <script type="module" src="/script/dynamic_remove.js"></script>

@@ -1,13 +1,13 @@
-{{#> header header}}
-	{{> header.meta}}
-{{/ header}}
+{{#> header/header header}}
+	{{> header/header.meta}}
+{{/ header/header}}
 
 <form action="/admin/header" method="post" enctype="multipart/form-data" id="header" 
 class="dynamic_container elements menu-wrapper wrapper grid-4">
 	{{#each header.elements}}
-  		{{#> element.admin }}
-			{{> element.options}}
-		{{/ element.admin}}
+  		{{#> element/element.admin }}
+			{{> element/element.options}}
+		{{/ element/element.admin}}
 	{{/each}}
 
   	<div class="element-container pages_button-container">
