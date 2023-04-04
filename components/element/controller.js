@@ -1,5 +1,5 @@
-import Page from "../models/page.js";
-import File from "./config/file.js";
+import Page from "../../models/page.js";
+import File from "../../config/file.js";
 
 export default class ElementController {
   static async create(req, res) {

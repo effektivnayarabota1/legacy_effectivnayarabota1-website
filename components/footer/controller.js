@@ -1,5 +1,5 @@
-import Footer from "../models/footer.js";
-import File from "./config/file.js";
+import Footer from "../../models/footer.js";
+import File from "../../config/file.js";
 
 import { marked } from "marked";
 

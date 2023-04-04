@@ -1,6 +1,6 @@
-import Page from "../models/page.js";
-import Header from "../models/header.js";
-import Footer from "../models/footer.js";
+import Page from "../../models/page.js";
+import Header from "../../models/header.js";
+import Footer from "../../models/footer.js";
 
 export default class IndexController {
   static async index(req, res) {

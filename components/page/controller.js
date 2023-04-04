@@ -3,9 +3,9 @@ import { marked } from "marked";
 import getPixels from "get-pixels";
 import palette from "image-palette";
 
-import Page from "../models/page.js";
+import Page from "../../models/page.js";
 
-import File from "./config/file.js";
+import File from "../../config/file.js";
 
 export default class PageController {
   static async index(req, res) {

@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import Admin from "../models/admin.js";
+import Admin from "../../models/admin.js";
 
 export default class AdminController {
   static async index(_req, res) {

@@ -1,8 +1,8 @@
 import { marked } from "marked";
 
-import File from "./config/file.js";
+import File from "../../config/file.js";
 
-import Header from "../models/header.js";
+import Header from "../../models/header.js";
 
 export default class HeaderController {
   static async index(req, res) {

@@ -1,14 +1,14 @@
 import express from "express";
 
-import LoginController from "../controllers/login.controller.js";
+import LoginController from "../components/admin/login.js";
+import IndexController from "../components/admin/index.js";
 
-import IndexController from "../controllers/index.controller.js";
-import PageController from "../controllers/page.controller.js";
-import BlockController from "../controllers/block.controller.js";
-import ElementController from "../controllers/element.controller.js";
+import PageController from "../components/page/controller.js";
+import BlockController from "../components/block/controller.js";
+import ElementController from "../components/element/controller.js";
 
-import HeaderController from "../controllers/header.controller.js";
-import FooterController from "../controllers/footer.controller.js";
+import HeaderController from "../components/header/controller.js";
+import FooterController from "../components/footer/controller.js";
 
 import upload from "../middleware/upload.middleware.js";
 
