@@ -1,8 +1,8 @@
 import { marked } from "marked";
 
-import File from "./config/file.js";
+import File from "../../config/file.js";
 
-import Header from "../models/header.js";
+import Header from "../../models/header.js";
 
 export default class HeaderController {
   static async index(req, res) {
@@ -11,7 +11,7 @@ export default class HeaderController {
       return a.position - b.position;
     });
 
-    await res.render("admin/header", { header });
+    await res.render("admin_header", { header });
   }
 
   static async create(_req, res) {

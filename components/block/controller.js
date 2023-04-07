@@ -1,5 +1,5 @@
-import Page from "../models/page.js";
-import File from "./config/file.js";
+import Page from "../../models/page.js";
+import File from "../../config/file.js";
 
 export default class BlockController {
   static async index(req, res) {
@@ -13,7 +13,7 @@ export default class BlockController {
       return a.position - b.position;
     });
 
-    await res.render("admin/block", { pageID: page.id, block });
+    await res.render("admin_block", { pageID: page.id, block });
   }
 
   static async create(req, res) {

@@ -1,5 +1,5 @@
-import Footer from "../models/footer.js";
-import File from "./config/file.js";
+import Footer from "../../models/footer.js";
+import File from "../../config/file.js";
 
 import { marked } from "marked";
 
@@ -12,7 +12,7 @@ export default class FooterController {
       footer = await Footer.create({});
     }
 
-    await res.render("admin/footer", {
+    await res.render("admin_footer", {
       footer,
     });
   }

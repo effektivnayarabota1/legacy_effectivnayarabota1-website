@@ -1,14 +1,9 @@
-<div class="page_buttons grid-main menu-wrapper wrapper" >
-	<div class="block-create_container" >
-	</div>
-</div>
-
 <form action="/admin/{{pageID}}/{{block.id}}" method="post" enctype="multipart/form-data" id="{{block.id}}" 
 class="dynamic_container elements menu-wrapper wrapper grid-4">
 	{{#each block.elements}}
-  		{{#> element.admin }}
-			{{> element.options}}
-		{{/ element.admin}}
+  		{{#> element/element.admin }}
+			{{> element/element.options}}
+		{{/ element/element.admin}}
 	{{/each}}
 
   	<div class="element-container pages_button-container">

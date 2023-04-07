@@ -1,10 +1,10 @@
-{{> page.meta page}}
+{{> page/page.meta page}}
 
 <div id="{{page.id}}" class="blocks dynamic_container">
 	{{#each page.blocks}}
 		<div id="{{this.id}}" class="block-container dynamic_element" >
-			{{> block.options pageId=../page.id blockId=this.id}}
-			{{> block}}
+			{{> block/block.options pageId=../page.id blockId=this.id}}
+			{{> block/block}}
 			<div class="menu-wrapper wrapper"><hr></div>
 		</div>
 	{{/each}}
